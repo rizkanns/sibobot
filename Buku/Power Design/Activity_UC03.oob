@@ -1984,7 +1984,7 @@ DESTINATION 0 Arial,8,N</a:FontList>
 <o:FlowSymbol Id="o47">
 <a:CreationDate>1552481554</a:CreationDate>
 <a:ModificationDate>1552482699</a:ModificationDate>
-<a:Rect>((-1530,878), (23073,2487))</a:Rect>
+<a:Rect>((-1530,874), (23073,2487))</a:Rect>
 <a:ListOfPoints>((22673,1862),(-1130,1862))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>1</a:ArrowStyle>
@@ -2113,7 +2113,7 @@ DESTINATION 0 Arial,8,N</a:FontList>
 <o:FlowSymbol Id="o60">
 <a:CreationDate>1552482036</a:CreationDate>
 <a:ModificationDate>1552482699</a:ModificationDate>
-<a:Rect>((6100,-21611), (33901,2825))</a:Rect>
+<a:Rect>((6100,-21611), (33901,2821))</a:Rect>
 <a:ListOfPoints>((29272,1862),(33501,1862),(33501,-20986),(6500,-20986))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>1</a:ArrowStyle>
