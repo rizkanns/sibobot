@@ -1721,8 +1721,8 @@ DISPNAME 0 Arial,8,N</a:FontList>
 <o:FlowSymbol Id="o28">
 <a:CreationDate>1552496389</a:CreationDate>
 <a:ModificationDate>1552496389</a:ModificationDate>
-<a:Rect>((-3703,6124), (-2443,10762))</a:Rect>
-<a:ListOfPoints>((-3096,10362),(-3057,6524))</a:ListOfPoints>
+<a:Rect>((-3717,6124), (-2464,10762))</a:Rect>
+<a:ListOfPoints>((-3096,10362),(-3086,6524))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>1</a:ArrowStyle>
 <a:LineColor>16744448</a:LineColor>
@@ -1822,8 +1822,8 @@ DISPNAME 0 Arial,8,N</a:FontList>
 <o:FlowSymbol Id="o31">
 <a:CreationDate>1552496389</a:CreationDate>
 <a:ModificationDate>1552496389</a:ModificationDate>
-<a:Rect>((13121,-3400), (14374,1013))</a:Rect>
-<a:ListOfPoints>((13755,613),(13744,-3000))</a:ListOfPoints>
+<a:Rect>((13121,-3400), (14371,1013))</a:Rect>
+<a:ListOfPoints>((13746,613),(13744,-3000))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>1</a:ArrowStyle>
 <a:LineColor>16744448</a:LineColor>
