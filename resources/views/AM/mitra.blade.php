@@ -52,15 +52,18 @@
                             <table class="table table-hover">
                                 <thead>
                                     <tr>
+                                        <th style="text-align: center;">No</th>
                                         <th style="text-align: center;">Mitra</th>
                                         <th style="text-align: center;">Deskripsi</th>
                                         <th style="text-align: center; width: 15%;">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                <?php $x=1; ?>
                                 @foreach($mitra as $listmitra)
                                     <tr>
-                                        <td align="center" style="width: 9%;">{{$listmitra->nama_mitra}}</td>
+                                        <td><?php echo $x; $x=$x+1; ?></td>
+                                        <td>{{$listmitra->nama_mitra}}</td>
                                         <td style="text-align: justify;">{{$listmitra->deskripsi_mitra}}</td>
                                         <td align="center">
                                             <button type="button" class="btn btn-danger btn-rounded" data-toggle="modal" data-target="#edit-{{$listmitra->id_mitra}}" data-plaement="top" title="Ubah Mitra"><i class="ti-pencil-alt"></i></button>

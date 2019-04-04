@@ -83,7 +83,7 @@
                             <table class="table table-hover">
                                 <thead>
                                     <tr>
-                                        <th style="text-align: center;">#</th>
+                                        <th style="text-align: center;">No</th>
                                         <th style="text-align: center;">Nama</th>
                                         <th style="text-align: center;">NIk</th>
                                         <th style="text-align: center;">Email</th>

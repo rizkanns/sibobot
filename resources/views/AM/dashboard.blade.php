@@ -28,7 +28,7 @@
 <!--alerts CSS -->
 <link href="plugins/bower_components/sweetalert/sweetalert.css" rel="stylesheet" type="text/css">
 {{-- Datatable --}}
-<link rel="stylesheet" type="text/css" href="plugins/datatables/dataTables.bootstrap4.min.css"/>
+<link rel="stylesheet" type="text/css" href="{{ asset('plugins/datatables/dataTables.bootstrap4.min.css') }}">
 
 @endsection
 

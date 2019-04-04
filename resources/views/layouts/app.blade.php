@@ -115,6 +115,19 @@
                             <span class="hide-menu"> BERANDA </span>
                         </a>
                     </li>
+                        @if (Request::is('*/rekomendasi*'))
+                        <li>
+                            <a href="{{route('pelanggan')}}" class="waves-effect active">
+                                <span class="hide-menu"> REKOMENDASI PROYEK </span>
+                            </a>
+                        </li>
+                        @else
+                        <li>
+                            <a href="{{route('pelanggan')}}" class="waves-effect">
+                                <span class="hide-menu"> REKOMENDASI PROYEK </span>
+                            </a>
+                        </li>
+                        @endif
                     @else
                     <li>
                         <a href="{{route('index')}}" class="waves-effect">
@@ -135,6 +148,7 @@
                         </a>
                     </li>
                     @endif
+                    
                     @if (Request::is('*/mitra*') OR Request::is('*/unit-kerja*') OR Request::is('*/witel*') OR Request::is('*/pejabat*'))
                     <li>
                     	<a href="#" class="waves-effect active"> <i class="fa fa-tasks fa-fw" data-icon="v"></i> <span class="hide-menu"> KELOLA DATA <span class="fa arrow"></span> </span></a>

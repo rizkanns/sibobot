@@ -2,13 +2,13 @@
 
 @section('link')
     <!-- Datatable -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('plugins/datatables/dataTables.bootstrap4.min.css') }}">
+    <!-- <link rel="stylesheet" type="text/css" href="{{ asset('plugins/datatables/dataTables.bootstrap4.min.css') }}"> -->
     <!-- CSS tambahan -->
-<link href="css/mystyle.css" rel="stylesheet">
-<!-- Toggle CSS -->
-<link href="css/toggle.css" rel="stylesheet">
-<!--alerts CSS -->
-<link href="plugins/bower_components/sweetalert/sweetalert.css" rel="stylesheet" type="text/css">
+    <!-- <link href="css/mystyle.css" rel="stylesheet"> -->
+    <!-- Toggle CSS -->
+    <!-- <link href="css/toggle.css" rel="stylesheet"> -->
+    <!--alerts CSS -->
+    <!-- <link href="plugins/bower_components/sweetalert/sweetalert.css" rel="stylesheet" type="text/css"> -->
 @endsection
 
 @section('content')
@@ -111,9 +111,11 @@
                                 </div>
                             </div>
                                 
+                            <!-- <table class="table table-hover example"> -->
                             <table class="table table-hover">
                                 <thead>
                                     <tr>
+                                        <th style="text-align: center;">No</th>
                                         <th style="text-align: center;">WITEL</th>
                                         <th style="text-align: center;">SE</th>
                                         <th style="text-align: center;">Bidding</th>
@@ -125,9 +127,10 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                
+                                <?php $x=1; ?>
                                 @foreach($wilayah as $listwilayah)                             
                                     <tr>
+                                        <td style="vertical-align: middle;"><?php echo $x; $x=$x+1; ?></td>
                                         <td align="center" style="width: 9%;">{{$listwilayah->nama_wilayah}}</td>
                                         <td style="text-align: justify;">
                                             @foreach($se->where('id_wilayah','=',$listwilayah->id_wilayah) as $listse)
@@ -361,17 +364,17 @@
     }); 
     </script> 
     <!-- Datatable -->
-    <script src="plugins/datatables/jquery.dataTables.min.js"></script>
-    <script src="plugins/datatables/dataTables.bootstrap4.min.js"></script>
-    <script src="plugins/bower_components/sweetalert/sweetalert.min.js"></script>
-    <script src="plugins/bower_components/sweetalert/jquery.sweet-alert.custom.js"></script>
-    <script type="text/javascript">
+    <!-- <script src="plugins/datatables/jquery.dataTables.min.js"></script> -->
+    <!-- <script src="plugins/datatables/dataTables.bootstrap4.min.js"></script> -->
+    <!-- <script src="plugins/bower_components/sweetalert/sweetalert.min.js"></script>
+    <script src="plugins/bower_components/sweetalert/jquery.sweet-alert.custom.js"></script> -->
+    <!-- <script type="text/javascript">
     $(document).ready(function()
     {
-        $('.tableWitel').DataTable(
+        $('.example').DataTable(
         {
             "pagingType": "full_numbers"
         } );
     } );
-    </script>
+    </script> -->
 @endsection
