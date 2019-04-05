@@ -8,12 +8,17 @@ class Pelanggan extends Model
 {
     protected $table = 'pelanggan';
     protected $primaryKey = 'id_pelanggan';
-    protected $fillable = ['id_pelanggan','nama_pelanggan','nomor_telepon','alamat_pelanggan','jenis_pelanggan'];
+    protected $fillable = ['fk_id_witel','id_pelanggan','nama_pelanggan','nomor_pelanggan','alamat_pelanggan','jenis_pelanggan'];
     public $incrementing = true;
     public $timestamp = true;
 
     public function pelanggan()
     {
     	return $this->hasmany('App\Pelanggan', 'id_pelanggan', 'id_pelanggan');
+    }
+
+    public function witel()
+    {
+    	return $this->belongsTo('App\Witel', 'fk_id_witel', 'id_witel');
     }
 }

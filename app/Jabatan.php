@@ -7,13 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 class Jabatan extends Model
 {
     protected $table = 'jabatan';
-    protected $primaryKey = 'id';
+    protected $primaryKey = 'id_jabatan';
     protected $fillable = ['nama_jabatan'];
     public $incrementing = true;
     public $timestamp = true;
 
     public function user()
     {
-        return $this->hasMany('App\User', 'id_jabatan','id');
+        return $this->hasMany('App\User', 'id_jabatan','id_jabatan');
     }
 }

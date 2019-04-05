@@ -7,13 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 class UnitKerja extends Model
 {
     protected $table = 'unit_kerja';
-    protected $primaryKey = 'id';
+    protected $primaryKey = 'id_unit_kerja';
     protected $fillable = ['nama_unit_kerja','deskripsi_unit_kerja'];
     public $incrementing = true;
     public $timestamp = true;
 
     public function unit_kerja()
     {
-    	return $this->hasmany('App\UnitKerja', 'id_unit_kerja', 'id');
+    	return $this->hasmany('App\UnitKerja', 'id_unit_kerja', 'id_unit_kerja');
     }
 }
