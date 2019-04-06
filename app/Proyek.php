@@ -8,7 +8,7 @@ class Proyek extends Model
 {
     protected $table = 'proyek';
     protected $primaryKey = 'id_proyek';
-    protected $fillable = ['fk_id_mitra','fk_id_users','fk_id_pelanggan','judul','tahun','id_unit_kerja','latar_belakang_1','latar_belakang_2','saat_penggunaan','pemasukan_dokumen','ready_for_service','skema_bisnis','masa_kontrak','alamat_delivery','status_pengajuan','mekanisme_pembayaran','rincian_pembayaran','ket_problem','file','bukti_scan'];
+    protected $fillable = ['fk_id_mitra','fk_id_users','fk_id_pelanggan','fk_id_unit_kerja','id_mitra_2','keterangan_mitra_1','keterangan_mitra_2','judul','masa_kontrak','alamat_delivery','mekanisme_pembayaran','rincian_pembayaran','skema_bisnis','ready_for_service','saat_penggunaan','pemasukan_dokumen','status_pengajuan','keterangan_proyek','file_p0','file_p1','bukti_scan_p0','bukti_scan_p1'];
     public $incrementing = true;
     public $timestamp = true;
 
