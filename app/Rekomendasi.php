@@ -8,17 +8,17 @@ class Rekomendasi extends Model
 {
     protected $table = 'rekomendasi';
     protected $primaryKey = 'id_rekomendasi';
-    protected $fillable = ['fk_id_rumus', 'fk_id_proyek'];
+    protected $fillable = ['id_rumus', 'id_proyek'];
     public $incrementing = true;
     public $timestamp = true;
 
     public function rumus()
     {
-    	return $this->belongsTo('App\Rumus', 'fk_id_rumus', 'id_rumus');
+    	return $this->belongsTo('App\Rumus', 'id_rumus', 'id_rumus');
     }
 
     public function proyek()
     {
-    	return $this->belongsTo('App\Proyek', 'fk_id_proyek', 'id_id_proyek');
+    	return $this->belongsTo('App\Proyek', 'id_proyek', 'id_id_proyek');
     }
 }

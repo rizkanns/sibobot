@@ -47,13 +47,13 @@
                                             <div class="form-group">
                                                 <label for="inputEmail3" class="col-sm-3 control-label">Latar Belakang I</label>
                                                 <div class="col-sm-9">
-                                                    <textarea class="form-control" rows="5" name="latar_belakang_1">{{$listproyek->latar_belakang_1}}</textarea>
+                                                    <textarea class="form-control" rows="5"></textarea>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label for="inputEmail3" class="col-sm-3 control-label">Latar Belakang II</label>
                                                 <div class="col-sm-9">
-                                                    <textarea class="form-control" rows="5" name="latar_belakang_2">{{$listproyek->latar_belakang_2}}</textarea>
+                                                    <textarea class="form-control" rows="5"></textarea>
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -123,7 +123,7 @@
                                                         <option value="{{$listmitra->id_mitra}}" @if($listmitra->id_mitra == $listproyek->id_mitra) selected @endif>{{$listmitra->nama_mitra}}</option>
                                                         @endforeach
                                                     </select>
-                                                    <div id="ket-mitra" @if($listproyek->mitra_2 == NULL) style="display: none;" @endif>
+                                                    <div id="ket-mitra" @if($listproyek->id_mitra_2 == NULL) style="display: none;" @endif>
                                                         <input type="text" name="keterangan_mitra_1" class="form-control" placeholder="Keterangan mitra 1" value="{{$listproyek->keterangan_mitra_1}}">
                                                         <br>
                                                     </div>
@@ -131,11 +131,11 @@
                                                     {{-- <a name="hideMitra" id="hideMitra" onclick="hideMitra()"> halo</a> --}}
                                                     <a id='link' onclick='open_fun()'><i class='fa fa-plus'></i> Tambah Mitra</a> 
                                                     <br><br>
-                                                    <div id="mitra" @if($listproyek->mitra_2 == NULL) style="display: none;" @endif>
-                                                        <select class="selectpicker m-b-20" data-style="form-control" name="mitra_2">
+                                                    <div id="mitra" @if($listproyek->id_mitra_2 == NULL) style="display: none;" @endif>
+                                                        <select class="selectpicker m-b-20" data-style="form-control" name="id_mitra_2">
                                                             @foreach ($mitra as $listmitra)
                                                             <option></option>
-                                                            <option value="{{$listmitra->id_mitra}}" @if($listmitra->id_mitra == $listproyek->mitra_2 && $listproyek->mitra_2 != NULL) selected @endif>{{$listmitra->nama_mitra}}</option>
+                                                            <option value="{{$listmitra->id_mitra}}" @if($listmitra->id_mitra == $listproyek->id_mitra_2 && $listproyek->id_mitra_2 != NULL) selected @endif>{{$listmitra->nama_mitra}}</option>
                                                             @endforeach
                                                         </select>                                                        
                                                         <a href="{{ route('mitra2_update', ['id_pelanggan' => $listpelanggan->id_pelanggan, 'id_proyek' => $listproyek->id_proyek, 'id_aspek' => $listaspek->id_aspek]) }}"  style="float: left;" class="btn btn-success waves-effect waves-light m-t-10"><i class="fa fa-edit"></i> Ubah</a>
@@ -197,6 +197,7 @@
                                                 </div>
                                             </div>
 
+                                            <!--
                                             @if($listproyek->file_p0 == null)
                                             <div class="form-group">
                                                 <label class="col-sm-3 control-label">Tabel Ruang Lingkup Pekerjaan</label>
@@ -236,6 +237,7 @@
                                                 </div>
                                             </div>
                                             @endif
+                                            -->
                                         </div>
                                     </div>
                                     <div class="row form-group m-b-0">

@@ -47,7 +47,7 @@
                             <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-3 control-label">No Telepon</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="inputEmail3" placeholder="No Telepon" name="nomor_telepon">
+                                    <input type="text" class="form-control" id="inputEmail3" placeholder="No Telepon" name="nomor_pelanggan">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -76,9 +76,9 @@
                             <div class="row">
                                 <label for="inputEmail3" class="col-sm-3 control-label">Witel</label>
                                 <div class="col-sm-5">
-                                    <select class="selectpicker m-b-20" data-style="form-control" name="id_wilayah">
-                                        @foreach ($wilayah as $listwilayah)
-                                            <option value="{{$listwilayah->id_wilayah}}">{{$listwilayah->nama_wilayah}}</option>
+                                    <select class="selectpicker m-b-20" data-style="form-control" name="id_witel">
+                                        @foreach ($witel as $listwitel)
+                                            <option value="{{$listwitel->id_witel}}">{{$listwitel->nama_witel}}</option>
                                         @endforeach
                                     </select>
                                 </div>

@@ -14,7 +14,7 @@ use App\Pelanggan;
 use App\Proyek;
 use App\User;
 use App\UnitKerja;
-use App\Wilayah;
+use App\Witel;
 use DB;
 use Auth;
 use Session;
@@ -34,7 +34,7 @@ class PejabatController extends Controller
 	{
 
 		$user = DB::table('users')
-				->leftjoin('wilayah','users.id','=','wilayah.se')
+				->leftjoin('witel','users.id','=','witel.se')
 				->leftjoin('jabatan','users.id_jabatan','=','jabatan.id_jabatan')
 				->get();
 		$jabatan = DB::table('jabatan')->get();
@@ -103,7 +103,7 @@ class PejabatController extends Controller
 		$user->password = $request->input('password');
 		$user->save();
 		
-		// dd($wilayah);
+		// dd($witel);
 		return redirect()->route('pejabat');
 	}
 

@@ -19,6 +19,7 @@ class AuthController extends Controller
     public function indexRegister()
     {
 		$jabatan = DB::table('jabatan')->select('id_jabatan','nama_jabatan')->orderBy('nama_jabatan')->get();
+        // dd($jabatan);
         return view('auth.register', ['jabatan'=>$jabatan]);
     }
 

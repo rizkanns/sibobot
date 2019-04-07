@@ -57,7 +57,7 @@ class DashboardController extends Controller
             ->get();
 
         $mitra = DB::table('proyek')
-            ->leftjoin('mitra','mitra.id_mitra','=','proyek.mitra_2')
+            ->leftjoin('mitra','mitra.id_mitra','=','proyek.id_mitra_2')
             ->get();
 
         return view('AM.dashboard', ['proyek'=>$proyek,'setuju'=>$setuju,'mitra'=>$mitra]);

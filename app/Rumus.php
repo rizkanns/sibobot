@@ -14,6 +14,6 @@ class Rumus extends Model
 
     public function rumus()
     {
-    	return $this->hasmany('App\Rumus', 'fk_id_rumus', 'id_rumus');
+    	return $this->hasmany('App\Rumus', 'id_rumus', 'id_rumus');
     }
 }
