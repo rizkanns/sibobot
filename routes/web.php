@@ -93,6 +93,16 @@ Route::group(['middleware'=>['auth']], function()
 	{
 		Route::get('/', 'SE\DashboardController@index')->name('se_index');
 		Route::get('/dashboard', 'SE\DashboardController@index')->name('se_index');
+
+		Route::get('/rekomendasi','SE\RekomendasiController@indexRekomendasi')->name('rekomendasi');
+		Route::get('/rumus','SE\RekomendasiController@indexRekomendasi')->name('rumus');
+		Route::get('/hasil','SE\RekomendasiController@indexRekomendasi')->name('hasil');
+
+		Route::post('/parameter/insert','SE\RekomendasiController@insertParameter')->name('parameter_insert');
+		Route::get('/rekomendasi/update/{id}','SE\RekomendasiController@updateWitel')->name('rekomendasi_update');
+		Route::get('/rekomendasi/delete/{id}','SE\RekomendasiController@deleteWitel')->name('rekomendasi_delete');
+
+		
 	});
 
 

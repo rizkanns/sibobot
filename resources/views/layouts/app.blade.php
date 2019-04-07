@@ -99,15 +99,35 @@
                     </li>
                         @if (Request::is('*/rekomendasi*'))
                         <li>
-                            <a href="{{route('pelanggan')}}" class="waves-effect active">
-                                <span class="hide-menu"> REKOMENDASI PROYEK </span>
-                            </a>
+                        <a href="#" class="waves-effect active"> <i class="fa fa-tasks fa-fw" data-icon="v"></i> <span class="hide-menu"> REKOMENDASI PROYEK <span class="fa arrow"></span> </span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{route('rekomendasi')}}" class="waves-effect">
+                                        <span class="hide-menu"> KELOLA RUMUS </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{route('hasil')}}" class="waves-effect">
+                                        <span class="hide-menu"> LIHAT HASIL </span>
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
                         @else
                         <li>
-                            <a href="{{route('pelanggan')}}" class="waves-effect">
-                                <span class="hide-menu"> REKOMENDASI PROYEK </span>
-                            </a>
+                        <a href="#" class="waves-effect"> <i class="fa fa-tasks fa-fw" data-icon="v"></i> <span class="hide-menu"> REKOMENDASI PROYEK <span class="fa arrow"></span> </span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{route('rekomendasi')}}" class="waves-effect">
+                                        <span class="hide-menu"> KELOLA RUMUS </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{route('hasil')}}" class="waves-effect">
+                                        <span class="hide-menu"> LIHAT HASIL </span>
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
                         @endif
                     @else
@@ -116,6 +136,39 @@
                             <span class="hide-menu"> BERANDA </span>
                         </a>
                     </li>
+                    @if (Request::is('*/rekomendasi*'))
+                        <li>
+                        <a href="#" class="waves-effect active"> <i class="fa fa-tasks fa-fw" data-icon="v"></i> <span class="hide-menu"> Rekomendasi Proyek <span class="fa arrow"></span> </span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{route('rekomendasi')}}" class="waves-effect">
+                                        <span class="hide-menu"> KELOLA RUMUS </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{route('hasil')}}" class="waves-effect">
+                                        <span class="hide-menu"> LIHAT HASIL </span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        @else
+                        <li>
+                        <a href="#" class="waves-effect"> <i class="fa fa-tasks fa-fw" data-icon="v"></i> <span class="hide-menu"> REKOMENDASI PROYEK <span class="fa arrow"></span> </span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{route('rekomendasi')}}" class="waves-effect">
+                                        <span class="hide-menu"> KELOLA RUMUS </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{route('hasil')}}" class="waves-effect">
+                                        <span class="hide-menu"> LIHAT HASIL </span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        @endif
                     @endif
                     @if (Request::is('*/form-*'))
                     <li>
