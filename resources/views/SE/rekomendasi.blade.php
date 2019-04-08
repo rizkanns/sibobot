@@ -23,6 +23,59 @@
                 <br>
                 <br>
                 <div class="row">
+                    <div class="col-md-12 col-lg-12 col-sm-12">
+                        <div class="white-box">
+                            <h1 class="text-center" style="color: #d51100; font-weight: 500">Rumus Rekomendasi</h1>
+                        <form class="form-horizontal form-material" action="{{ route('pelanggan_insert') }}" method = "post">
+                            {{ csrf_field() }}
+                            <br><br>
+                            <div class="row">
+                                <label for="inputEmail3" class="col-sm-2 control-label">Parameter</label>
+                                <div class="col-sm-4">
+                                    <select class="selectpicker m-b-20" data-style="form-control" name="id_witel">
+                                        @foreach($parameter as $listparameter)
+                                        <option>{{$listparameter->nama_parameter}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <label for="inputEmail3" class="col-sm-1 control-label">Nilai</label>
+                                <div class="col-sm-3">
+                                    <input type="text" class="form-control" id="inputEmail3" placeholder="Nilai" name="nama_pelanggan">
+                                </div>
+                            </div>
+                            <a id='link' onclick='open_fun()' class="pull-right"><i class='fa fa-plus'></i> Tambah</a>
+        
+                            <div class="row" id="rumus">
+                                <label for="inputEmail3" class="col-sm-2 control-label">Parameter</label>
+                                <div class="col-sm-4">
+                                    <select class="selectpicker m-b-20" data-style="form-control" name="id_witel">
+                                        @foreach($parameter as $listparameter)
+                                        <option>{{$listparameter->nama_parameter}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <label for="inputEmail3" class="col-sm-1 control-label">Nilai</label>
+                                <div class="col-sm-3">
+                                    <input type="text" class="form-control" id="inputEmail3" placeholder="Nilai" name="nama_pelanggan">
+                                </div>
+                            </div>
+
+                            <br><br><br><br>
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label">Rumus Akhir</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="inputEmail3" placeholder="Rumus Akhir" name="nama_pelanggan">
+                                </div>
+                            </div>
+                            <div class="form-group m-b-0">
+                                <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Simpan</button>
+                                {{-- <a href="form-justifikasi-proyek.html"><i class="fa fa-arrow-circle-right m-t-30" style="color: #d51100; float: right; font-size: 250%"></i></a> --}}
+                            </div>  
+                        </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
                     <div class="col-md-12 col-lg-6 col-sm-12">
                         <div class="white-box">
                             <button type="button" class="btn btn-danger btn-rounded pull-right" style="background-color: #d51100;" data-toggle="modal" data-target="#tambah-parameter"><i class="fa fa-plus"></i>  Parameter</button>
@@ -53,11 +106,11 @@
                             <h3 class="box-title">Tabel Parameter</h3>
                             <div class="row sales-report">
                                 <div class="col-md-6 col-sm-6 col-xs-6">
-                                    <h2>March 2017</h2>
-                                    <p>SALES REPORT</p>
-                                </div>
+                                    <h2>Parameter yang Digunakan</h2>
+                                    <!-- <p>SALES REPORT</p> -->
+                                </div><!-- 
                                 <div class="col-md-6 col-sm-6 col-xs-6 ">
-                                    <h1 class="text-right text-info m-t-20">$3,690</h1> </div>
+                                    <h1 class="text-right text-info m-t-20">$3,690</h1> </div> -->
                             </div>
                             <div class="table-responsive">
                                 <table class="table">
@@ -70,48 +123,19 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                    <?php $x=1; ?>
+                                    @foreach($parameter as $listparameter)
                                         <tr>
-                                            <td>1</td>
-                                            <td class="txt-oflo">Elite admin</td>
-                                            <td><span class="label label-success label-rouded">SALE</span> </td>
+                                            <td><?php echo $x; $x=$x+1; ?></td>
+                                            <td class="txt-oflo">{{$listparameter->nama_parameter}}</td>
+                                            @if($listparameter->id_parameter % 1)
+                                            <td><span class="label label-success label-rouded">DIPAKAI</span> </td>
+                                            @else
+                                            <td></td>
+                                            @endif
                                             <td><a href="javacript:void(0)" class="btn btn btn-rounded btn-default btn-outline m-r-5"><i class="ti-check text-success m-r-5"></i> Edit</a><a href="javacript:void(0)" class="btn-rounded btn btn-default btn-outline"><i class="ti-close text-danger m-r-5"></i> Delete</a></td>
                                         </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td class="txt-oflo">Real Homes WP Theme</td>
-                                            <td><span class="label label-info label-rouded">EXTENDED</span></td>
-                                            <td><a href="javacript:void(0)" class="btn btn btn-rounded btn-default btn-outline m-r-5"><i class="ti-check text-success m-r-5"></i> Edit</a><a href="javacript:void(0)" class="btn-rounded btn btn-default btn-outline"><i class="ti-close text-danger m-r-5"></i> Delete</a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td class="txt-oflo">Ample Admin</td>
-                                            <td><span class="label label-info label-rouded">EXTENDED</span></td>
-                                            <td><a href="javacript:void(0)" class="btn btn btn-rounded btn-default btn-outline m-r-5"><i class="ti-check text-success m-r-5"></i> Edit</a><a href="javacript:void(0)" class="btn-rounded btn btn-default btn-outline"><i class="ti-close text-danger m-r-5"></i> Delete</a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>4</td>
-                                            <td class="txt-oflo">Medical Pro WP Theme</td>
-                                            <td><span class="label label-danger label-rouded">TAX</span></td>
-                                            <td><a href="javacript:void(0)" class="btn btn btn-rounded btn-default btn-outline m-r-5"><i class="ti-check text-success m-r-5"></i> Edit</a><a href="javacript:void(0)" class="btn-rounded btn btn-default btn-outline"><i class="ti-close text-danger m-r-5"></i> Delete</a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>5</td>
-                                            <td class="txt-oflo">Hosting press html</td>
-                                            <td><span class="label label-warning label-rouded">SALE</span></td>
-                                            <td><a href="javacript:void(0)" class="btn btn btn-rounded btn-default btn-outline m-r-5"><i class="ti-check text-success m-r-5"></i> Edit</a><a href="javacript:void(0)" class="btn-rounded btn btn-default btn-outline"><i class="ti-close text-danger m-r-5"></i> Delete</a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>6</td>
-                                            <td class="txt-oflo">Digital Agency PSD</td>
-                                            <td><span class="label label-success label-rouded">SALE</span> </td>
-                                            <td><a href="javacript:void(0)" class="btn btn btn-rounded btn-default btn-outline m-r-5"><i class="ti-check text-success m-r-5"></i> Edit</a><a href="javacript:void(0)" class="btn-rounded btn btn-default btn-outline"><i class="ti-close text-danger m-r-5"></i> Delete</a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>7</td>
-                                            <td class="txt-oflo">Helping Hands WP Theme</td>
-                                            <td><span class="label label-warning label-rouded">member</span></td>
-                                            <<td><a href="javacript:void(0)" class="btn btn btn-rounded btn-default btn-outline m-r-5"><i class="ti-check text-success m-r-5"></i> Edit</a><a href="javacript:void(0)" class="btn-rounded btn btn-default btn-outline"><i class="ti-close text-danger m-r-5"></i> Delete</a></td>
-                                        </tr>
+                                    @endforeach
                                     </tbody>
                                 </table>
                             </div>
@@ -119,9 +143,9 @@
                     </div>
                     <div class="col-md-12 col-lg-6 col-sm-12">
                         <div class="white-box">
-                            <h3 class="box-title">Recent Comments</h3>
+                            <h3 class="box-title">Petunjuk Penggunaan</h3>
                             <div class="comment-center p-t-10">
-                                <div class="comment-body">
+                                <!-- <div class="comment-body">
                                     <div class="user-img"> <img src="../plugins/images/users/pawandeep.jpg" alt="user" class="img-circle"></div>
                                     <div class="mail-contnet">
                                         <h5>Pavan kumar</h5><span class="time">10:20 AM   20  may 2016</span> <span class="label label-rouded label-info">PENDING</span>
@@ -138,7 +162,7 @@
                                     <div class="mail-contnet">
                                         <h5>Arijit singh</h5><span class="time">10:20 AM   20  may 2016</span> <span class="label label-rouded label-danger">REJECTED</span>
                                         <br/><span class="mail-desc">Donec ac condimentum massa. Etiam pellentesque pretium lacus. Phasellus ultricies dictum suscipit. Aenean commodo dui pellentesque molestie feugiat. Aenean commodo dui pellentesque molestie feugiat</span> </div>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>
@@ -246,4 +270,17 @@
         }); 
     }); 
     </script> 
+    <script type="text/javascript">
+        var x = document.getElementById("rumus");
+
+        function open_fun() { 
+            document.getElementById('link').innerHTML = "<a id='link' href='javascript:clo_fun()'><i class='fa fa-minus'></i> Hapus Rumus</a>";
+            x.style.display = "block";
+        }
+        
+        function clo_fun() {
+            document.getElementById('link').innerHTML = "<a id='link' onclick='open_fun()'><i class='fa fa-plus'></i> Tambah Rumus</a>";        
+            x.style.display = "none";
+        }
+    </script>
 @endsection

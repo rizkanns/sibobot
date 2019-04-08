@@ -28,7 +28,9 @@ class RekomendasiController extends Controller
 	public function indexRekomendasi()
 	{
 		// $mitra = DB::table('mitra')->get();
-		return view('SE.rekomendasi');
+		$parameter = DB::table('parameter')->get();
+		// dd($parameter);
+		return view('SE.rekomendasi', ['parameter'=>$parameter]);
 	}
 
 	public function insertParameter(Request $request)
