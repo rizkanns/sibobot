@@ -45,7 +45,7 @@
                             <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-3 control-label">No Telepon</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="inputEmail3" placeholder="No Telepon" name="nomor_telepon" value="{{$listpelanggan->nomor_telepon}}">
+                                    <input type="text" class="form-control" id="inputEmail3" placeholder="No Telepon" name="nomor_pelanggan" value="{{$listpelanggan->nomor_pelanggan}}">
                                 </div>
                             </div>
                             <div class="form-group">
