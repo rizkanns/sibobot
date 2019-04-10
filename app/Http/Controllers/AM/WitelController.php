@@ -35,25 +35,19 @@ class WitelController extends Controller
 		$witel = DB::table('witel')->get();
 		$user = DB::table('users')->get();
 		$jabatan = DB::table('jabatan')->get();
+		$pejabat = DB::table('users')
+			->leftjoin('witel','users.id_witel','=','witel.id_witel')
+			->leftjoin('jabatan','users.id_jabatan','=','jabatan.id_jabatan')
+            ->get();
 		// dd($witel);
-		$se = DB::table('witel') 
-            ->leftjoin('users','users.id','=','witel.se')->where('id_jabatan',2)
-            ->get();
-        $bidding = DB::table('witel') 
-            ->leftjoin('users','users.id','=','witel.bidding')->where('id_jabatan',3)
-            ->get();
-        $manager = DB::table('witel') 
-            ->leftjoin('users','users.id','=','witel.manager')->where('id_jabatan',4)
-            ->get();
-        $deputy = DB::table('witel') 
-            ->leftjoin('users','users.id','=','witel.deputy')->where('id_jabatan',5)
-            ->get();
-        $gm = DB::table('witel') 
-            ->leftjoin('users','users.id','=','witel.gm')->where('id_jabatan',6)
-            ->get();
-        $approval = DB::table('witel') 
-            ->leftjoin('users','users.id','=','witel.approval')->where('id_jabatan',7)
-            ->get();
+		$se = DB::table('users')->where('id_jabatan',2)->get();
+		// dd($se);
+        $bidding = DB::table('users')->where('id_jabatan',3)->get();
+        $manager = DB::table('users')->where('id_jabatan',4)->get();
+        $deputy = DB::table('users')->where('id_jabatan',5)->get();
+        $gm = DB::table('users')->where('id_jabatan',6)->get();
+        $approval = DB::table('users')->where('id_jabatan',7)->get();
+
 		return view('AM.witel', ['witel'=>$witel, 'user'=>$user, 'jabatan'=>$jabatan, 'se'=>$se, 'bidding'=>$bidding, 'manager'=>$manager, 'deputy'=>$deputy, 'gm'=>$gm, 'approval'=>$approval]);
 	}
 
@@ -62,12 +56,6 @@ class WitelController extends Controller
 
 		$witel = new Witel;
 		$witel->nama_witel = $request->input('nama_witel');
-		$witel->se = $request->input('se');
-		$witel->bidding = $request->input('bidding');
-		$witel->manager = $request->input('manager');
-		$witel->deputy = $request->input('deputy');
-		$witel->gm = $request->input('gm');
-		$witel->approval = $request->input('approval');
 		$witel->save();
 		return redirect()->route('witel');
 	}
@@ -78,12 +66,6 @@ class WitelController extends Controller
 		$witel = Witel::find($id);
 		$witel->id_witel = $request->input('id_witel',$id);
 		$witel->nama_witel = $request->input('nama_witel');
-		$witel->se = $request->input('se');
-		$witel->bidding = $request->input('bidding');
-		$witel->manager = $request->input('manager');
-		$witel->deputy = $request->input('deputy');
-		$witel->gm = $request->input('gm');
-		$witel->approval = $request->input('approval');
 		$witel->save();
 		
 		// dd($witel);

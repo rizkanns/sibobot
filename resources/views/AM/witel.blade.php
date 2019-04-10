@@ -44,66 +44,6 @@
                                                         <input type="text" class="form-control" id="inputEmail3" placeholder="Nama WITEL" name="nama_witel">
                                                     </div>
                                                 </div>
-                                                <div class="row">
-                                                    <label for="inputEmail3" class="col-sm-3 control-label">Sales Engineering</label>
-                                                    <div class="col-sm-5">
-                                                       <select class="selectpicker m-b-20" data-style="form-control" name="se">
-                                                        @foreach ($user->where('id_jabatan','=',2) as $listuser)
-                                                            <option value="{{$listuser->id}}">{{$listuser->name}}</option>
-                                                        @endforeach
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <label for="inputEmail3" class="col-sm-3 control-label">Bidding</label>
-                                                    <div class="col-sm-5">
-                                                       <select class="selectpicker m-b-20" data-style="form-control" name="bidding">
-                                                        @foreach ($user->where('id_jabatan','=',3) as $listuser)
-                                                            <option value="{{$listuser->id}}">{{$listuser->name}}</option>
-                                                        @endforeach
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <label for="inputEmail3" class="col-sm-3 control-label">Manager</label>
-                                                    <div class="col-sm-5">
-                                                       <select class="selectpicker m-b-20" data-style="form-control" name="manager">
-                                                        @foreach ($user->where('id_jabatan','=',4) as $listuser)
-                                                            <option value="{{$listuser->id}}">{{$listuser->name}}</option>
-                                                        @endforeach
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <label for="inputEmail3" class="col-sm-3 control-label">Deputy</label>
-                                                    <div class="col-sm-5">
-                                                       <select class="selectpicker m-b-20" data-style="form-control" name="deputy">
-                                                        @foreach ($user->where('id_jabatan','=',5) as $listuser)
-                                                            <option value="{{$listuser->id}}">{{$listuser->name}}</option>
-                                                        @endforeach
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <label for="inputEmail3" class="col-sm-3 control-label">General Manager</label>
-                                                    <div class="col-sm-5">
-                                                       <select class="selectpicker m-b-20" data-style="form-control" name="gm">
-                                                        @foreach ($user->where('id_jabatan','=',6) as $listuser)
-                                                            <option value="{{$listuser->id}}">{{$listuser->name}}</option>
-                                                        @endforeach
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <label for="inputEmail3" class="col-sm-3 control-label">Approval</label>
-                                                    <div class="col-sm-5">
-                                                       <select class="selectpicker m-b-20" data-style="form-control" name="approval">
-                                                        @foreach ($user->where('id_jabatan','=',7) as $listuser)
-                                                            <option value="{{$listuser->id}}">{{$listuser->name}}</option>
-                                                        @endforeach
-                                                        </select>
-                                                    </div>
-                                                </div>
                                                 <div class="form-group m-b-0">
                                                     <a href="#" class="fcbtn btn btn-default btn-1f m-r-10 m-t-10" data-dismiss="modal" style="padding-top: 5.5px; padding-bottom: 5.5px; float: right; margin-left: 10px">Keluar</a>
                                                     <button id="divide" type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Simpan</button>
@@ -135,40 +75,44 @@
                                     <tr>
                                         <td style="vertical-align: middle;"><?php echo $x; $x=$x+1; ?></td>
                                         <td align="center" style="width: 9%;">{{$listwitel->nama_witel}}</td>
+                                        @foreach($user->where('id_witel','=',$listwitel->id_witel) as $listpejabat)
                                         <td style="text-align: justify;">
-                                            @foreach($se->where('id_witel','=',$listwitel->id_witel) as $listse)
-                                            {{$listse->name}}<br>
-                                            {{$listse->nik}}
-                                            @endforeach</td>
-                                        <td style="text-align: justify;">
-                                            @foreach($bidding->where('id_witel','=',$listwitel->id_witel) as $listbidding)
-                                            {{$listbidding->name}}<br>
-                                            {{$listbidding->nik}}
-                                            @endforeach</td>
-                                        <td style="text-align: justify;">
-                                            @foreach($manager->where('id_witel','=',$listwitel->id_witel) as $listmanager)
-                                            {{$listmanager->name}}<br>
-                                            {{$listmanager->nik}}
+                                            @foreach($se->where('id','=',$listpejabat->id) as $listse)
+                                                {{$listse->name}}<br>
+                                                {{$listse->nik}}
                                             @endforeach
                                         </td>
                                         <td style="text-align: justify;">
-                                            @foreach($deputy->where('id_witel','=',$listwitel->id_witel) as $listdeputy)
-                                            {{$listdeputy->name}}<br>
-                                            {{$listdeputy->nik}}
+                                            @foreach($bidding->where('id','=',$listpejabat->id) as $listbidding)
+                                                {{$listbidding->name}}<br>
+                                                {{$listbidding->nik}}
                                             @endforeach
                                         </td>
                                         <td style="text-align: justify;">
-                                            @foreach($gm->where('id_witel','=',$listwitel->id_witel) as $listgm)
-                                            {{$listgm->name}}<br>
-                                            {{$listgm->nik}}
+                                            @foreach($manager->where('id','=',$listpejabat->id) as $listmanager)
+                                                {{$listmanager->name}}<br>
+                                                {{$listmanager->nik}}
                                             @endforeach
                                         </td>
                                         <td style="text-align: justify;">
-                                            @foreach($approval->where('id_witel','=',$listwitel->id_witel) as $listapproval)
-                                            {{$listapproval->name}}<br>
-                                            {{$listapproval->nik}}
+                                            @foreach($deputy->where('id','=',$listpejabat->id) as $listdeputy)
+                                                {{$listdeputy->name}}<br>
+                                                {{$listdeputy->nik}}
                                             @endforeach
                                         </td>
+                                        <td style="text-align: justify;">
+                                            @foreach($gm->where('id','=',$listpejabat->id) as $listgm)
+                                                {{$listgm->name}}<br>
+                                                {{$listgm->nik}}
+                                            @endforeach
+                                        </td>
+                                        <td style="text-align: justify;">
+                                            @foreach($approval->where('id','=',$listpejabat->id) as $listapproval)
+                                                {{$listapproval->name}}<br>
+                                                {{$listapproval->nik}}{
+                                            @endforeach
+                                        </td>
+                                        @endforeach
                                         <td align="center">
                                             <button type="button" class="btn btn-danger btn-rounded" data-toggle="modal" data-target="#edit-{{$listwitel->id_witel}}" data-plaement="top" title="Ubah WITEL"><i class="ti-pencil-alt"></i></button>
                                             <div class="modal fade" id="edit-{{$listwitel->id_witel}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
@@ -184,66 +128,6 @@
                                                                     <label for="inputEmail3" class="col-sm-3 control-label">Nama WITEL</label>
                                                                     <div class="col-sm-5">
                                                                         <input type="text" class="form-control" id="inputEmail3" placeholder="Nama WITEL" name="nama_witel" value="{{$listwitel->nama_witel}}">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="row">
-                                                                    <label for="inputEmail3" class="col-sm-3 control-label">Sales Engineering</label>
-                                                                    <div class="col-sm-5">
-                                                                       <select class="selectpicker m-b-20" data-style="form-control" name="se">
-                                                                        @foreach ($user->where('id_jabatan','=',2) as $listuser)
-                                                                            <option value="{{$listuser->id}}" @if($listwitel->se == $listuser->id) selected @endif>{{$listuser->name}}</option>
-                                                                        @endforeach
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="row">
-                                                                    <label for="inputEmail3" class="col-sm-3 control-label">Bidding</label>
-                                                                    <div class="col-sm-5">
-                                                                       <select class="selectpicker m-b-20" data-style="form-control" name="bidding">
-                                                                        @foreach ($user->where('id_jabatan','=',3) as $listuser)
-                                                                            <option value="{{$listuser->id}}" @if($listwitel->bidding == $listuser->id) selected @endif>{{$listuser->name}}</option>
-                                                                        @endforeach
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="row">
-                                                                    <label for="inputEmail3" class="col-sm-3 control-label">Manager</label>
-                                                                    <div class="col-sm-5">
-                                                                       <select class="selectpicker m-b-20" data-style="form-control" name="manager">
-                                                                        @foreach ($user->where('id_jabatan','=',4) as $listuser)
-                                                                            <option value="{{$listuser->id}}" @if($listwitel->manager == $listuser->id) selected @endif>{{$listuser->name}}</option>
-                                                                        @endforeach
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="row">
-                                                                    <label for="inputEmail3" class="col-sm-3 control-label">Deputy</label>
-                                                                    <div class="col-sm-5">
-                                                                       <select class="selectpicker m-b-20" data-style="form-control" name="deputy">
-                                                                        @foreach ($user->where('id_jabatan','=',5) as $listuser)
-                                                                            <option value="{{$listuser->id}}" @if($listwitel->deputy == $listuser->id) selected @endif>{{$listuser->name}}</option>
-                                                                        @endforeach
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="row">
-                                                                    <label for="inputEmail3" class="col-sm-3 control-label">General Manager</label>
-                                                                    <div class="col-sm-5">
-                                                                       <select class="selectpicker m-b-20" data-style="form-control" name="gm">
-                                                                        @foreach ($user->where('id_jabatan','=',6) as $listuser)
-                                                                            <option value="{{$listuser->id}}" @if($listwitel->gm == $listuser->id) selected @endif>{{$listuser->name}}</option>
-                                                                        @endforeach
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="row">
-                                                                    <label for="inputEmail3" class="col-sm-3 control-label">Approval</label>
-                                                                    <div class="col-sm-5">
-                                                                       <select class="selectpicker m-b-20" data-style="form-control" name="approval">
-                                                                        @foreach ($user->where('id_jabatan','=',7) as $listuser)
-                                                                            <option value="{{$listuser->id}}" @if($listwitel->approval == $listuser->id) selected @endif>{{$listuser->name}}</option>
-                                                                        @endforeach
-                                                                        </select>
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group m-b-0">

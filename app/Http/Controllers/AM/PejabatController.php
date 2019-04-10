@@ -34,7 +34,7 @@ class PejabatController extends Controller
 	{
 
 		$user = DB::table('users')
-				->leftjoin('witel','users.id','=','witel.se')
+				->leftjoin('witel','users.id_witel','=','witel.id_witel')
 				->leftjoin('jabatan','users.id_jabatan','=','jabatan.id_jabatan')
 				->get();
 		$jabatan = DB::table('jabatan')->get();
@@ -49,6 +49,7 @@ class PejabatController extends Controller
 		$user->name = $request->input('name');
 		$user->nik = $request->input('nik');
 		$user->id_jabatan = $request->input('id_jabatan');
+		$user->id_wilayah = $request->input('id_wilayah');
 		$user->email = $request->input('email');
 		$user->password = $request->input('password');
 		$user->save();
@@ -99,6 +100,7 @@ class PejabatController extends Controller
 		$user->name = $request->input('name');
 		$user->nik = $request->input('nik');
 		$user->id_jabatan = $request->input('id_jabatan');
+		$user->id_wilayah = $request->input('id_wilayah');
 		$user->email = $request->input('email');
 		$user->password = $request->input('password');
 		$user->save();

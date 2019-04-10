@@ -8,12 +8,13 @@ class Witel extends Model
 {
     protected $table = 'witel';
     protected $primaryKey = 'id_witel';
-    protected $fillable = ['nama_witel','am','se','bidding','manager','deputy','gm'];
+    protected $fillable = ['nama_witel'];
     public $incrementing = true;
     public $timestamp = true;
 
-    public function user()
+    public function witel()
     {
-    	return $this->belongsTo('App\User', 'am', 'id');
+        return $this->hasMany('App\Witel', 'id_witel', 'id_witel');
     }
+
 }
