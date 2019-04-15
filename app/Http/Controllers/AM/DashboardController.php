@@ -145,7 +145,7 @@ class DashboardController extends Controller
 
     if($data->status_pengajuan == 1)
     {     
-        $json = file_get_contents('https://api.telegram.org/bot637226509:AAHjfZr8JL58k7nxKKoAQPmxehclmAJHAlI/getUpdates');
+        $json = file_get_contents('https://api.telegram.org/bot849520264:AAEP75YqVbA4cREc9l6dBEY_gdqSJ_otylg/getUpdates');
         $obj = json_decode($json, true);
         $array = array();
 
@@ -182,6 +182,7 @@ Dengan rincian sebagai berikut:
                 'text' => $text,
                 'parse_mode' => 'HTML'
             ]);
+            // dd($response);
         }
         $messageId = $response->getMessageId();
 
@@ -190,7 +191,7 @@ Dengan rincian sebagai berikut:
 
     elseif($data->status_pengajuan == 2)
     {     
-        $json = file_get_contents('https://api.telegram.org/bot637226509:AAHjfZr8JL58k7nxKKoAQPmxehclmAJHAlI/getUpdates');
+        $json = file_get_contents('https://api.telegram.org/bot849520264:AAEP75YqVbA4cREc9l6dBEY_gdqSJ_otylg/getUpdates');
         $obj = json_decode($json, true);
         $array = array();
 

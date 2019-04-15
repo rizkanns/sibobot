@@ -85,91 +85,54 @@
                     </div>
                 </div>
                 <ul class="nav" id="side-menu">
-                	@if (Request::is('AM'))
+                	@if (Request::is('SE'))
+                    @elseif (Request::is('karyawan'))
+                    @elseif (Request::is('AM'))
                     <li>
                         <a href="{{route('index')}}" class="waves-effect active">
-                            <span class="hide-menu"> BERANDA </span>
+                           <span class="hide-menu"> BERANDA </span>
                         </a>
                     </li>
-                    @elseif (Request::is('SE'))
-                    <li>
-                        <a href="{{route('index')}}" class="waves-effect active">
-                            <span class="hide-menu"> BERANDA </span>
-                        </a>
-                    </li>
-                        @if (Request::is('*/rekomendasi*'))
-                        <li>
-                        <a href="#" class="waves-effect active"> <i class="fa fa-tasks fa-fw" data-icon="v"></i> <span class="hide-menu"> REKOMENDASI PROYEK <span class="fa arrow"></span> </span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="{{route('rekomendasi')}}" class="waves-effect">
-                                        <span class="hide-menu"> KELOLA RUMUS </span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{route('hasil')}}" class="waves-effect">
-                                        <span class="hide-menu"> LIHAT HASIL </span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        @else
-                        <li>
-                        <a href="#" class="waves-effect"> <i class="fa fa-tasks fa-fw" data-icon="v"></i> <span class="hide-menu"> REKOMENDASI PROYEK <span class="fa arrow"></span> </span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="{{route('rekomendasi')}}" class="waves-effect">
-                                        <span class="hide-menu"> KELOLA RUMUS </span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{route('hasil')}}" class="waves-effect">
-                                        <span class="hide-menu"> LIHAT HASIL </span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        @endif
                     @else
                     <li>
                         <a href="{{route('index')}}" class="waves-effect">
-                            <span class="hide-menu"> BERANDA </span>
+                           <span class="hide-menu"> BERANDA </span>
                         </a>
                     </li>
-                    @if (Request::is('*/rekomendasi*'))
-                        <li>
-                        <a href="#" class="waves-effect active"> <i class="fa fa-tasks fa-fw" data-icon="v"></i> <span class="hide-menu"> Rekomendasi Proyek <span class="fa arrow"></span> </span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="{{route('rekomendasi')}}" class="waves-effect">
-                                        <span class="hide-menu"> KELOLA RUMUS </span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{route('hasil')}}" class="waves-effect">
-                                        <span class="hide-menu"> LIHAT HASIL </span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        @else
-                        <li>
-                        <a href="#" class="waves-effect"> <i class="fa fa-tasks fa-fw" data-icon="v"></i> <span class="hide-menu"> REKOMENDASI PROYEK <span class="fa arrow"></span> </span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="{{route('rekomendasi')}}" class="waves-effect">
-                                        <span class="hide-menu"> KELOLA RUMUS </span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{route('hasil')}}" class="waves-effect">
-                                        <span class="hide-menu"> LIHAT HASIL </span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        @endif
                     @endif
+
+                    @if (Request::is('AM'))
+                    @elseif (Request::is('karyawan'))
+                    @elseif (Request::is('SE'))
+                    <li>
+                        <a href="{{route('se_index')}}" class="waves-effect active">
+                           <span class="hide-menu"> BERANDA </span>
+                        </a>
+                    </li>
+                    @else
+                    <li>
+                        <a href="{{route('se_index')}}" class="waves-effect">
+                           <span class="hide-menu"> BERANDA </span>
+                        </a>
+                    </li>
+                    @endif
+
+                    @if (Request::is('AM'))
+                    @elseif (Request::is('SE'))
+                    @elseif (Request::is('karyawan'))
+                    <li>
+                        <a href="{{route('karyawan_index')}}" class="waves-effect active">
+                           <span class="hide-menu"> BERANDA </span>
+                        </a>
+                    </li>
+                    @else
+                    <li>
+                        <a href="{{route('karyawan_index')}}" class="waves-effect">
+                           <span class="hide-menu"> BERANDA </span>
+                        </a>
+                    </li>
+                    @endif
+
                     @if (Request::is('*/form-*'))
                     <li>
                         <a href="{{route('pelanggan')}}" class="waves-effect active">
@@ -183,58 +146,93 @@
                         </a>
                     </li>
                     @endif
-                    
+
                     @if (Request::is('*/mitra*') OR Request::is('*/unit-kerja*') OR Request::is('*/witel*') OR Request::is('*/pejabat*'))
                     <li>
-                    	<a href="#" class="waves-effect active"> <i class="fa fa-tasks fa-fw" data-icon="v"></i> <span class="hide-menu"> KELOLA DATA <span class="fa arrow"></span> </span></a>
-	                        <ul class="nav nav-second-level">
-	                            <li>
-			                        <a href="{{route('unit')}}" class="waves-effect">
-			                            <span class="hide-menu"> UNIT KERJA </span>
-			                        </a>
-			                    </li>
-			                    <li>
-			                        <a href="{{route('mitra')}}" class="waves-effect">
-			                            <span class="hide-menu"> MITRA </span>
-			                        </a>
-			                    </li>
-			                    <li>
-			                        <a href="{{route('witel')}}" class="waves-effect">
-			                            <span class="hide-menu"> WITEL </span>
-			                        </a>
-			                    </li>
-			                    <li>
-			                        <a href="{{route('pejabat')}}" class="waves-effect">
-			                            <span class="hide-menu"> PEJABAT </span>
-			                        </a>
-			                    </li>
-	                        </ul>
+                        <a href="#" class="waves-effect active"> <i class="fa fa-tasks fa-fw" data-icon="v"></i> <span class="hide-menu"> KELOLA DATA <span class="fa arrow"></span> </span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{route('unit')}}" class="waves-effect">
+                                        <span class="hide-menu"> UNIT KERJA </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{route('mitra')}}" class="waves-effect">
+                                        <span class="hide-menu"> MITRA </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{route('witel')}}" class="waves-effect">
+                                        <span class="hide-menu"> WITEL </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{route('pejabat')}}" class="waves-effect">
+                                        <span class="hide-menu"> PEJABAT </span>
+                                    </a>
+                                </li>
+                            </ul>
                     </li>
                     @else
                     <li>
-                    	<a href="#" class="waves-effect"> <i class="fa fa-tasks fa-fw" data-icon="v"></i> <span class="hide-menu"> KELOLA DATA <span class="fa arrow"></span> </span></a>
-	                        <ul class="nav nav-second-level">
-	                            <li>
-			                        <a href="{{route('unit')}}" class="waves-effect">
-			                            <span class="hide-menu"> UNIT KERJA </span>
-			                        </a>
-			                    </li>
-			                    <li>
-			                        <a href="{{route('mitra')}}" class="waves-effect">
-			                            <span class="hide-menu"> MITRA </span>
-			                        </a>
-			                    </li>
-			                    <li>
-			                        <a href="{{route('witel')}}" class="waves-effect">
-			                            <span class="hide-menu"> WITEL </span>
-			                        </a>
-			                    </li>
-			                    <li>
-			                        <a href="{{route('pejabat')}}" class="waves-effect">
-			                            <span class="hide-menu"> PEJABAT </span>
-			                        </a>
-			                    </li>
-	                        </ul>
+                        <a href="#" class="waves-effect"> <i class="fa fa-tasks fa-fw" data-icon="v"></i> <span class="hide-menu"> KELOLA DATA <span class="fa arrow"></span> </span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{route('unit')}}" class="waves-effect">
+                                        <span class="hide-menu"> UNIT KERJA </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{route('mitra')}}" class="waves-effect">
+                                        <span class="hide-menu"> MITRA </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{route('witel')}}" class="waves-effect">
+                                        <span class="hide-menu"> WITEL </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{route('pejabat')}}" class="waves-effect">
+                                        <span class="hide-menu"> PEJABAT </span>
+                                    </a>
+                                </li>
+                            </ul>
+                    </li>
+                    @endif
+
+                    @if (Request::is('AM'))
+                    @elseif (Request::is('SE/rekomendasi*'))
+                    <li>
+                    <a href="#" class="waves-effect active"> <i class="fa fa-tasks fa-fw" data-icon="v"></i> <span class="hide-menu"> Rekomendasi Proyek <span class="fa arrow"></span> </span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="{{route('rekomendasi')}}" class="waves-effect">
+                                    <span class="hide-menu"> KELOLA RUMUS </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{route('hasil')}}" class="waves-effect">
+                                    <span class="hide-menu"> LIHAT HASIL </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    @else
+                    <li>
+                    <a href="#" class="waves-effect"> <i class="fa fa-tasks fa-fw" data-icon="v"></i> <span class="hide-menu"> REKOMENDASI PROYEK <span class="fa arrow"></span> </span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="{{route('rekomendasi')}}" class="waves-effect">
+                                    <span class="hide-menu"> KELOLA RUMUS </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{route('hasil')}}" class="waves-effect">
+                                    <span class="hide-menu"> LIHAT HASIL </span>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
                     @endif
 

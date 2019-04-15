@@ -22,7 +22,7 @@
 <!-- CSS tambahan -->
 <link href="css/mystyle.css" rel="stylesheet">
 <!-- Toggle CSS -->
-<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+<link href="css/toggle.css" rel="stylesheet">
 {{-- Datatable --}}
 <link rel="stylesheet" type="text/css" href="plugins/datatables/dataTables.bootstrap4.min.css"/>
 
@@ -118,7 +118,7 @@
                                                                                                 <tr>
                                                                                                     <td><span class="text-muted" style="font-weight: 500">No Telepon</span></td>
                                                                                                     <td><span class="text-muted" style="font-weight: 500">:</span></td>
-                                                                                                    <td>{{$listproyek->nomor_telepon}}</td>
+                                                                                                    <td>{{$listproyek->nomor_pelanggan}}</td>
                                                                                                 </tr>
                                                                                                 <tr>
                                                                                                     <td><span class="text-muted" style="font-weight: 500">Jenis Pelanggan</span></td>
@@ -141,12 +141,12 @@
                                                                                                         <tr>
                                                                                                             <td><span class="text-muted" style="font-weight: 500">Latar Belakang 1</span></td>
                                                                                                             <td><span class="text-muted" style="font-weight: 500">:</span></td>
-                                                                                                            <td>{{$listproyek->latar_belakang_1}}</td>
+                                                                                                            <td>}</td>
                                                                                                         </tr>
                                                                                                         <tr>
                                                                                                             <td><span class="text-muted" style="font-weight: 500">Latar Belakang 2</span></td>
                                                                                                             <td><span class="text-muted" style="font-weight: 500">:</span></td>
-                                                                                                            <td>{{$listproyek->latar_belakang_2}}</td>
+                                                                                                            <td></td>
                                                                                                         </tr>
                                                                                                         <tr>
                                                                                                             <td><span class="text-muted" style="font-weight: 500">Alamat Delivery</span></td>
@@ -204,7 +204,7 @@
                                                                                                             <td><span class="text-muted" style="font-weight: 500">Nama Mitra</span></td>
                                                                                                             <td><span class="text-muted" style="font-weight: 500">:</span></td>
                                                                                                             <td>{{$listproyek->nama_mitra}}
-                                                                                                            @if($listproyek->mitra_2) dan
+                                                                                                            @if($listproyek->id_mitra_2) dan
                                                                                                                 @foreach($mitra as $listmitra)
                                                                                                                     @if($listmitra->id_proyek==$listproyek->id_proyek)
                                                                                                                     {{$listmitra->nama_mitra}}
@@ -243,7 +243,7 @@
                                                                                         </div>
                                                                             </div>
                                                                             <div id="aspekbisnis-onprogress-{{$listproyek->id_proyek}}" class="tab-pane">
-                                                                            @if($listproyek->mitra_2)
+                                                                            @if($listproyek->id_mitra_2)
                                                                                 <div class="row">
                                                                                     <div class="col-sm-12 col-lg-6">
                                                                                         <table class="table table-borderless">
@@ -419,7 +419,7 @@
                                                                                                     <tr>
                                                                                                         <td><span class="text-muted" style="font-weight: 500">No Telepon</span></td>
                                                                                                         <td><span class="text-muted" style="font-weight: 500">:</span></td>
-                                                                                                        <td>{{$listproyek->nomor_telepon}}</td>
+                                                                                                        <td>{{$listproyek->nomor_pelanggan}}</td>
                                                                                                     </tr>
                                                                                                     <tr>
                                                                                                         <td><span class="text-muted" style="font-weight: 500">Jenis Pelanggan</span></td>
@@ -442,12 +442,12 @@
                                                                                                         <tr>
                                                                                                             <td><span class="text-muted" style="font-weight: 500">Latar Belakang 1</span></td>
                                                                                                             <td><span class="text-muted" style="font-weight: 500">:</span></td>
-                                                                                                            <td>{{$listproyek->latar_belakang_1}}</td>
+                                                                                                            <td>{</td>
                                                                                                         </tr>
                                                                                                         <tr>
                                                                                                             <td><span class="text-muted" style="font-weight: 500">Latar Belakang 2</span></td>
                                                                                                             <td><span class="text-muted" style="font-weight: 500">:</span></td>
-                                                                                                            <td>{{$listproyek->latar_belakang_2}}</td>
+                                                                                                            <td></td>
                                                                                                         </tr>
                                                                                                         <tr>
                                                                                                             <td><span class="text-muted" style="font-weight: 500">Alamat Delivery</span></td>
@@ -505,7 +505,7 @@
                                                                                                                 <td><span class="text-muted" style="font-weight: 500">Nama Mitra</span></td>
                                                                                                                 <td><span class="text-muted" style="font-weight: 500">:</span></td>
                                                                                                                 <td>{{$listproyek->nama_mitra}}
-                                                                                                                @if($listproyek->mitra_2) dan
+                                                                                                                @if($listproyek->id_mitra_2) dan
                                                                                                                     @foreach($mitra as $listmitra)
                                                                                                                         @if($listmitra->id_proyek==$listproyek->id_proyek)
                                                                                                                         {{$listmitra->nama_mitra}}
@@ -544,7 +544,7 @@
                                                                                             </div>
                                                                                 </div>
                                                                                 <div id="aspekbisnis-approved-{{$listproyek->id_proyek}}" class="tab-pane">
-                                                                                @if($listproyek->mitra_2)
+                                                                                @if($listproyek->id_mitra_2)
                                                                                 <div class="row">
                                                                                     <div class="col-sm-12 col-lg-6">
                                                                                         <table class="table table-borderless">
