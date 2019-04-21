@@ -5,20 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use App\Http\Controllers\Controller;
-use App\AspekBisnis;
-use App\ChatRoom;
-use App\Jabatan;
-use App\LatarBelakang;
-use App\Mitra;
-use App\Pelanggan;
-use App\Proyek;
 use App\User;
-use App\UnitKerja;
 use DB;
 use Auth;
 use Session;
-use Telegram;
-use Telegram\Bot\Api;
 
 class HomeController extends Controller
 {

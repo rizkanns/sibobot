@@ -8,7 +8,7 @@ class Parameter extends Model
 {
     protected $table = 'parameter';
     protected $primaryKey = 'id_parameter';
-    protected $fillable = ['nama_parameter'];
+    protected $fillable = ['nama_parameter','nilai_parameter'];
     public $incrementing = true;
     public $timestamp = true;
 

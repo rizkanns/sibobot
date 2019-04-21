@@ -28,7 +28,7 @@ class RekomendasiController extends Controller
 	public function indexRekomendasi()
 	{
 		// $mitra = DB::table('mitra')->get();
-		$parameter = DB::table('parameter')->get();
+		$parameter = Parameter::get();
 		// dd($parameter);
 		return view('SE.rekomendasi', ['parameter'=>$parameter]);
 	}
@@ -38,19 +38,20 @@ class RekomendasiController extends Controller
 		$parameter = New Parameter;
 		$parameter->id_parameter = $request->input('id_parameter');
 		$parameter->nama_parameter = $request->input('nama_parameter');
+		$parameter->nilai_parameter = $request->input('nilai_parameter');
 		$parameter->save();
 		return redirect()->route('rekomendasi');
 	}
 
-	public function updateMitra(Request $request, $id)
+	public function updateParameter(Request $request, $id)
     {
-    	DB::table('mitra')->where('id_mitra',$id)->update($request->all());
-    	return redirect()->route('mitra');
+    	Parameter::where('id_parameter',$id)->update($request->all());
+    	return redirect()->route('rekomendasi');
     }
 
     public function deleteMitra(Request $request, $id)
     {
-    	DB::table('mitra')->where('id_mitra',$id)->delete();
+    	Parameter::where('id_mitra',$id)->delete();
     	return redirect()->route('mitra');
     }
     

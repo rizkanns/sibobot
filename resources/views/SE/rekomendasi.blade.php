@@ -78,7 +78,7 @@
                 <div class="row">
                     <div class="col-md-12 col-lg-6 col-sm-12">
                         <div class="white-box">
-                            <button type="button" class="btn btn-danger btn-rounded pull-right" style="background-color: #d51100;" data-toggle="modal" data-target="#tambah-parameter"><i class="fa fa-plus"></i>  Parameter</button>
+                            <!-- <button type="button" class="btn btn-danger btn-rounded pull-right" style="background-color: #d51100;" data-toggle="modal" data-target="#tambah-parameter"><i class="fa fa-plus"></i>  Parameter</button>
                             <div class="modal fade" id="tambah-parameter" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
                                 <div class="modal-dialog modal-lg">
                                     <div class="modal-content">
@@ -94,6 +94,12 @@
                                                         <input type="text" class="form-control" id="inputEmail3" placeholder="Nama parameter" name="nama_parameter">
                                                     </div>
                                                 </div>
+                                                <div class="form-group">
+                                                    <label for="inputEmail3" class="col-sm-3 control-label">Nilai Parameter</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="decimals" class="form-control" id="inputEmail3" placeholder="Nilai parameter" name="nilai_parameter">
+                                                    </div>
+                                                </div>
                                                 <div class="form-group m-b-0">
                                                     <a href="#" class="fcbtn btn btn-default btn-1f m-r-10 m-t-10" data-dismiss="modal" style="padding-top: 5.5px; padding-bottom: 5.5px; float: right; margin-left: 10px">Keluar</a>
                                                     <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Simpan</button>
@@ -102,7 +108,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                             <h3 class="box-title">Tabel Parameter</h3>
                             <div class="row sales-report">
                                 <div class="col-md-6 col-sm-6 col-xs-6">
@@ -118,7 +124,7 @@
                                         <tr>
                                             <th>#</th>
                                             <th>NAME</th>
-                                            <th>STATUS</th>
+                                            <th>NILAI</th>                                            
                                             <th>AKSI</th>
                                         </tr>
                                     </thead>
@@ -126,14 +132,49 @@
                                     <?php $x=1; ?>
                                     @foreach($parameter as $listparameter)
                                         <tr>
+                                            @if($listparameter->nilai_parameter > 0)
+                                            <td style="font-weight: bold;"><?php echo $x; $x=$x+1; ?></td>
+                                            <td class="txt-oflo" style="font-weight: bold;">{{$listparameter->nama_parameter}}</td>
+                                            <td class="txt-oflo" style="font-weight: bold;">{{$listparameter->nilai_parameter}}</td>
+                                            @else
                                             <td><?php echo $x; $x=$x+1; ?></td>
                                             <td class="txt-oflo">{{$listparameter->nama_parameter}}</td>
-                                            @if($listparameter->id_parameter % 1)
-                                            <td><span class="label label-success label-rouded">DIPAKAI</span> </td>
-                                            @else
-                                            <td></td>
+                                            <td class="txt-oflo">{{$listparameter->nilai_parameter}}</td>
                                             @endif
-                                            <td><a href="javacript:void(0)" class="btn btn btn-rounded btn-default btn-outline m-r-5"><i class="ti-check text-success m-r-5"></i> Edit</a><a href="javacript:void(0)" class="btn-rounded btn btn-default btn-outline"><i class="ti-close text-danger m-r-5"></i> Delete</a></td>
+                                            <td align="center">
+
+                                            <button type="button" class="btn btn-danger btn-rounded pull-right" data-toggle="modal" data-target="#edit-{{$listparameter->id_parameter}}"></i>Ubah <i class="ti-pencil-alt"></i></button>
+
+                                                <div class="modal fade" id="edit-{{$listparameter->id_parameter}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+                                                    <div class="modal-dialog modal-lg">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h4 class="modal-title" id="myLargeModalLabel" style="font-weight: 450;">Sunting Parameter "{{$listparameter->nama_parameter}}"</h4>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <form class="form-horizontal form-material" action="{{ route('parameter_update', ['id' => $listparameter->id_parameter]) }}" method = "get">
+                                                                    <div class="form-group">
+                                                                        <label for="inputEmail3" class="col-sm-3 control-label">Nama Parameter</label>
+                                                                        <div class="col-sm-9">
+                                                                            <input type="text" class="form-control" id="inputEmail3" value="{{$listparameter->nama_parameter}}" name="nama_parameter">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="inputEmail3" class="col-sm-3 control-label">Nilai Parameter</label>
+                                                                        <div class="col-sm-9">
+                                                                            <input type="decimals" class="form-control" id="inputEmail3" value="{{$listparameter->nilai_parameter}}" name="nilai_parameter">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group m-b-0">
+                                                                        <a href="#" class="fcbtn btn btn-default btn-1f m-r-10 m-t-10" data-dismiss="modal" style="padding-top: 5.5px; padding-bottom: 5.5px; float: right; margin-left: 10px">Keluar</a>
+                                                                        <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Simpan</button>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
                                         </tr>
                                     @endforeach
                                     </tbody>

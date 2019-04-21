@@ -85,50 +85,17 @@
                     </div>
                 </div>
                 <ul class="nav" id="side-menu">
-                	@if (Request::is('SE'))
-                    @elseif (Request::is('karyawan'))
-                    @elseif (Request::is('AM'))
+                @if(Auth::user()->jabatan->id_jabatan == 1 OR Auth::user()->jabatan->id_jabatan == 2)
+                    @if (Request::is('*/dashboard*') OR Request::is('/'))
                     <li>
                         <a href="{{route('index')}}" class="waves-effect active">
-                           <span class="hide-menu"> BERANDA </span>
+                            <span class="hide-menu"> DASHBOARD </span>
                         </a>
                     </li>
                     @else
                     <li>
                         <a href="{{route('index')}}" class="waves-effect">
-                           <span class="hide-menu"> BERANDA </span>
-                        </a>
-                    </li>
-                    @endif
-
-                    @if (Request::is('AM'))
-                    @elseif (Request::is('karyawan'))
-                    @elseif (Request::is('SE'))
-                    <li>
-                        <a href="{{route('se_index')}}" class="waves-effect active">
-                           <span class="hide-menu"> BERANDA </span>
-                        </a>
-                    </li>
-                    @else
-                    <li>
-                        <a href="{{route('se_index')}}" class="waves-effect">
-                           <span class="hide-menu"> BERANDA </span>
-                        </a>
-                    </li>
-                    @endif
-
-                    @if (Request::is('AM'))
-                    @elseif (Request::is('SE'))
-                    @elseif (Request::is('karyawan'))
-                    <li>
-                        <a href="{{route('karyawan_index')}}" class="waves-effect active">
-                           <span class="hide-menu"> BERANDA </span>
-                        </a>
-                    </li>
-                    @else
-                    <li>
-                        <a href="{{route('karyawan_index')}}" class="waves-effect">
-                           <span class="hide-menu"> BERANDA </span>
+                            <span class="hide-menu"> DASHBOARD </span>
                         </a>
                     </li>
                     @endif
@@ -201,8 +168,8 @@
                     </li>
                     @endif
 
-                    @if (Request::is('AM'))
-                    @elseif (Request::is('SE/rekomendasi*'))
+                    @if (Auth::user()->jabatan->id_jabatan != 2)
+                    @elseif (Request::is('*/rekomendasi*'))
                     <li>
                     <a href="#" class="waves-effect active"> <i class="fa fa-tasks fa-fw" data-icon="v"></i> <span class="hide-menu"> Rekomendasi Proyek <span class="fa arrow"></span> </span></a>
                         <ul class="nav nav-second-level">
@@ -235,6 +202,23 @@
                         </ul>
                     </li>
                     @endif
+                    
+                @else
+                    @if (Request::is('*/dashboard*') OR Request::is('/'))
+                    <li>
+                        <a href="{{route('index')}}" class="waves-effect active">
+                            <span class="hide-menu"> DASHBOARD </span>
+                        </a>
+                    </li>
+                    @else
+                    <li>
+                        <a href="{{route('index')}}" class="waves-effect">
+                            <span class="hide-menu"> DASHBOARD </span>
+                        </a>
+                    </li>
+                    @endif
+                @endif
+
 
                     <li class="devider"></li>
                     <li>
