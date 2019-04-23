@@ -25,9 +25,11 @@ class RekomendasiController extends Controller
 	public function indexRekomendasi()
 	{
 		$parameter = Parameter::get();
+		$rumus = Rumus::get();
+
 
 		// dd($parameter);
-		return view('rekomendasi.rekomendasi', ['parameter'=>$parameter]);
+		return view('rekomendasi.rekomendasi', ['parameter'=>$parameter, 'rumus'=>$rumus]);
 	}
 
 
@@ -70,7 +72,9 @@ class RekomendasiController extends Controller
 
 	public function updateRumus(Request $request, $id)
     {
-    	Parameter::where('id_rumus',$id)->update($request->all());
+    	$rumus = Rumus::find($id);
+    	$rumus->flag = 0;
+    	$rumus->save();
     	return redirect()->route('rekomendasi');
     }
 

@@ -29,7 +29,7 @@
                         <form class="form-horizontal form-material" action="{{ route('pelanggan_insert') }}" method = "post">
                             {{ csrf_field() }}
                             <br><br>
-                            <div class="row">
+                            <!-- <div class="row">
                                 <label for="inputEmail3" class="col-sm-2 control-label">Parameter</label>
                                 <div class="col-sm-4">
                                     <select class="selectpicker m-b-20" data-style="form-control" name="id_witel">
@@ -58,7 +58,7 @@
                                 <div class="col-sm-3">
                                     <input type="text" class="form-control" id="inputEmail3" placeholder="Nilai" name="nama_pelanggan">
                                 </div>
-                            </div>
+                            </div> -->
 
                             <br><br><br><br>
                             <div class="form-group">
@@ -206,44 +206,19 @@
                                     </thead>
                                     <tbody>
                                     <?php $x=1; ?>
-                                    @foreach($parameter as $listparameter)
+                                    @foreach($rumus as $listrumus)
                                         <tr>
                                             <td><?php echo $x; $x=$x+1; ?></td>
-                                            <td class="txt-oflo">{{$listparameter->nama_parameter}}</td>
+                                            <td class="txt-oflo">{{$listrumus->rumus_awal}}</td>
                                             <td align="center">
 
-                                            <button type="button" class="btn btn-danger btn-rounded pull-right" data-toggle="modal" data-target="#edit-{{$listparameter->id_parameter}}"></i>Ubah <i class="ti-pencil-alt"></i></button>
+                                            @if($listrumus->flag == 0)
+                                            <a href="{{ route('parameter_reset', ['id' => $listrumus->id_rumus]) }}" class="btn btn-default"><i class="fa fa-check" data-toggle="tooltip" data-placement="top" title="Pakai Rumus"></i></a>
 
-                                                <div class="modal fade" id="edit-{{$listparameter->id_parameter}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
-                                                    <div class="modal-dialog modal-lg">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h4 class="modal-title" id="myLargeModalLabel" style="font-weight: 450;">Sunting Parameter "{{$listparameter->nama_parameter}}"</h4>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                <form class="form-horizontal form-material" action="{{ route('parameter_update', ['id' => $listparameter->id_parameter]) }}" method = "get">
-                                                                    <div class="form-group">
-                                                                        <label for="inputEmail3" class="col-sm-3 control-label">Nama Parameter</label>
-                                                                        <div class="col-sm-9">
-                                                                            <input type="text" class="form-control" id="inputEmail3" value="{{$listparameter->nama_parameter}}" name="nama_parameter">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <label for="inputEmail3" class="col-sm-3 control-label">Nilai Parameter</label>
-                                                                        <div class="col-sm-9">
-                                                                            <input type="decimals" class="form-control" id="inputEmail3" value="{{$listparameter->nilai_parameter}}" name="nilai_parameter">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="form-group m-b-0">
-                                                                        <a href="#" class="fcbtn btn btn-default btn-1f m-r-10 m-t-10" data-dismiss="modal" style="padding-top: 5.5px; padding-bottom: 5.5px; float: right; margin-left: 10px">Keluar</a>
-                                                                        <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Simpan</button>
-                                                                    </div>
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </td>
+                                            @else($listrumus->flag == 1)
+                                            <a href="{{ route('parameter_reset', ['id' => $listparameter->id_parameter]) }}" class="btn btn-danger"><i class="fa fa-check" data-toggle="tooltip" data-placement="top" title="Reset Rumus"></i></a>
+
+                                            @endif
                                         </tr>
                                     @endforeach
                                     </tbody>

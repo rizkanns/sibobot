@@ -175,7 +175,7 @@
                         <ul class="nav nav-second-level">
                             <li>
                                 <a href="{{route('rekomendasi')}}" class="waves-effect">
-                                    <span class="hide-menu"> KELOLA RUMUS </span>
+                                    <span class="hide-menu"> KELOLA PARAMETER </span>
                                 </a>
                             </li>
                             <li>
@@ -191,7 +191,7 @@
                         <ul class="nav nav-second-level">
                             <li>
                                 <a href="{{route('rekomendasi')}}" class="waves-effect">
-                                    <span class="hide-menu"> KELOLA RUMUS </span>
+                                    <span class="hide-menu"> KELOLA PARAMETER </span>
                                 </a>
                             </li>
                             <li>
