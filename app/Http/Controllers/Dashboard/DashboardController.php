@@ -40,7 +40,7 @@ class DashboardController extends Controller
 
     public function index() 
     { 
-        $proyek = Proyek::leftjoin('users','users.id','=','proyek.id_users')->where('users.id',Auth::user()->id) 
+        $proyek = Proyek::leftjoin('users','users.id','=','proyek.id_users')
             ->leftjoin('aspek_bisnis', 'aspek_bisnis.id_proyek', '=', 'proyek.id_proyek') 
             ->leftjoin('pelanggan', 'pelanggan.id_pelanggan', '=', 'proyek.id_pelanggan') 
             ->leftjoin('mitra','mitra.id_mitra','=','proyek.id_mitra') 
@@ -240,10 +240,10 @@ Dengan rincian sebagai berikut:
 
     public function deleteProyek($id_proyek)
     {
-        $idPelanggan = Proyek::select('id_pelanggan')->where('id_proyek',$id_proyek)->first()->id_pelanggan;
-        Pelanggan::where('id_pelanggan',$idPelanggan)->delete();
-        LatarBelakang::where('id_proyek',$id_proyek)->delete();
+        Pelanggan::leftjoin('proyek', 'pelanggan.id_pelanggan', '=', 'proyek.id_pelanggan')
+            ->where('id_proyek',$id_proyek)->delete();
         Proyek::where('id_proyek',$id_proyek)->delete();
+        AspekBisnis::where('id_proyek',$id_proyek)->delete();
         return redirect()->route('index');
     }
 }

@@ -75,44 +75,43 @@
                                     <tr>
                                         <td style="vertical-align: middle;"><?php echo $x; $x=$x+1; ?></td>
                                         <td align="center" style="width: 9%;">{{$listwitel->nama_witel}}</td>
-                                        @foreach($user->where('id_witel','=',$listwitel->id_witel) as $listpejabat)
                                         <td style="text-align: justify;">
-                                            @foreach($se->where('id','=',$listpejabat->id) as $listse)
+                                            @foreach($se->where('id_witel','=',$listwitel->id_witel) as $listse)
                                                 {{$listse->name}}<br>
                                                 {{$listse->nik}}
                                             @endforeach
                                         </td>
                                         <td style="text-align: justify;">
-                                            @foreach($bidding->where('id','=',$listpejabat->id) as $listbidding)
+                                            @foreach($bidding->where('id_witel','=',$listwitel->id_witel) as $listbidding)
                                                 {{$listbidding->name}}<br>
                                                 {{$listbidding->nik}}
                                             @endforeach
                                         </td>
                                         <td style="text-align: justify;">
-                                            @foreach($manager->where('id','=',$listpejabat->id) as $listmanager)
+                                            @foreach($manager->where('id_witel','=',$listwitel->id_witel) as $listmanager)
                                                 {{$listmanager->name}}<br>
                                                 {{$listmanager->nik}}
                                             @endforeach
                                         </td>
                                         <td style="text-align: justify;">
-                                            @foreach($deputy->where('id','=',$listpejabat->id) as $listdeputy)
+                                            @foreach($deputy->where('id_witel','=',$listwitel->id_witel) as $listdeputy)
                                                 {{$listdeputy->name}}<br>
                                                 {{$listdeputy->nik}}
                                             @endforeach
                                         </td>
                                         <td style="text-align: justify;">
-                                            @foreach($gm->where('id','=',$listpejabat->id) as $listgm)
+                                            @foreach($gm->where('id_witel','=',$listwitel->id_witel) as $listgm)
                                                 {{$listgm->name}}<br>
                                                 {{$listgm->nik}}
                                             @endforeach
                                         </td>
                                         <td style="text-align: justify;">
-                                            @foreach($approval->where('id','=',$listpejabat->id) as $listapproval)
+                                            @foreach($approval->where('id_witel','=',$listwitel->id_witel) as $listapproval)
                                                 {{$listapproval->name}}<br>
-                                                {{$listapproval->nik}}{
+                                                {{$listapproval->nik}}
                                             @endforeach
                                         </td>
-                                        @endforeach
+
                                         <td align="center">
                                             <button type="button" class="btn btn-danger btn-rounded" data-toggle="modal" data-target="#edit-{{$listwitel->id_witel}}" data-plaement="top" title="Ubah WITEL"><i class="ti-pencil-alt"></i></button>
                                             <div class="modal fade" id="edit-{{$listwitel->id_witel}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">

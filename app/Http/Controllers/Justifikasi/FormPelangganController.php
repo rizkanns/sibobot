@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\AM;
+namespace App\Http\Controllers\Justifikasi;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
@@ -38,7 +38,7 @@ class FormPelangganController extends Controller
 		$proyek = DB::table('proyek')->get();
 		$witel = DB::table('witel')->get();
 		// dd($witel);
-		return view('AM.form-pelanggan', ['pelanggan'=>$pelanggan, 'auth'=>$auth, 'proyek'=>$proyek, 'witel'=>$witel]);
+		return view('justifikasi.form-pelanggan', ['pelanggan'=>$pelanggan, 'auth'=>$auth, 'proyek'=>$proyek, 'witel'=>$witel]);
 	}
 
     public function insertPelanggan(Request $request)

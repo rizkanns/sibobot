@@ -1,25 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\AM;
+namespace App\Http\Controllers\KelolaData;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use App\Http\Controllers\Controller;
-use App\AspekBisnis;
-use App\ChatRoom;
-use App\Jabatan;
-use App\LatarBelakang;
-use App\Mitra;
-use App\Pelanggan;
-use App\Proyek;
-use App\User;
 use App\UnitKerja;
 use DB;
 use Auth;
 use Session;
-use Telegram;
-use Telegram\Bot\Api;
-// use Input;
 
 class UnitKerjaController extends Controller
 {
@@ -32,8 +21,8 @@ class UnitKerjaController extends Controller
 	////////////////////////// UNIT KERJA ///////////////////////////
 	public function indexUnitKerja()
 	{
-		$unit_kerja = DB::table('unit_kerja')->get();
-		return view('AM.unit-kerja', ['unit_kerja'=>$unit_kerja]);
+		$unit_kerja = UnitKerja::get();
+		return view('kelola_data.unit-kerja', ['unit_kerja'=>$unit_kerja]);
 	}
 
 	public function insertUnitKerja(Request $request)
@@ -48,13 +37,13 @@ class UnitKerjaController extends Controller
 
 	public function updateUnitKerja(Request $request, $id)
 	{
-		DB::table('unit_kerja')->where('id_unit_kerja',$id)->update($request->all());
+		UnitKerja::where('id_unit_kerja',$id)->update($request->all());
 		return redirect()->route('unit');
 	}
 
 	public function deleteUnitKerja($id)
 	{
-		DB::table('unit_kerja')->where('id_unit_kerja',$id)->delete();
+		UnitKerja::where('id_unit_kerja',$id)->delete();
 		return redirect()->route('unit');
 	}
 

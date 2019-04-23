@@ -112,7 +112,7 @@
                             <h3 class="box-title">Tabel Parameter</h3>
                             <div class="row sales-report">
                                 <div class="col-md-6 col-sm-6 col-xs-6">
-                                    <h2>Parameter yang Digunakan</h2>
+                                    <!-- <h2>Parameter yang Digunakan</h2> -->
                                     <!-- <p>SALES REPORT</p> -->
                                 </div><!-- 
                                 <div class="col-md-6 col-sm-6 col-xs-6 ">
@@ -125,7 +125,7 @@
                                             <th>#</th>
                                             <th>NAME</th>
                                             <th>NILAI</th>                                            
-                                            <th>AKSI</th>
+                                            <th style="text-align: center;">AKSI</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -141,6 +141,75 @@
                                             <td class="txt-oflo">{{$listparameter->nama_parameter}}</td>
                                             <td class="txt-oflo">{{$listparameter->nilai_parameter}}</td>
                                             @endif
+                                            <td align="center">
+
+                                            <button type="button" class="btn btn-deafault" data-toggle="modal" data-target="#edit-{{$listparameter->id_parameter}}"></i>Ubah <i class="ti-pencil-alt"></i></button>
+                                            <div class="modal fade" id="edit-{{$listparameter->id_parameter}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+                                                <div class="modal-dialog modal-lg">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h4 class="modal-title" id="myLargeModalLabel" style="font-weight: 450;">Sunting Parameter "{{$listparameter->nama_parameter}}"</h4>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <form class="form-horizontal form-material" action="{{ route('parameter_update', ['id' => $listparameter->id_parameter]) }}" method = "get">
+                                                                <div class="form-group">
+                                                                    <label for="inputEmail3" class="col-sm-3 control-label">Nama Parameter</label>
+                                                                    <div class="col-sm-9">
+                                                                        <input type="text" class="form-control" id="inputEmail3" value="{{$listparameter->nama_parameter}}" name="nama_parameter">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="inputEmail3" class="col-sm-3 control-label">Nilai Parameter</label>
+                                                                    <div class="col-sm-9">
+                                                                        <input type="decimals" class="form-control" id="inputEmail3" value="{{$listparameter->nilai_parameter}}" name="nilai_parameter">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group m-b-0">
+                                                                    <a href="#" class="fcbtn btn btn-default btn-1f m-r-10 m-t-10" data-dismiss="modal" style="padding-top: 5.5px; padding-bottom: 5.5px; float: right; margin-left: 10px">Keluar</a>
+                                                                    <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Simpan</button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <a href="{{ route('parameter_reset', ['id' => $listparameter->id_parameter]) }}" class="btn btn-default"><i class="fa fa-refresh" data-toggle="tooltip" data-placement="top" title="Reset Nilai Parameter"></i></a>
+
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-lg-6 col-sm-12">
+                        <div class="white-box">
+                            <h3 class="box-title">Tabel Rumus</h3>
+                            <div class="row sales-report">
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                    <!-- <h2>Parameter yang Digunakan</h2> -->
+                                    <!-- <p>SALES REPORT</p> -->
+                                </div><!-- 
+                                <div class="col-md-6 col-sm-6 col-xs-6 ">
+                                    <h1 class="text-right text-info m-t-20">$3,690</h1> </div> -->
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>RUMUS</th>                                        
+                                            <th>AKSI</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    <?php $x=1; ?>
+                                    @foreach($parameter as $listparameter)
+                                        <tr>
+                                            <td><?php echo $x; $x=$x+1; ?></td>
+                                            <td class="txt-oflo">{{$listparameter->nama_parameter}}</td>
                                             <td align="center">
 
                                             <button type="button" class="btn btn-danger btn-rounded pull-right" data-toggle="modal" data-target="#edit-{{$listparameter->id_parameter}}"></i>Ubah <i class="ti-pencil-alt"></i></button>
@@ -179,31 +248,6 @@
                                     @endforeach
                                     </tbody>
                                 </table>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-12 col-lg-6 col-sm-12">
-                        <div class="white-box">
-                            <h3 class="box-title">Petunjuk Penggunaan</h3>
-                            <div class="comment-center p-t-10">
-                                <!-- <div class="comment-body">
-                                    <div class="user-img"> <img src="../plugins/images/users/pawandeep.jpg" alt="user" class="img-circle"></div>
-                                    <div class="mail-contnet">
-                                        <h5>Pavan kumar</h5><span class="time">10:20 AM   20  may 2016</span> <span class="label label-rouded label-info">PENDING</span>
-                                        <br/><span class="mail-desc">Donec ac condimentum massa. Etiam pellentesque pretium lacus. Phasellus ultricies dictum suscipit. Aenean commodo dui pellentesque molestie feugiat. Aenean commodo dui pellentesque molestie feugiat</span> <a href="javacript:void(0)" class="btn btn btn-rounded btn-default btn-outline m-r-5"><i class="ti-check text-success m-r-5"></i>Approve</a><a href="javacript:void(0)" class="btn-rounded btn btn-default btn-outline"><i class="ti-close text-danger m-r-5"></i> Reject</a> </div>
-                                </div>
-                                <div class="comment-body">
-                                    <div class="user-img"> <img src="../plugins/images/users/sonu.jpg" alt="user" class="img-circle"> </div>
-                                    <div class="mail-contnet">
-                                        <h5>Sonu Nigam</h5><span class="time">10:20 AM   20  may 2016</span> <span class="label label-rouded label-success">APPROVED</span>
-                                        <br/><span class="mail-desc">Donec ac condimentum massa. Etiam pellentesque pretium lacus. Phasellus ultricies dictum suscipit. Aenean commodo dui pellentesque molestie feugiat. Aenean commodo dui pellentesque molestie feugiat</span> </div>
-                                </div>
-                                <div class="comment-body b-none">
-                                    <div class="user-img"> <img src="../plugins/images/users/arijit.jpg" alt="user" class="img-circle"> </div>
-                                    <div class="mail-contnet">
-                                        <h5>Arijit singh</h5><span class="time">10:20 AM   20  may 2016</span> <span class="label label-rouded label-danger">REJECTED</span>
-                                        <br/><span class="mail-desc">Donec ac condimentum massa. Etiam pellentesque pretium lacus. Phasellus ultricies dictum suscipit. Aenean commodo dui pellentesque molestie feugiat. Aenean commodo dui pellentesque molestie feugiat</span> </div>
-                                </div> -->
                             </div>
                         </div>
                     </div>

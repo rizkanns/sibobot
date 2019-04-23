@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\SE;
+namespace App\Http\Controllers\Rekomendasi;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
@@ -14,7 +14,6 @@ use App\Rekomendasi;
 use DB;
 use Auth;
 use Session;
-// use Input;
 
 class RekomendasiController extends Controller
 {
@@ -22,17 +21,17 @@ class RekomendasiController extends Controller
 	{
 		$this->middleware('auth');
 	}
-
-
-	///////////////////////// MITRA /////////////////////////
+	
 	public function indexRekomendasi()
 	{
-		// $mitra = DB::table('mitra')->get();
 		$parameter = Parameter::get();
+
 		// dd($parameter);
-		return view('SE.rekomendasi', ['parameter'=>$parameter]);
+		return view('rekomendasi.rekomendasi', ['parameter'=>$parameter]);
 	}
 
+
+	///////////////////////// parameter /////////////////////////
 	public function insertParameter(Request $request)
 	{
 		$parameter = New Parameter;
@@ -49,9 +48,35 @@ class RekomendasiController extends Controller
     	return redirect()->route('rekomendasi');
     }
 
+    public function resetParameter(Request $request, $id)
+    {
+    	$parameter = Parameter::find($id);
+    	$parameter->id_parameter = $request->input('id_parameter',$id);
+    	$parameter->nilai_parameter = 0;
+    	$parameter->save();
+    	return redirect()->route('rekomendasi');
+    }
+
+
+    //////////////////////////// rumus ///////////////////////////
+    public function insertRumus(Request $request)
+	{
+		$rumus = New Rumus;
+		$rumus->id_rumus = $request->input('id_rumus');
+		$rumus->nama_parameter = $request->input('nama_parameter');
+		$rumus->save();
+		return redirect()->route('rekomendasi');
+	}
+
+	public function updateRumus(Request $request, $id)
+    {
+    	Parameter::where('id_rumus',$id)->update($request->all());
+    	return redirect()->route('rekomendasi');
+    }
+
     public function deleteMitra(Request $request, $id)
     {
-    	Parameter::where('id_mitra',$id)->delete();
+    	Parameter::where('id_rumus',$id)->delete();
     	return redirect()->route('mitra');
     }
     

@@ -197,7 +197,7 @@
                                                 </div>
                                             </div>
 
-                                            <!--
+                                            
                                             @if($listproyek->file_p0 == null)
                                             <div class="form-group">
                                                 <label class="col-sm-3 control-label">Tabel Ruang Lingkup Pekerjaan</label>
@@ -237,7 +237,7 @@
                                                 </div>
                                             </div>
                                             @endif
-                                            -->
+                                            
                                         </div>
                                     </div>
                                     <div class="row form-group m-b-0">

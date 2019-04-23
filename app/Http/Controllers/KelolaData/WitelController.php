@@ -1,26 +1,16 @@
 <?php
 
-namespace App\Http\Controllers\AM;
+namespace App\Http\Controllers\KelolaData;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use App\Http\Controllers\Controller;
-use App\AspekBisnis;
-use App\ChatRoom;
 use App\Jabatan;
-use App\LatarBelakang;
-use App\Mitra;
-use App\Pelanggan;
-use App\Proyek;
 use App\User;
-use App\UnitKerja;
 use App\Witel;
 use DB;
 use Auth;
 use Session;
-use Telegram;
-use Telegram\Bot\Api;
-// use Input;
 
 class WitelController extends Controller
 {
@@ -48,7 +38,7 @@ class WitelController extends Controller
         $gm = DB::table('users')->where('id_jabatan',6)->get();
         $approval = DB::table('users')->where('id_jabatan',7)->get();
 
-		return view('AM.witel', ['witel'=>$witel, 'user'=>$user, 'jabatan'=>$jabatan, 'se'=>$se, 'bidding'=>$bidding, 'manager'=>$manager, 'deputy'=>$deputy, 'gm'=>$gm, 'approval'=>$approval]);
+		return view('kelola_data.witel', ['witel'=>$witel, 'user'=>$user, 'jabatan'=>$jabatan, 'se'=>$se, 'bidding'=>$bidding, 'manager'=>$manager, 'deputy'=>$deputy, 'gm'=>$gm, 'approval'=>$approval]);
 	}
 
 	public function insertWitel(Request $request)
@@ -62,19 +52,19 @@ class WitelController extends Controller
 
 	public function updateWitel(Request $request,$id)
 	{
-		// dd($id);
-		$witel = Witel::find($id);
-		$witel->id_witel = $request->input('id_witel',$id);
-		$witel->nama_witel = $request->input('nama_witel');
-		$witel->save();
-		
+		// $witel = Witel::find($id);
+		// $witel->id_witel = $request->input('id_witel',$id);
+		// $witel->nama_witel = $request->input('nama_witel');
+		// $witel->save();
+
+		Witel::where('id_witel',$id)->update($request->all());
 		// dd($witel);
 		return redirect()->route('witel');
 	}
 
 	public function deleteWitel($id)
 	{
-		DB::table('witel')->where('id_witel',$id)->delete();
+		Witel::where('id_witel',$id)->delete();
 		return redirect()->route('witel');
 	}
 
