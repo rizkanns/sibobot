@@ -174,7 +174,12 @@
                     <a href="#" class="waves-effect active"> <i class="fa fa-tasks fa-fw" data-icon="v"></i> <span class="hide-menu"> Rekomendasi Proyek <span class="fa arrow"></span> </span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="{{route('rekomendasi')}}" class="waves-effect">
+                                <a href="{{route('margin')}}" class="waves-effect">
+                                    <span class="hide-menu"> RUMUS MARGIN </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{route('parameter')}}" class="waves-effect">
                                     <span class="hide-menu"> KELOLA PARAMETER </span>
                                 </a>
                             </li>
@@ -190,7 +195,12 @@
                     <a href="#" class="waves-effect"> <i class="fa fa-tasks fa-fw" data-icon="v"></i> <span class="hide-menu"> REKOMENDASI PROYEK <span class="fa arrow"></span> </span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="{{route('rekomendasi')}}" class="waves-effect">
+                                <a href="{{route('margin')}}" class="waves-effect">
+                                    <span class="hide-menu"> RUMUS MARGIN </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{route('parameter')}}" class="waves-effect">
                                     <span class="hide-menu"> KELOLA PARAMETER </span>
                                 </a>
                             </li>

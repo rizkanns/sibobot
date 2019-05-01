@@ -86,12 +86,30 @@ Route::group(['middleware'=>['auth']], function()
 	Route::get('/user/delete/{id}','KelolaData\PejabatController@deletePejabat')->name('user_delete');
 
 
-	Route::get('/rekomendasi','Rekomendasi\RekomendasiController@indexRekomendasi')->name('rekomendasi');
-	Route::get('/rumus','Rekomendasi\RekomendasiController@indexRekomendasi')->name('rumus');
+	// Route::get('/rekomendasi','Rekomendasi\RekomendasiController@indexRekomendasi')->name('rekomendasi');
+	// Route::get('/rumus','Rekomendasi\RekomendasiController@indexRekomendasi')->name('rumus');
 	Route::get('/hasil','Rekomendasi\RekomendasiController@indexRekomendasi')->name('hasil');
 
-	Route::post('/parameter/insert','Rekomendasi\RekomendasiController@insertParameter')->name('parameter_insert');
-	Route::get('/parameter/update/{id}','Rekomendasi\RekomendasiController@updateParameter')->name('parameter_update');
-	Route::get('/parameter/reset/{id}','Rekomendasi\RekomendasiController@resetParameter')->name('parameter_reset');
+	Route::get('/parameter','Rekomendasi\ParameterController@indexParameter')->name('parameter');
+	Route::post('/parameter/insert','Rekomendasi\ParameterController@insertParameter')->name('parameter_insert');
+	Route::get('/parameter/update/{id}','Rekomendasi\ParameterController@updateParameter')->name('parameter_update');
+	Route::get('/parameter/reset/{id}','Rekomendasi\ParameterController@resetParameter')->name('parameter_reset');
+
+	Route::get('/margin','Rekomendasi\MarginController@indexMargin')->name('margin');
+	Route::post('/margin/insert','Rekomendasi\MarginController@insertMargin')->name('margin_insert');
+	Route::get('/margin/update/{id}','Rekomendasi\MarginController@updateMargin')->name('margin_update');
+	Route::get('/margin/reset/{id}','Rekomendasi\MarginController@resetMargin')->name('margin_reset');
+
 	
+});
+
+
+Route::post('/849520264:AAEP75YqVbA4cREc9l6dBEY_gdqSJ_otylg/webhook', function () {
+$update = Telegram::commandsHandler(true);
+
+    // Commands handler method returns an Update object.
+    // So you can further process $update object 
+    // to however you want.
+
+return 'ok';
 });

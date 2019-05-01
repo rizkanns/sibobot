@@ -15,21 +15,21 @@ use DB;
 use Auth;
 use Session;
 
-class RekomendasiController extends Controller
+class ParameterController extends Controller
 {
 	public function _construct()
 	{
 		$this->middleware('auth');
 	}
 	
-	public function indexRekomendasi()
+	public function indexParameter()
 	{
 		$parameter = Parameter::get();
 		$rumus = Rumus::get();
 
 
 		// dd($parameter);
-		return view('rekomendasi.rekomendasi', ['parameter'=>$parameter, 'rumus'=>$rumus]);
+		return view('rekomendasi.parameter', ['parameter'=>$parameter, 'rumus'=>$rumus]);
 	}
 
 
