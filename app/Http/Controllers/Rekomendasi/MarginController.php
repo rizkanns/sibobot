@@ -25,9 +25,10 @@ class MarginController extends Controller
 	public function indexMargin()
 	{
 		$nilai = Nilai::get();
+		$rumus = Rumus::get();
 
 		// dd($parameter);
-		return view('rekomendasi.margin', ['nilai'=>$nilai]);
+		return view('rekomendasi.margin', ['nilai'=>$nilai, 'rumus'=>$rumus]);
 	}
 
 

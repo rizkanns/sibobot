@@ -30,11 +30,19 @@
                             <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-2 control-label">Layanan Revenue</label>
                                 <div class="col-sm-9">
-                                    <select class="selectpicker m-b-20" data-style="form-control" > <!--Call run() function-->
+                                    <select class="selectpicker m-b-20" data-style="form-control"  id="Ultra" onchange="run()"> <!--Call run() function-->
                                     <option selected="true" disabled="disabled"> -- Pilih Layanan -- </option>
-                                    <option id="tahunan" value="1">Tahunan</option>
-                                    <option id="bulanan" value="2">Bulanan</option>
-                                    <option id="otc" value="3">OTC</option>
+                                    @foreach($nilai->where('id_nilai',1) as $tahun)
+                                    <option id="tahunan" value="{{$tahun->nilai_pc}}">Tahunan</option>
+                                    @endforeach
+
+                                    @foreach($nilai->where('id_nilai',2) as $bulan)
+                                    <option id="bulanan" value="{{$bulan->nilai_pc}}">Bulanan</option>
+                                    @endforeach
+
+                                    @foreach($nilai->where('id_nilai',3)  as $otc)
+                                    <option id="otc" value="{{$otc->nilai_pc}}">OTC</option>
+                                    @endforeach
                                 </select>
                                 </div>
                             </div>
@@ -49,27 +57,21 @@
                                     @endforeach
                                 </div>
                             </div>
-                            
+                            <br><br><br><br><br><br>
                             <form class="form-horizontal form-material" action="{{ route('margin_update', ['id' => 1]) }}" method = "get">
                                 <div class="form-group">
                                     <label for="inputEmail3" class="col-sm-2 control-label">Nilai</label>
                                     <div class="col-sm-3">
-                                        <input type="decimals" class="form-control" placeholder="Rumus Akhir" name="nilai_pc">
+                                        <input type="decimals" id="srt" class="form-control" placeholder="Pilih layanan Revenue" name="nilai_pc">
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="decimals" id="srt" class="form-control" placeholder="PPH" name="nilai_pc">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="inputEmail3" class="col-sm-2 control-label">Nilai</label>
                                     <div class="col-sm-3">
-                                        <input type="decimals" class="form-control" placeholder="Nilai Bobot" name="nilai_pc"> 
-                                    </div>
-                                    <div class="col-sm-1">
-                                        <h4>x</h4>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    
-                                    <div class="col-sm-3">
-                                        <input type="decimals" class="form-control" placeholder="PPH" name="nilai_pc" disabled>
+                                        <input type="decimals" id="srt" class="form-control" placeholder="PPH" name="nilai_pc">
                                     </div>
                                 </div>
 

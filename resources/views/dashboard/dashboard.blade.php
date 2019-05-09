@@ -345,7 +345,41 @@
                                                     @if(Auth::user()->jabatan->id_jabatan == 1 OR Auth::user()->jabatan->id_jabatan == 2)
                                                     <div class="modal-footer">
                                                         <div class="form-group m-b-0">
+                                                            <h3 style="font-weight: 450;" class="text-center text-danger"> Rekomendasi Proyek </h3>
                                                             <table class="table table-borderless">
+                                                                <tbody class="detail-text text-left">
+                                                                <tr id="footer-padding">
+                                                                    <td style="font-weight: 450; color: black;">Layanan Revenue</td>
+                                                                    <td></td>
+                                                                    <td>{{$listproyek->layanan_revenue}}</td>
+                                                                    <td></td>
+                                                                </tr>
+                                                                <tr id="footer-padding">
+                                                                    <td style="font-weight: 450; color: black;">Revenue Connectivity</td>
+                                                                    <td></td>
+                                                                    <td>Rp {{number_format($listproyek->revenue_connectivity)}}</td>
+                                                                    <td></td>
+                                                                </tr>
+                                                                <tr id="footer-padding">
+                                                                    <td style="font-weight: 450; color: black;">Revenue CPE Proyek</td>
+                                                                    <td></td>
+                                                                    <td>Rp {{number_format($listproyek->revenue_cpe_proyek)}}</td>
+                                                                    <td></td>
+                                                                </tr>
+                                                                <hr>
+                                                                <tr id="footer-padding">
+                                                                    <td style="font-weight: 450; color: black;">Total Nilai Margin</td>
+                                                                    <td></td>
+                                                                    <td>Rp {{number_format($listproyek->rp_margin)}}</td>
+                                                                    <td></td>
+                                                                </tr>
+                                                                <tr id="footer-padding">
+                                                                    <td style="font-weight: 450; color: black;">Minimum Total Nilai Margin</td>
+                                                                    <td></td>
+                                                                    <td>Rp {{number_format($listproyek->rp_margin-1500000)}}</td>
+                                                                    <td  style="font-weight: 300; color: black;">Memenuhi &emsp;<i class="fa fa-check btn btn-success btn-rounded"></i></td>
+                                                                    <br>
+                                                                </tr></tbody>
                                                                 <form class="form-horizontal form-material" action="{{ route('status_update', ['id'=>$listproyek->id_proyek]) }}" method = "get">
                                                                     <tbody class="detail-text text-left">
                                                                         <tr id="footer-padding">
