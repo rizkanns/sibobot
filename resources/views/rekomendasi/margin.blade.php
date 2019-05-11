@@ -27,10 +27,11 @@
                         <div class="white-box">
                             <h1 class="text-center" style="color: #d51100; font-weight: 500">Rumus Margin</h1>
                             <br><br><br><br><br><br>
+                            <form class="form-horizontal form-material" action="{{ route('margin_insert') }}" method = "get">
                             <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-2 control-label">Layanan Revenue</label>
                                 <div class="col-sm-9">
-                                    <select class="selectpicker m-b-20" data-style="form-control" > <!--Call run() function-->
+                                    <select data-style="form-control" name="id_revenue" > <!--Call run() function-->
                                     <option selected="true" disabled="disabled"> -- Pilih Layanan -- </option>
                                     <option id="tahunan" value="1">Tahunan</option>
                                     <option id="bulanan" value="2">Bulanan</option>
@@ -38,25 +39,25 @@
                                 </select>
                                 </div>
                             </div>
-                            <br><br>
                             <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-2 control-label">Rumus</label>
                                 <div class="col-sm-9">
-                                    <select class="selectpicker m-b-20" data-style="form-control"  id="Ultra" onchange="run()"> <!--Call run() function-->
+                                    <select data-style="form-control" name="id_rumus"> <!--Call run() function-->
                                     <option selected="true" disabled="disabled"> -- Pilih Rumus -- </option>
                                     @foreach($rumus as $listrumus)
-                                    <option value="{{$listrumus->rumus_awal}}">{{$listrumus->rumus_awal}}</option>
+                                    <option value="{{$listrumus->id_rumus}}">{{$listrumus->rumus_awal}}</option>
                                     @endforeach
                                 </div>
                             </div>
                             
-                            <form class="form-horizontal form-material" action="{{ route('margin_update', ['id' => 1]) }}" method = "get">
+                            <br><br>
                                 <div class="form-group">
                                     <label for="inputEmail3" class="col-sm-2 control-label">Nilai</label>
                                     <div class="col-sm-3">
-                                        <input type="decimals" class="form-control" placeholder="Rumus Akhir" name="nilai_pc">
+                                        <input type="decimals" class="form-control" name="nilai_pc"> 
                                     </div>
                                 </div>
+
                                 <div class="form-group">
                                     <label for="inputEmail3" class="col-sm-2 control-label">Nilai</label>
                                     <div class="col-sm-3">
@@ -65,18 +66,13 @@
                                     <div class="col-sm-1">
                                         <h4>x</h4>
                                     </div>
-                                </div>
-                                <div class="form-group">
-                                    
-                                    <div class="col-sm-3">
-                                        <input type="decimals" class="form-control" placeholder="PPH" name="nilai_pc" disabled>
+                                    <div class="col-sm-1">
+                                        <h4>PPH</h4>
                                     </div>
                                 </div>
 
                                 <div class="form-group m-b-0">
                                     <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Simpan</button>
-                                    {{-- <a href="form-justifikasi-proyek.html"><i class="fa fa-arrow-circle-right m-t-30" style="color: #d51100; float: right; font-size: 250%"></i></a> --}}
-                                </div>  
                             </form>
                         </div>
                     </div>

@@ -78,7 +78,7 @@ class FormPelangganController extends Controller
 		$data['pelanggan'] =Pelanggan::find($id_pelanggan)->where('id_pelanggan',$id_pelanggan)->get();
 		$data['aspek'] =AspekBisnis::find($id_aspek)->where('id_aspek',$id_aspek)->get();
 		$witel = DB::table('witel')->get();
-    	return view('AM.form-pelanggan-update',$data,['witel'=>$witel]);
+    	return view('justifikasi.form-pelanggan-update',$data,['witel'=>$witel]);
     }
 
 	public function updatePelanggan(Request $request,$id_pelanggan,$id_proyek,$id_aspek)
