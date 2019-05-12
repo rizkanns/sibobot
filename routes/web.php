@@ -106,4 +106,4 @@ Route::group(['middleware'=>['auth']], function()
 	});
 });
 
-// Route::get('/yeboi', 'Telegram\ChatroomController@sendMessage');
+// Route::get('/', 'Telegram\BotController@getUpdates');
