@@ -105,3 +105,5 @@ Route::group(['middleware'=>['auth']], function()
 	return 'ok';
 	});
 });
+
+// Route::get('/yeboi', 'Telegram\ChatroomController@sendMessage');
