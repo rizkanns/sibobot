@@ -39,7 +39,7 @@
                             <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-2 control-label">Rumus</label>
                                 <div class="col-sm-9">
-                                    <select data-style="form-control" name="id_rumus"> <!--Call run() function-->
+                                    <select data-style="form-control" name="id_rumus" id="test" onchange="showDiv('hidden_div', this)"> <!--Call run() function-->
                                     <option selected="true" disabled="disabled"> -- Pilih Rumus -- </option>
                                     @foreach($rumus as $listrumus)
                                     <option value="{{$listrumus->id_rumus}}">{{$listrumus->rumus_awal}}</option>
@@ -55,7 +55,7 @@
                                     </div>
                                 </div>
 
-                                <div class="form-group">
+                                <div class="form-group" id="hidden_1" style="display: none;">
                                     <label for="inputEmail3" class="col-sm-2 control-label">Nilai</label>
                                     <div class="col-sm-3">
                                         <input type="decimals" class="form-control" placeholder="Nilai Bobot" name="nilai_pc"> 
@@ -64,7 +64,70 @@
                                         <h4>x</h4>
                                     </div>
                                     <div class="col-sm-1">
-                                        <h4>PPH</h4>
+                                        <h4>HPP</h4>
+                                    </div>
+                                </div>
+
+                                <div class="form-group" id="hidden_2" style="display: none;">
+                                    <label for="inputEmail3" class="col-sm-2 control-label">Nilai</label>
+                                    <div class="col-sm-3">
+                                        <input type="decimals" class="form-control" placeholder="Nilai Bobot" name="nilai_pc"> 
+                                    </div>
+                                    <div class="col-sm-1">
+                                        <h4>x</h4>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <h4>Nilai Kontrak</h4>
+                                    </div>
+                                </div>
+
+                                <div class="form-group" id="hidden_3" style="display: none;">
+                                    <label for="inputEmail3" class="col-sm-2 control-label">Nilai</label>
+                                    <div class="col-sm-1">
+                                        <h4>(</h4>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <input type="decimals" class="form-control" placeholder="Nilai Bobot" name="nilai_pc"> 
+                                    </div>
+                                    <div class="col-sm-1">
+                                        <h4>+</h4>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <input type="decimals" class="form-control" placeholder="Nilai Bobot" name="nilai_pc_2"> 
+                                    </div>
+                                    <div class="col-sm-1">
+                                        <h4>)</h4>
+                                    </div>
+                                    <div class="col-sm-1">
+                                        <h4>x</h4>
+                                    </div>
+                                    <div class="col-sm-1">
+                                        <h4>HPP</h4>
+                                    </div>
+                                </div>
+
+                                <div class="form-group" id="hidden_4" style="display: none;">
+                                    <label for="inputEmail3" class="col-sm-2 control-label">Nilai</label>
+                                    <div class="col-sm-1">
+                                        <h4>(</h4>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <input type="decimals" class="form-control" placeholder="Nilai Bobot" name="nilai_pc"> 
+                                    </div>
+                                    <div class="col-sm-1">
+                                        <h4>+</h4>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <input type="decimals" class="form-control" placeholder="Nilai Bobot" name="nilai_pc_2"> 
+                                    </div>
+                                    <div class="col-sm-1">
+                                        <h4>)</h4>
+                                    </div>
+                                    <div class="col-sm-1">
+                                        <h4>x</h4>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <h4>Nilai Kontrak</h4>
                                     </div>
                                 </div>
 
@@ -205,6 +268,21 @@
     function pop(val) {
         alert(val);
     }?
+</script>
+
+<script type="text/javascript">
+document.getElementById('test').addEventListener('change', function () {
+    var style = this.value == 1 ? 'block' : 'none';
+    document.getElementById('hidden_1').style.display = style;
+    var style = this.value == 2 ? 'block' : 'none';
+    document.getElementById('hidden_2').style.display = style;
+    var style = this.value == 3 ? 'block' : 'none';
+    document.getElementById('hidden_3').style.display = style;
+    var style = this.value == 4 ? 'block' : 'none';
+    document.getElementById('hidden_4').style.display = style;
+    var style = this.value == 5 ? 'block' : 'none';
+    document.getElementById('hidden_5').style.display = style;
+});
 </script>
 
 @endsection

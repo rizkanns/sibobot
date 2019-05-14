@@ -34,13 +34,13 @@ return [
     'bots'                         => [
         'mybot' => [
             'username'            => 'gestelkomvbot',
-            'token'               => env('TELEGRAM_BOT_TOKEN', '849520264:AAEP75YqVbA4cREc9l6dBEY_gdqSJ_otylg'),
+            'token'               => env('TELEGRAM_BOT_TOKEN', '849520264:AAFgi8lzkNfynife9Efipw4j_8lGgAM1Iq8'),
             'certificate_path'    => env('TELEGRAM_CERTIFICATE_PATH', 'YOUR-CERTIFICATE-PATH'),
             'webhook_url'         => env('TELEGRAM_WEBHOOK_URL', 'https://d0d0def3.ngrok.io'),
             'commands'            => [
-            Telegram\Bot\Commands\HelpCommand::class,
-            App\Commands\StartCommand::class,
-            App\Commands\SettingsCommand::class,
+            // Telegram\Bot\Commands\HelpCommand::class,
+            // App\Commands\StartCommand::class,
+            // App\Commands\SettingsCommand::class,
             ],
         ],
 
@@ -118,9 +118,9 @@ return [
     |
     */
     'commands'                     => [
-        Telegram\Bot\Commands\HelpCommand::class,
-        App\Commands\StartCommand::class,
-        App\Commands\SettingsCommand::class,
+        // Telegram\Bot\Commands\HelpCommand::class,
+        // App\Commands\StartCommand::class,
+        // App\Commands\SettingsCommand::class,
     ],
 
     /*

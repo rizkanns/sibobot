@@ -142,7 +142,7 @@ class DashboardController extends Controller
 
     if($data->status_pengajuan == 1)
     {     
-        $json = file_get_contents('https://api.telegram.org/bot849520264:AAEP75YqVbA4cREc9l6dBEY_gdqSJ_otylg/getUpdates');
+        $json = file_get_contents('https://api.telegram.org/bot849520264:AAFgi8lzkNfynife9Efipw4j_8lGgAM1Iq8/getUpdates');
         $obj = json_decode($json, true);
         $array = array();
 
@@ -173,12 +173,26 @@ Dengan rincian sebagai berikut:
 
         for ($i=1; $i<=Chatroom::count(); $i++)
         {
+
+
             $result = Chatroom::select('chat_id')->where('id', $i)->first();
-            $response = Telegram::sendMessage([
+            try{
+                $response = Telegram::sendMessage([
                 'chat_id' => $result->chat_id, 
                 'text' => $text,
                 'parse_mode' => 'HTML'
-            ]);
+                ]);
+            } catch (TelegramResponseException $e) {
+
+            $errorData = $e->getResponseData();
+
+                if ($errorData['ok'] === false) {
+                    $telegram->sendMessage([
+                        'chat_id' => $result->chat_id,
+                        'text'    => 'There was an error for a user. ' . $errorData['error_code'] . ' ' . $errorData['description'],
+                    ]);
+                }
+            }
             // dd($response);
         }
         $messageId = $response->getMessageId();
@@ -188,7 +202,7 @@ Dengan rincian sebagai berikut:
 
     elseif($data->status_pengajuan == 2)
     {     
-        $json = file_get_contents('https://api.telegram.org/bot849520264:AAEP75YqVbA4cREc9l6dBEY_gdqSJ_otylg/getUpdates');
+        $json = file_get_contents('https://api.telegram.org/bot849520264:AAFgi8lzkNfynife9Efipw4j_8lGgAM1Iq8/getUpdates');
         $obj = json_decode($json, true);
         $array = array();
 

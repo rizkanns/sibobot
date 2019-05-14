@@ -95,15 +95,15 @@ Route::group(['middleware'=>['auth']], function()
 
 	Route::get('/hasil','Rekomendasi\HasilController@indexHasil')->name('hasil');
 
-	Route::post('/849520264:AAEP75YqVbA4cREc9l6dBEY_gdqSJ_otylg/webhook', function () {
-	$update = Telegram::commandsHandler(true);
+	// Route::post('/849520264:AAEP75YqVbA4cREc9l6dBEY_gdqSJ_otylg/webhook', function () {
+	// $update = Telegram::commandsHandler(true);
 
-	    // Commands handler method returns an Update object.
-	    // So you can further process $update object 
-	    // to however you want.
+	//     // Commands handler method returns an Update object.
+	//     // So you can further process $update object 
+	//     // to however you want.
 
-	return 'ok';
-	});
+	// return 'ok';
+	// });
 });
 
 // Route::get('/', 'Telegram\BotController@getUpdates');
