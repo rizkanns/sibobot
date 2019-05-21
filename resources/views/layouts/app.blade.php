@@ -129,13 +129,13 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{{route('witel')}}" class="waves-effect">
-                                        <span class="hide-menu"> WITEL </span>
+                                    <a href="{{route('pejabat')}}" class="waves-effect">
+                                        <span class="hide-menu"> PEJABAT </span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{{route('pejabat')}}" class="waves-effect">
-                                        <span class="hide-menu"> PEJABAT </span>
+                                    <a href="{{route('witel')}}" class="waves-effect">
+                                        <span class="hide-menu"> WITEL </span>
                                     </a>
                                 </li>
                             </ul>
@@ -155,13 +155,13 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{{route('witel')}}" class="waves-effect">
-                                        <span class="hide-menu"> WITEL </span>
+                                    <a href="{{route('pejabat')}}" class="waves-effect">
+                                        <span class="hide-menu"> PEJABAT </span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{{route('pejabat')}}" class="waves-effect">
-                                        <span class="hide-menu"> PEJABAT </span>
+                                    <a href="{{route('witel')}}" class="waves-effect">
+                                        <span class="hide-menu"> WITEL </span>
                                     </a>
                                 </li>
                             </ul>

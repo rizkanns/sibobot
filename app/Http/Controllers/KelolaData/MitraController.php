@@ -32,19 +32,19 @@ class MitraController extends Controller
 		$mitra->nama_mitra = $request->input('nama_mitra');
 		$mitra->deskripsi_mitra = $request->input('deskripsi_mitra');
 		$mitra->save();
-		return redirect()->route('mitra');
+		return redirect()->route('mitra')->with('create','Mitra "'.$mitra->nama_mitra.'" Berhasil Ditambahkan!');
 	}
 
 	public function updateMitra(Request $request, $id)
     {
     	Mitra::where('id_mitra',$id)->update($request->all());
-    	return redirect()->route('mitra');
+    	return redirect()->route('mitra')->with('update','Data Berhasil Diperbarui!');
     }
 
     public function deleteMitra(Request $request, $id)
     {
     	Mitra::where('id_mitra',$id)->delete();
-    	return redirect()->route('mitra');
+    	return redirect()->route('mitra')->with('delete','Data Berhasil Dihapus!');
     }
     
 }

@@ -32,19 +32,19 @@ class UnitKerjaController extends Controller
 		$unit_kerja->nama_unit_kerja = $request->input('nama_unit_kerja');
 		$unit_kerja->deskripsi_unit_kerja = $request->input('deskripsi_unit_kerja');
 		$unit_kerja->save();
-		return redirect()->route('unit');
+		return redirect()->route('unit')->with('create','Unit Kerja "'.$unit_kerja->nama_unit_kerja.'" Berhasil Ditambahkan!');
 	}
 
 	public function updateUnitKerja(Request $request, $id)
 	{
 		UnitKerja::where('id_unit_kerja',$id)->update($request->all());
-		return redirect()->route('unit');
+		return redirect()->route('unit')->with('update','Data Berhasil Diperbarui!');
 	}
 
 	public function deleteUnitKerja($id)
 	{
 		UnitKerja::where('id_unit_kerja',$id)->delete();
-		return redirect()->route('unit');
+		return redirect()->route('unit')->with('delete','Data Berhasil Dihapus!');
 	}
 
 	

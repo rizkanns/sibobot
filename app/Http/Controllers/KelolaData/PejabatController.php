@@ -38,13 +38,13 @@ class PejabatController extends Controller
 		$user->name = $request->input('name');
 		$user->nik = $request->input('nik');
 		$user->id_jabatan = $request->input('id_jabatan');
-		$user->id_wilayah = $request->input('id_wilayah');
+		$user->id_witel = $request->input('id_witel');
 		$user->email = $request->input('email');
 		$user->password = $request->input('password');
 		$user->save();
 
 		// dd($user);
-		return redirect()->route('pejabat');
+		return redirect()->route('pejabat')->with('create','User "'.$user->name.'" Berhasil Ditambahkan!');
 	}
 
 	public function updatePejabat(Request $request,$id)
@@ -59,16 +59,16 @@ class PejabatController extends Controller
 		// $user->password = $request->input('password');
 		// $user->save();
 
-    	User::where('id_user',$id)->update($request->all());
+    	User::where('id',$id)->update($request->all());
 		
 		// dd($user);
-		return redirect()->route('pejabat');
+		return redirect()->route('pejabat')->with('update','Data Berhasil Diperbarui!');
 	}
 
 	public function deletePejabat($id)
 	{
 		User::where('id',$id)->delete();
-		return redirect()->route('pejabat');
+		return redirect()->route('pejabat')->with('delete','Data Berhasil Dihapus!');
 	}
 
 
