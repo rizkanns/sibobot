@@ -19,7 +19,6 @@ class WitelController extends Controller
 		$this->middleware('auth');
 	}
 
-
 	public function indexWitel()
 	{
 		$witel = DB::table('witel')->get();
@@ -69,7 +68,30 @@ class WitelController extends Controller
 	}
 
 
-	
+	public function indexDetilWitel($id)
+	{
+		$witel = Witel::where('id_witel',$id)->get();
+		$user = User::get();
+		$se = User::where('id_jabatan',2)->get();
+        $bidding = User::where('id_jabatan',3)->get();
+        $manager = User::where('id_jabatan',4)->get();
+        $deputy = User::where('id_jabatan',5)->get();
+        $gm = User::where('id_jabatan',6)->get();
+        $approval = User::where('id_jabatan',7)->get();
+
+
+		return view('kelola_data.witel-detil', ['witel'=>$witel, 'user'=>$user, 'se'=>$se, 'bidding'=>$bidding, 'manager'=>$manager, 'deputy'=>$deputy, 'gm'=>$gm, 'approval'=>$approval]);
+	}
+
+
+	public function insertDetilWitel(Request $request)
+	{
+		$user = User::get();
+
+		$user->id_witel = $require->input('id_witel');
+		$user->save();
+		return redirect()->route('witel');
+	}
 
 	
 }
