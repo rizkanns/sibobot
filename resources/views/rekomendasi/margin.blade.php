@@ -25,10 +25,10 @@
                             <h1 class="text-center" style="color: #d51100; font-weight: 500">Rumus Margin</h1>
                             <br><br><br><br><br><br>
                             <form class="form-horizontal form-material" action="{{ route('margin_insert') }}" method = "get">
-                            <div class="form-group">
+                            <div class="row">
                                 <label for="inputEmail3" class="col-sm-2 control-label">Layanan Revenue</label>
                                 <div class="col-sm-9">
-                                    <select data-style="form-control" name="id_revenue" > <!--Call run() function-->
+                                    <select class="selectpicker m-b-20" data-style="form-control" name="id_revenue" > <!--Call run() function-->
                                     <option selected="true" disabled="disabled"> -- Pilih Layanan -- </option>
                                     <option id="tahunan" value="1">Tahunan</option>
                                     <option id="bulanan" value="2">Bulanan</option>
@@ -36,10 +36,10 @@
                                 </select>
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <div class="row">
                                 <label for="inputEmail3" class="col-sm-2 control-label">Rumus</label>
                                 <div class="col-sm-9">
-                                    <select data-style="form-control" name="id_rumus" id="test" onchange="showDiv('hidden_div', this)"> <!--Call run() function-->
+                                    <select class="selectpicker m-b-20" data-style="form-control" name="id_rumus" id="test" onchange="showDiv('hidden_div', this)"> <!--Call run() function-->
                                     <option selected="true" disabled="disabled"> -- Pilih Rumus -- </option>
                                     @foreach($rumus as $listrumus)
                                     <option value="{{$listrumus->id_rumus}}">{{$listrumus->rumus_awal}}</option>
@@ -137,6 +137,57 @@
                         </div>
                     </div>
                 </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="white-box">
+                    <h1 class="text-center" style="color: #d51100; font-weight: 500;">RUMUS MARGIN</h1><br><br>
+                        <div class="col-md-12">
+                            @if(session('create'))
+                            <div class="col-md-12 alert alert-success">  
+                              {{session('create')}}
+                            </div>
+                            @elseif(session('update'))
+                            <div class="col-md-12 alert alert-success">  
+                              {{session('update')}}
+                            </div>
+                            @elseif(session('delete'))
+                            <div class="col-md-12 alert alert-danger">  
+                              {{session('delete')}}
+                            </div>
+                            @endif
+                        </div>
+                            
+                    <!-- <div class="table-responsive"> -->
+                        <table class="table color-table warning-table example">
+                            <thead>
+                                <tr>
+                                    <th colspan=6>DAFTAR RUMUS</th>
+                                </tr>
+                                <tr>
+                                    <th class="text-center" style="background-color: white; color: black;">No.</th>
+                                    <th class="text-center" style="background-color: white; color: black;">Layanan Revenue</th>
+                                    <th class="text-center" style="background-color: white; color: black;">Rumus</th>
+                                    <th class="text-center" style="background-color: white; color: black;">Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php $x=1; ?>
+                                @foreach($nilai as $listnilai)                             
+                                    <tr class="fuckOffPadding">
+                                        <td style="vertical-align: middle; text-align: center;"><?php echo $x; $x=$x+1; ?></td>
+                                        <td style="vertical-align: middle; text-align: center;">{{$listnilai->nama_layanan}}</td>
+                                        <td style="vertical-align: middle; text-align: center;">{{$listnilai->rumus_akhir}}</td>
+                                        <td style="vertical-align: middle; text-align: center;"><button type="submit" class="btn btn-danger btn-rounded" data-toggle="modal" data-target="#delete-{{$listnilai->id_nilai}}" data-plaement="top" title="Hapus WITEL"><i class="ti-pencil-alt"></i> Ubah</button></td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+
+                            
+                        </table>
+                    <!-- </div> -->
+                </div>
+            </div>
+        </div>
              <!--/.row -->
         </div>
         <!-- /.container-fluid -->

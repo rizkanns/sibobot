@@ -29,7 +29,7 @@
                         <h1 class="text-center" style="color: #d51100; font-weight: 500">{{$listwitel->nama_witel}}</h1><br><br>
                         @endforeach
                         <form class="form-horizontal form-material" action="{{ route('witel') }}" method = "get">
-                            <div class="row">
+                            <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-3 control-label">Sales Engineer</label>
                                 <div class="col-sm-6">
                                     <!-- <select class="selectpicker m-b-20" data-style="form-control" name="id_witel">
@@ -45,7 +45,7 @@
                                     <button type="submit" class="btn btn-danger btn-rounded" data-toggle="modal" data-target="#delete-{{$listwitel->id_witel}}" data-plaement="top" title="Hapus WITEL"><i class="ti-trash"></i> Reset</button>
                                 </div>
                             </div>
-                            <div class="row">
+                            <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-3 control-label">Bidding</label>
                                 <div class="col-sm-6">
                                     @foreach($bidding->where('id_witel','=',$listwitel->id_witel) as $listbidding)
@@ -56,7 +56,7 @@
                                     <button type="submit" class="btn btn-danger btn-rounded" data-toggle="modal" data-target="#delete-{{$listwitel->id_witel}}" data-plaement="top" title="Hapus WITEL"><i class="ti-trash"></i> Reset</button>
                                 </div>
                             </div>
-                            <div class="row">
+                            <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-3 control-label">Manager</label>
                                 <div class="col-sm-6">
                                     @foreach($manager->where('id_witel','=',$listwitel->id_witel) as $listmanager)
@@ -67,7 +67,7 @@
                                     <button type="submit" class="btn btn-danger btn-rounded" data-toggle="modal" data-target="#delete-{{$listwitel->id_witel}}" data-plaement="top" title="Hapus WITEL"><i class="ti-trash"></i> Reset</button>
                                 </div>
                             </div>
-                            <div class="row">
+                            <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-3 control-label">Deputy</label>
                                 <div class="col-sm-6">
                                     @foreach($deputy->where('id_witel','=',$listwitel->id_witel) as $listdeputy)
@@ -78,7 +78,7 @@
                                     <button type="submit" class="btn btn-danger btn-rounded" data-toggle="modal" data-target="#delete-{{$listwitel->id_witel}}" data-plaement="top" title="Hapus WITEL"><i class="ti-trash"></i> Reset</button>
                                 </div>
                             </div>
-                            <div class="row">
+                            <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-3 control-label">General Manager</label>
                                 <div class="col-sm-6">
                                     @foreach($gm->where('id_witel','=',$listwitel->id_witel) as $listgm)
@@ -89,7 +89,7 @@
                                     <button type="submit" class="btn btn-danger btn-rounded" data-toggle="modal" data-target="#delete-{{$listwitel->id_witel}}" data-plaement="top" title="Hapus WITEL"><i class="ti-trash"></i> Reset</button>
                                 </div>
                             </div>
-                            <div class="row">
+                            <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-3 control-label">Approval</label>
                                 <div class="col-sm-6">
                                     @foreach($approval->where('id_witel','=',$listwitel->id_witel) as $listapproval)
