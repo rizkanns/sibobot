@@ -1,0 +1,31 @@
+php artisan cache:clear
+php artsan view:clear 
+php artisan config:cache
+
+composer require irazasyed/telegram-bot-sdk
+composer update
+php artisan vendor:publish --provider="Telegram\Bot\Laravel\TelegramServiceProvider"
+
+Untuk proyek One Time profit margin yang memenuhi kelayakan adalah minimal diatas 
+(3 (1.25%) + 2% (2% dari PPH)),
+dengan 1.25% adalah cost of money bulanan (15% dibagi 12 bulan = 1.25%)
+
+Untuk proyek Recurring selama setahun, 
+profit margin yang memenuhi kelayakan adalah minimal diatas 15% + 2% (2% dari PPH)
+
+jangka waktu kontrak berapa lama, jadi misal diharapkan minimum 9%
+jangka waktu dalam satuan bulan x 1.5% x nilai kontrak
+ijin prinsip iya
+
+minimum bunga 1% kalo bisa 1.5%
+
+-dibawah 9%
+syarat untuk maju tender alasan untuk menghimpun pengalaman, untuk 
+
+diinputi semua berapa nilainya, sama kalo bisa bikin backup data
+summary pertahun
+mekanisme pembayaran + otc diganti back to back
+connectivity itu bukan barang dan jasa (link indihome internet dkk)
+margin rp muncul sendiri
+
+outbond logistic -> pemenuhan barang dan jasa
