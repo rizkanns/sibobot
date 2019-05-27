@@ -40,15 +40,14 @@ class DashboardController extends Controller
 
     public function index() 
     { 
-        $proyek = DB::table('proyek') 
-            ->leftjoin('users','users.id','=','proyek.id_users')->where('users.id',Auth::user()->id) 
+        $proyek = Proyek::leftjoin('users','users.id','=','proyek.id_users')
             ->leftjoin('aspek_bisnis', 'aspek_bisnis.id_proyek', '=', 'proyek.id_proyek') 
             ->leftjoin('pelanggan', 'pelanggan.id_pelanggan', '=', 'proyek.id_pelanggan') 
             ->leftjoin('mitra','mitra.id_mitra','=','proyek.id_mitra') 
             ->leftjoin('unit_kerja','unit_kerja.id_unit_kerja','=','proyek.id_unit_kerja') 
             ->get(); 
 
-        $setuju = DB::table('proyek')->where('status_pengajuan',1)->orWhere('status_pengajuan',2)
+        $setuju = Proyek::where('status_pengajuan',1)->orWhere('status_pengajuan',2)
             ->leftjoin('users','users.id','=','proyek.id_users')->where('users.id',Auth::user()->id)
             ->leftjoin('aspek_bisnis', 'aspek_bisnis.id_proyek', '=', 'proyek.id_proyek') 
             ->leftjoin('pelanggan', 'pelanggan.id_pelanggan', '=', 'proyek.id_pelanggan') 
@@ -56,8 +55,7 @@ class DashboardController extends Controller
             ->leftjoin('unit_kerja','unit_kerja.id_unit_kerja','=','proyek.id_unit_kerja')
             ->get();
 
-        $mitra = DB::table('proyek')
-            ->leftjoin('mitra','mitra.id_mitra','=','proyek.id_mitra_2')
+        $mitra = Proyek::leftjoin('mitra','mitra.id_mitra','=','proyek.id_mitra_2')
             ->get();
 
         return view('dashboard.dashboard', ['proyek'=>$proyek,'setuju'=>$setuju,'mitra'=>$mitra]);
@@ -136,8 +134,7 @@ class DashboardController extends Controller
 
         // dd($proyek);
 
-        $data = DB::table('proyek')
-            ->leftJoin('mitra', 'proyek.id_mitra', '=', 'mitra.id_mitra')
+        $data = Proyek::leftJoin('mitra', 'proyek.id_mitra', '=', 'mitra.id_mitra')
             ->leftJoin('aspek_bisnis', 'proyek.id_proyek', '=', 'aspek_bisnis.id_proyek')
             ->leftJoin('pelanggan', 'proyek.id_pelanggan', '=', 'pelanggan.id_pelanggan')
             ->where('proyek.id_proyek',$id_proyek)
@@ -176,12 +173,27 @@ Dengan rincian sebagai berikut:
 
         for ($i=1; $i<=Chatroom::count(); $i++)
         {
+
+
             $result = Chatroom::select('chat_id')->where('id', $i)->first();
-            $response = Telegram::sendMessage([
+            try{
+                $response = Telegram::sendMessage([
                 'chat_id' => $result->chat_id, 
                 'text' => $text,
                 'parse_mode' => 'HTML'
-            ]);
+                ]);
+            } catch (TelegramResponseException $e) {
+
+            $errorData = $e->getResponseData();
+
+                if ($errorData['ok'] === false) {
+                    $telegram->sendMessage([
+                        'chat_id' => $result->chat_id,
+                        'text'    => 'There was an error for a user. ' . $errorData['error_code'] . ' ' . $errorData['description'],
+                    ]);
+                }
+            }
+            // dd($response);
         }
         $messageId = $response->getMessageId();
 
@@ -242,10 +254,10 @@ Dengan rincian sebagai berikut:
 
     public function deleteProyek($id_proyek)
     {
-        $idPelanggan = DB::table('proyek')->select('id_pelanggan')->where('id_proyek',$id_proyek)->first()->id_pelanggan;
-        DB::table('pelanggan')->where('id_pelanggan',$idPelanggan)->delete();
-        DB::table('latar_belakang')->where('id_proyek',$id_proyek)->delete();
-        DB::table('proyek')->where('id_proyek',$id_proyek)->delete();
+        Pelanggan::leftjoin('proyek', 'pelanggan.id_pelanggan', '=', 'proyek.id_pelanggan')
+            ->where('id_proyek',$id_proyek)->delete();
+        Proyek::where('id_proyek',$id_proyek)->delete();
+        AspekBisnis::where('id_proyek',$id_proyek)->delete();
         return redirect()->route('index');
     }
 }

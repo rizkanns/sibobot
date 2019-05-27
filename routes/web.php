@@ -94,6 +94,7 @@ Route::group(['middleware'=>['auth']], function()
 
 	Route::get('/margin','Rekomendasi\MarginController@indexMargin')->name('margin');
 	Route::get('/margin/insert','Rekomendasi\MarginController@insertMargin')->name('margin_insert');
+	Route::get('/margin/update/{id}','Rekomendasi\MarginController@updateMargin')->name('margin_update');
 
 	Route::get('/hasil','Rekomendasi\HasilController@indexHasil')->name('hasil');
 

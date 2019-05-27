@@ -120,6 +120,7 @@ case '/help':
 case '/help'.$usernamebot :
 $hasil = "Berikut adalah daftar command yang dapat digunakan:
 /time - Untuk mengetahui waktu lokal
+/ongoing - Untuk melihat daftar proyek yang sedang berjalan
 /thisweek - Untuk melihat daftar proyek yang akan selesai dalam kurun waktu 1 minggu (ready for service)";
 break;
 
@@ -130,6 +131,27 @@ $thisweek = "SELECT id_proyek, judul, ready_for_service, ready_for_service-CURDA
 			FROM proyek
 			WHERE ready_for_service-CURDATE()<=7 AND ready_for_service-CURDATE()>0;";
 $result = $conn->query($thisweek);
+
+if ($result->num_rows > 0) {
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+        $hasil = 
+        "ALERT!
+Proyek '". $row["judul"]. "'  akan selesai dalam ". $row["total"]. " hari
+Ready For Service: ".$row["ready_for_service"]." ";
+    }
+} else {
+    $hasil = "0 results";
+}
+break;
+
+case '/ongoing':
+case '/ongoing'.$usernamebot :
+
+$ongoing = "SELECT id_proyek, judul, ready_for_service, ready_for_service-CURDATE() as total
+			FROM proyek
+			WHERE status_pengajuan=0;";
+$result = $conn->query($ongoing);
 
 if ($result->num_rows > 0) {
     // output data of each row
