@@ -62,14 +62,14 @@
                                             </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="inputEmail3" class="col-sm-3 control-label">Beban Mitra</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" class="form-control" id="inputEmail3" placeholder="Beban Mitra" name="beban_mitra" value="{{$listaspek->beban_mitra}}"> </div>
-                                    </div>
-                                    <div class="form-group">
                                         <label for="inputEmail3" class="col-sm-3 control-label">Nilai Kontrak</label>
                                         <div class="col-sm-9">
                                             <input type="text" class="form-control" id="inputEmail3" placeholder="Nilai Kontrak" name="nilai_kontrak" value="{{$listaspek->nilai_kontrak}}"> </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputEmail3" class="col-sm-3 control-label">Beban Mitra</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" id="inputEmail3" placeholder="Beban Mitra" name="beban_mitra" value="{{$listaspek->beban_mitra}}"> </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputEmail3" class="col-sm-3 control-label">Margin (Rp)</label>
