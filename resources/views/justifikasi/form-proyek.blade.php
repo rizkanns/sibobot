@@ -66,8 +66,8 @@
                                                 <label class="col-sm-3 control-label">Mekanisme Pembayaran</label>
                                                 <div class="col-sm-9">
                                                     <select class="selectpicker m-b-20" data-style="form-control" name="mekanisme_pembayaran">
-                                                        @if($listproyek->rincian_pembayaran == 'Back to Back')
-                                                        <option value="Back to Back" selected>Back to Back</option>
+                                                        @if($listproyek->rincian_pembayaran == 'OTC')
+                                                        <option value="OTC" selected>OTC</option>
                                                         @else
                                                         <option value="MRC">MRC</option>
                                                         @endif
@@ -75,7 +75,7 @@
                                                         @if($listproyek->rincian_pembayaran == 'MRC')
                                                         <option value="MRC" selected>MRC</option>
                                                         @else
-                                                        <option value="Back to Back">Back to Back</option>
+                                                        <option value="OTC">OTC</option>
                                                         @endif
                                                     </select>
                                                 </div>

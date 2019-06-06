@@ -69,7 +69,7 @@ class DashboardController extends Controller
         
         $bukti_scan_p1 = $request->file('bukti_scan_p1');
         $name = $bukti_scan_p1->getClientOriginalName();
-        $destinationPath = public_path('/plugins/images/bukti_scan_p1');
+        $destinationPath = public_path('/plugins/pdf/bukti_scan_p1');
         $bukti_scan_p1->move($destinationPath, $name);
 
         $proyek = Proyek::find($id_proyek);
@@ -101,7 +101,7 @@ class DashboardController extends Controller
         
         $bukti_scan_p0 = $request->file('bukti_scan_p0');
         $name = $bukti_scan_p0->getClientOriginalName();
-        $destinationPath = public_path('/plugins/images/bukti_scan_p0');
+        $destinationPath = public_path('/plugins/pdf/bukti_scan_p0');
         $bukti_scan_p0->move($destinationPath, $name);
 
         $proyek = Proyek::find($id_proyek);
