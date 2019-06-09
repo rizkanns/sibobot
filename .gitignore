@@ -10,6 +10,7 @@ Homestead.yaml
 npm-debug.log
 yarn-error.log
 
+/public/results
 /public/plugins/images/file_p0/
 /public/plugins/images/file_p1/
 /public/plugins/pdf/bukti_scan_p0/
