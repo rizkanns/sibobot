@@ -469,23 +469,19 @@
                                                                         <div class="col-sm-12">
                                                                             <input type="file" accept="application/pdf" id="input-file-disable-remove" class="dropify" name="bukti_scan_p0" data-show-remove="false" /> </div>
                                                                         </div>
-                                                                        <hr>
+                                                                        <hr> 
                                                                         <button type="submit" style="float: right;margin-top: -1.5%;" class="btn btn-danger waves-effect waves-light">Simpan</button>
                                                                     </form>
                                                                 @else
-                                                                    <div class="row">
-                                                                        <img src="{{asset('/plugins/images/bukti_scan_p0/'. $listproyek->bukti_scan_p0)}}" style="width: 500px">
-                                                                    </div>
-                                                                    <div class="row">
                                                                     <form action="{{ route('bukti_p0_update', ['id_proyek' => $listproyek->id_proyek]) }}" method="post">
                                                                         {{ csrf_field() }}
-                                                                        <hr>
-                                                                        {{-- <input type="text" name="bukti_scan" value="NULL"> --}}
                                                                         <button type="submit" style="float: center;" class="btn btn-danger waves-effect waves-light m-t-10"><i class="fa fa-trash"></i> Hapus</button>
-                                                                        {{-- <button type="button" class="btn btn-default" data-toggle="modal" data-target="#view-{{$listproyek->id_proyek}}"><i class="fa fa-folder-open"></i></button> --}}
                                                                     </form>
-                                                                        
+                                                                    <br>
+                                                                    <div class="row" style="height: 1000px; width: 100%;">
+                                                                        <embed src="plugins/pdf/bukti_scan_p0/{{$listproyek->bukti_scan_p0}}" type="application/pdf" width="100%" height="100%"></embed>
                                                                     </div>
+                                                                    
                                                                 @endif
                                                             </div>
                                                         </div>
@@ -514,19 +510,15 @@
                                                                         <button type="submit" style="float: right;margin-top: -1.5%;" class="btn btn-danger waves-effect waves-light">Simpan</button>
                                                                     </form>
                                                                 @else
-                                                                    <div class="row">
-                                                                        <img src="{{asset('/plugins/images/bukti_scan_p1/'. $listproyek->bukti_scan_p1)}}" style="width: 500px">
-                                                                    </div>
-                                                                    <div class="row">
                                                                     <form action="{{ route('bukti_p1_update', ['id_proyek' => $listproyek->id_proyek]) }}" method="post">
                                                                         {{ csrf_field() }}
-                                                                        <hr>
-                                                                        {{-- <input type="text" name="bukti_scan" value="NULL"> --}}
                                                                         <button type="submit" style="float: center;" class="btn btn-danger waves-effect waves-light m-t-10"><i class="fa fa-trash"></i> Hapus</button>
-                                                                        {{-- <button type="button" class="btn btn-default" data-toggle="modal" data-target="#view-{{$listproyek->id_proyek}}"><i class="fa fa-folder-open"></i></button> --}}
                                                                     </form>
-                                                                        
+                                                                    <br>
+                                                                    <div class="row" style="height: 1000px; width: 100%;">
+                                                                        <embed src="plugins/pdf/bukti_scan_p1/{{$listproyek->bukti_scan_p1}}" type="application/pdf" width="100%" height="100%"></embed>
                                                                     </div>
+
                                                                 @endif
                                                             </div>
                                                         </div>
@@ -737,7 +729,7 @@
                                                                                                             <td>{{$listproyek->rincian_pembayaran}} pembayaran oleh pelanggan</td>
                                                                                                         </tr>
                                                                                                         <tr>
-                                                                                                            <td><span class="text-muted" style="font-weight: 500">File</span></td>
+                                                                                                            <td><span class="text-muted" style="font-weight: 5 00">File</span></td>
                                                                                                             <td><span class="text-muted" style="font-weight: 500">:</span></td>
                                                                                                         </tr>
                                                                                                         <tr>

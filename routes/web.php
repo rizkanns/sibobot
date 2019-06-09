@@ -42,6 +42,8 @@ Route::group(['middleware'=>['auth']], function()
 	Route::get('/dashboard', 'Dashboard\DashboardController@index')->name('index');
 	Route::group(['prefix' => 'dashboard'], function()
 	{
+		// Route::get('bukti_p0/pdf/','Dashboard\DashboardController@viewPdf')->name('view_pdf');
+		
 		Route::get('print/p0/{id}', 'Word\TemplateController@createWordDocxP0')->name('print_p0');
 		Route::get('print/p1/{id}', 'Word\TemplateController@createWordDocxP1')->name('print_p1');
 		Route::get('delete/{id_proyek}','Dashboard\DashboardController@deleteProyek')->name('proyek_delete');
@@ -50,6 +52,7 @@ Route::group(['middleware'=>['auth']], function()
 		Route::post('bukti_p1/update/{id_proyek}','Dashboard\DashboardController@updateBuktiP1')->name('bukti_p1_update');
 		Route::post('bukti_p0/insert/{id_proyek}','Dashboard\DashboardController@insertBuktiP0')->name('bukti_p0_insert');
 		Route::post('bukti_p0/update/{id_proyek}','Dashboard\DashboardController@updateBuktiP0')->name('bukti_p0_update');
+
 	});
 	
 

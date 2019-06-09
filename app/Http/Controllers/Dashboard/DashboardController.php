@@ -66,14 +66,19 @@ class DashboardController extends Controller
     public function insertBuktiP1(Request $request,$id_proyek)
     {
         // $this->validate($request, ['gambar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048' ]);
-        
+        $proyek = Proyek::find($id_proyek);
+        $proyek->id_proyek = $request->input('id_proyek',$id_proyek);
+        $proyek->id_pelanggan = $proyek->id_pelanggan;
+
         $bukti_scan_p1 = $request->file('bukti_scan_p1');
-        $name = $bukti_scan_p1->getClientOriginalName();
+        // $name = $bukti_scan_p1->getClientOriginalName();
+        $name = date('ymd', strtotime($proyek->pemasukan_dokumen)).'_'.$proyek->id_proyek.'_'.$proyek->id_pelanggan.'.pdf';
+
         $destinationPath = public_path('/plugins/pdf/bukti_scan_p1');
         $bukti_scan_p1->move($destinationPath, $name);
 
-        $proyek = Proyek::find($id_proyek);
-        $proyek->id_proyek = $request->input('id_proyek',$id_proyek);
+        
+        
         $proyek->bukti_scan_p1 = $name;
         // dd($proyek);
         $proyek->save();
@@ -98,20 +103,28 @@ class DashboardController extends Controller
     public function insertBuktiP0(Request $request,$id_proyek)
     {
         // $this->validate($request, ['gambar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048' ]);
-        
-        $bukti_scan_p0 = $request->file('bukti_scan_p0');
-        $name = $bukti_scan_p0->getClientOriginalName();
-        $destinationPath = public_path('/plugins/pdf/bukti_scan_p0');
-        $bukti_scan_p0->move($destinationPath, $name);
-
         $proyek = Proyek::find($id_proyek);
         $proyek->id_proyek = $request->input('id_proyek',$id_proyek);
+        $proyek->id_pelanggan = $proyek->id_pelanggan;
+
+        $bukti_scan_p0 = $request->file('bukti_scan_p0');
+        // $name = $bukti_scan_p0->getClientOriginalName();
+
+        $name = date('ymd', strtotime($proyek->pemasukan_dokumen)).'_'.$proyek->id_proyek.'_'.$proyek->id_pelanggan.'.pdf';
+        $destinationPath = public_path('/plugins/pdf/bukti_scan_p0');
+        $bukti_scan_p0->move($destinationPath, $name);
+        
         $proyek->bukti_scan_p0 = $name;
         // dd($proyek);
         $proyek->save();
 
         // dd($proyek, $pelanggan, $aspek);
         return redirect()->route('index');
+    }
+
+    public function viewPdf() 
+    { 
+        return view('dashboard.pdf');
     }
 
     public function updateBuktiP0(Request $request,$id_proyek)
