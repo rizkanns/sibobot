@@ -11,6 +11,7 @@ use App\Rumus;
 use App\DetilNilai;
 use App\DetilParameter;
 use App\Rekomendasi;
+use App\Revenue;
 use DB;
 use Auth;
 use Session;
@@ -30,6 +31,16 @@ class MarginController extends Controller
 		// dd($parameter);
 		return view('rekomendasi.margin', ['nilai'=>$nilai, 'rumus'=>$rumus]);
 	}
+
+    public function singleMargin($id)
+    {
+        $nilai = Nilai::where('id_nilai',$id)->get();
+        $rumus = Rumus::get();
+        $revenue = Revenue::get();
+
+        // dd($nilai);
+        return view('rekomendasi.single', ['nilai'=>$nilai, 'rumus'=>$rumus, 'revenue'=>$revenue]);
+    }
 
 
     //////////////////////////// rumus ///////////////////////////

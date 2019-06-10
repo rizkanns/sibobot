@@ -16,73 +16,108 @@
 @section('content')
         <div id="page-wrapper">
             <div class="container-fluid">
-                <!-- ============================================================== -->
-                <!-- Different data widgets -->
-                <!-- ============================================================== -->
                 <!-- .row -->
                 <br>
                 <br>
+                @foreach($nilai as $listnilai)
                 <div class="row">
                     <div class="col-md-12 col-lg-12 col-sm-12">
                         <div class="white-box">
                             <h1 class="text-center" style="color: #d51100; font-weight: 500">Rumus Margin</h1>
                             <br><br><br><br><br><br>
-                            <div class="form-group">
+                            
+                            <form class="form-horizontal form-material" action="{{ route('margin_update', ['id' => $listnilai->id_nilai]) }}" method = "get">
+                            <div class="row">
                                 <label for="inputEmail3" class="col-sm-2 control-label">Layanan Revenue</label>
                                 <div class="col-sm-9">
-                                    <select class="selectpicker m-b-20" data-style="form-control"  id="Ultra" onchange="run()"> <!--Call run() function-->
-                                    <option selected="true" disabled="disabled"> -- Pilih Layanan -- </option>
-                                    @foreach($nilai->where('id_nilai',1) as $tahun)
-                                    <option id="tahunan" value="{{$tahun->nilai_pc}}">Tahunan</option>
-                                    @endforeach
-
-                                    @foreach($nilai->where('id_nilai',2) as $bulan)
-                                    <option id="bulanan" value="{{$bulan->nilai_pc}}">Bulanan</option>
-                                    @endforeach
-
-                                    @foreach($nilai->where('id_nilai',3)  as $otc)
-                                    <option id="otc" value="{{$otc->nilai_pc}}">OTC</option>
+                                    <select class="selectpicker m-b-20" data-style="form-control" name="id_revenue" >
+                                    @foreach ($revenue as $listrevenue)
+                                        <option value="{{$listrevenue->id_revenue}}" @if($listnilai->id_revenue == $listrevenue->id_revenue) selected @endif>{{$listrevenue->nama_revenue}}</option>
                                     @endforeach
                                 </select>
                                 </div>
                             </div>
-                            <br><br>
-                            <div class="form-group">
+
+                            <div class="row">
                                 <label for="inputEmail3" class="col-sm-2 control-label">Rumus</label>
                                 <div class="col-sm-9">
-                                    <select class="selectpicker m-b-20" data-style="form-control"  id="Ultra" onchange="run()"> <!--Call run() function-->
-                                    <option selected="true" disabled="disabled"> -- Pilih Rumus -- </option>
+                                    <select class="selectpicker m-b-20" data-style="form-control" name="id_rumus" id="test" onchange="showDiv('hidden_div', this)">
                                     @foreach($rumus as $listrumus)
-                                    <option value="{{$listrumus->rumus_awal}}">{{$listrumus->rumus_awal}}</option>
+                                    <option value="{{$listrumus->id_rumus}}">{{$listrumus->rumus_awal}}</option>
                                     @endforeach
                                 </div>
                             </div>
-                            <br><br><br><br><br><br>
-                            <form class="form-horizontal form-material" action="{{ route('margin_update', ['id' => 1]) }}" method = "get">
+                            
+                            <br><br>
                                 <div class="form-group">
                                     <label for="inputEmail3" class="col-sm-2 control-label">Nilai</label>
                                     <div class="col-sm-3">
-                                        <input type="decimals" id="srt" class="form-control" placeholder="Pilih layanan Revenue" name="nilai_pc">
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <input type="decimals" id="srt" class="form-control" placeholder="PPH" name="nilai_pc">
+                                        <input disabled type="decimals" class="form-control" name="nilai_pc"> 
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <label for="inputEmail3" class="col-sm-2 control-label">Nilai</label>
+
+                                <div class="form-group" id="hidden_1" style="display: none;">
+                                    <label for="inputEmail3" class="col-sm-2 control-label">Rumus Akhir</label>
+                                    
+                                    <div class="col-sm-2">
+                                        <h5>Masa Kontrak (Thn)</h5>
+                                    </div>
+                                    <div class="col-sm-1">
+                                        <h5>*</h5>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <h5>Nilai Kontrak</h5>
+                                    </div>
+                                    <div class="col-sm-1">
+                                        <h5>*</h5>
+                                    </div>
                                     <div class="col-sm-3">
-                                        <input type="decimals" id="srt" class="form-control" placeholder="PPH" name="nilai_pc">
+                                        <input type="decimals" class="form-control" placeholder="n (nilai bobot)" name="nilai_pc"> 
+                                    </div>
+                                </div>
+
+                                <div class="form-group" id="hidden_2" style="display: none;">
+                                    <label for="inputEmail3" class="col-sm-2 control-label">Rumus Akhir</label>
+                                    
+                                    <div class="col-sm-2">
+                                        <h5>Masa Kontrak (Bln)</h5>
+                                    </div>
+                                    <div class="col-sm-1">
+                                        <h5>*</h5>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <h5>Nilai Kontrak</h5>
+                                    </div>
+                                    <div class="col-sm-1">
+                                        <h5>*</h5>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="decimals" class="form-control" placeholder="n (nilai bobot)" name="nilai_pc"> 
+                                    </div>
+                                </div>
+
+                                <div class="form-group" id="hidden_3" style="display: none;">
+                                    <label for="inputEmail3" class="col-sm-2 control-label">Rumus Akhir</label>
+                                    
+                                    <div class="col-sm-2">
+                                        <h5>Nilai Kontrak</h5>
+                                    </div>
+                                    <div class="col-sm-1">
+                                        <h5>*</h5>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="decimals" class="form-control" placeholder="n (nilai bobot)" name="nilai_pc"> 
                                     </div>
                                 </div>
 
                                 <div class="form-group m-b-0">
                                     <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Simpan</button>
-                                    {{-- <a href="form-justifikasi-proyek.html"><i class="fa fa-arrow-circle-right m-t-30" style="color: #d51100; float: right; font-size: 250%"></i></a> --}}
-                                </div>  
                             </form>
                         </div>
                     </div>
                 </div>
+                @endforeach
+                            
              <!--/.row -->
         </div>
         <!-- /.container-fluid -->
@@ -214,6 +249,17 @@
     function pop(val) {
         alert(val);
     }?
+</script>
+
+<script type="text/javascript">
+document.getElementById('test').addEventListener('change', function () {
+    var style = this.value == 1 ? 'block' : 'none';
+    document.getElementById('hidden_1').style.display = style;
+    var style = this.value == 2 ? 'block' : 'none';
+    document.getElementById('hidden_2').style.display = style;
+    var style = this.value == 3 ? 'block' : 'none';
+    document.getElementById('hidden_3').style.display = style;
+});
 </script>
 
 @endsection

@@ -17,126 +17,6 @@
         <div id="page-wrapper">
             <div class="container-fluid">
                 <!-- .row -->
-                <br>
-                <br>
-                <div class="row">
-                    <div class="col-md-12 col-lg-12 col-sm-12">
-                        <div class="white-box">
-                            <h1 class="text-center" style="color: #d51100; font-weight: 500">Rumus Margin</h1>
-                            <br><br><br><br><br><br>
-                            <form class="form-horizontal form-material" action="{{ route('margin_insert') }}" method = "get">
-                            <div class="row">
-                                <label for="inputEmail3" class="col-sm-2 control-label">Layanan Revenue</label>
-                                <div class="col-sm-9">
-                                    <select class="selectpicker m-b-20" data-style="form-control" name="id_revenue" > <!--Call run() function-->
-                                    <option selected="true" disabled="disabled"> -- Pilih Layanan -- </option>
-                                    <option id="tahunan" value="1">Tahunan</option>
-                                    <option id="bulanan" value="2">Bulanan</option>
-                                    <option id="otc" value="3">OTC</option>
-                                </select>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <label for="inputEmail3" class="col-sm-2 control-label">Rumus</label>
-                                <div class="col-sm-9">
-                                    <select class="selectpicker m-b-20" data-style="form-control" name="id_rumus" id="test" onchange="showDiv('hidden_div', this)"> <!--Call run() function-->
-                                    <option selected="true" disabled="disabled"> -- Pilih Rumus -- </option>
-                                    @foreach($rumus as $listrumus)
-                                    <option value="{{$listrumus->id_rumus}}">{{$listrumus->rumus_awal}}</option>
-                                    @endforeach
-                                </div>
-                            </div>
-                            
-                            <br><br>
-                                <div class="form-group">
-                                    <label for="inputEmail3" class="col-sm-2 control-label">Nilai</label>
-                                    <div class="col-sm-3">
-                                        <input type="decimals" class="form-control" name="nilai_pc"> 
-                                    </div>
-                                </div>
-
-                                <div class="form-group" id="hidden_1" style="display: none;">
-                                    <label for="inputEmail3" class="col-sm-2 control-label">Nilai</label>
-                                    <div class="col-sm-3">
-                                        <input type="decimals" class="form-control" placeholder="Nilai Bobot" name="nilai_pc"> 
-                                    </div>
-                                    <div class="col-sm-1">
-                                        <h4>x</h4>
-                                    </div>
-                                    <div class="col-sm-1">
-                                        <h4>HPP</h4>
-                                    </div>
-                                </div>
-
-                                <div class="form-group" id="hidden_2" style="display: none;">
-                                    <label for="inputEmail3" class="col-sm-2 control-label">Nilai</label>
-                                    <div class="col-sm-3">
-                                        <input type="decimals" class="form-control" placeholder="Nilai Bobot" name="nilai_pc"> 
-                                    </div>
-                                    <div class="col-sm-1">
-                                        <h4>x</h4>
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <h4>Nilai Kontrak</h4>
-                                    </div>
-                                </div>
-
-                                <div class="form-group" id="hidden_3" style="display: none;">
-                                    <label for="inputEmail3" class="col-sm-2 control-label">Nilai</label>
-                                    <div class="col-sm-1">
-                                        <h4>(</h4>
-                                    </div>
-                                    <div class="col-sm-2">
-                                        <input type="decimals" class="form-control" placeholder="Nilai Bobot" name="nilai_pc"> 
-                                    </div>
-                                    <div class="col-sm-1">
-                                        <h4>+</h4>
-                                    </div>
-                                    <div class="col-sm-2">
-                                        <input type="decimals" class="form-control" placeholder="Nilai Bobot" name="nilai_pc_2"> 
-                                    </div>
-                                    <div class="col-sm-1">
-                                        <h4>)</h4>
-                                    </div>
-                                    <div class="col-sm-1">
-                                        <h4>x</h4>
-                                    </div>
-                                    <div class="col-sm-1">
-                                        <h4>HPP</h4>
-                                    </div>
-                                </div>
-
-                                <div class="form-group" id="hidden_4" style="display: none;">
-                                    <label for="inputEmail3" class="col-sm-2 control-label">Nilai</label>
-                                    <div class="col-sm-1">
-                                        <h4>(</h4>
-                                    </div>
-                                    <div class="col-sm-2">
-                                        <input type="decimals" class="form-control" placeholder="Nilai Bobot" name="nilai_pc"> 
-                                    </div>
-                                    <div class="col-sm-1">
-                                        <h4>+</h4>
-                                    </div>
-                                    <div class="col-sm-2">
-                                        <input type="decimals" class="form-control" placeholder="Nilai Bobot" name="nilai_pc_2"> 
-                                    </div>
-                                    <div class="col-sm-1">
-                                        <h4>)</h4>
-                                    </div>
-                                    <div class="col-sm-1">
-                                        <h4>x</h4>
-                                    </div>
-                                    <div class="col-sm-2">
-                                        <h4>Nilai Kontrak</h4>
-                                    </div>
-                                </div>
-
-                                <div class="form-group m-b-0">
-                                    <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Simpan</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
         <div class="row">
             <div class="col-sm-12">
                 <div class="white-box">
@@ -177,7 +57,7 @@
                                         <td style="vertical-align: middle; text-align: center;"><?php echo $x; $x=$x+1; ?></td>
                                         <td style="vertical-align: middle; text-align: center;">{{$listnilai->nama_layanan}}</td>
                                         <td style="vertical-align: middle; text-align: center;">{{$listnilai->rumus_akhir}}</td>
-                                        <td style="vertical-align: middle; text-align: center;"><button type="submit" class="btn btn-danger btn-rounded" data-toggle="modal" data-target="#edit-{{$listnilai->id_nilai}}" data-plaement="top" title="Hapus WITEL"><i class="ti-pencil-alt"></i> Ubah</button></td>
+                                        <td style="vertical-align: middle; text-align: center;"><a href="{{ route('margin_single', ['id' => $listnilai->id_nilai]) }}" type="submit" class="btn btn-danger btn-rounded" title="Hapus WITEL"><i class="ti-pencil-alt"></i> Ubah</a></td>
                                         <div class="modal fade" id="edit-{{$listnilai->id_nilai}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
                                                 <div class="modal-dialog modal-lg">
                                                     <div class="modal-content">
@@ -207,6 +87,7 @@
                                     @endforeach
                                 </div>
                             </div>
+
                                                                 <div class="form-group m-b-0">
                                                                     <a href="#" class="fcbtn btn btn-default btn-1f m-r-10 m-t-10" data-dismiss="modal" style="padding-top: 5.5px; padding-bottom: 5.5px; float: right; margin-left: 10px">Keluar</a>
                                                                     <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Simpan</button>

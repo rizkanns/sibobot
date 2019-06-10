@@ -96,7 +96,8 @@ Route::group(['middleware'=>['auth']], function()
 	Route::get('/parameter/reset/{id}','Rekomendasi\ParameterController@resetParameter')->name('parameter_reset');
 
 	Route::get('/margin','Rekomendasi\MarginController@indexMargin')->name('margin');
-	Route::get('/margin/insert','Rekomendasi\MarginController@insertMargin')->name('margin_insert');
+	// Route::get('/margin/insert','Rekomendasi\MarginController@insertMargin')->name('margin_insert');
+	Route::get('/margin/single/{id}','Rekomendasi\MarginController@singleMargin')->name('margin_single');
 	Route::get('/margin/update/{id}','Rekomendasi\MarginController@updateMargin')->name('margin_update');
 
 	Route::get('/hasil','Rekomendasi\HasilController@indexHasil')->name('hasil');
