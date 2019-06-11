@@ -63,6 +63,31 @@ class DashboardController extends Controller
         return view('dashboard.dashboard', ['proyek'=>$proyek,'setuju'=>$setuju,'mitra'=>$mitra]);
     }
 
+    public function indexSingle($id) 
+    { 
+        $proyek = DB::table('proyek')->where('proyek.id_proyek',$id) 
+            ->leftjoin('users','users.id','=','proyek.id_users')->where('users.id',Auth::user()->id) 
+            ->leftjoin('aspek_bisnis', 'aspek_bisnis.id_proyek', '=', 'proyek.id_proyek') 
+            ->leftjoin('pelanggan', 'pelanggan.id_pelanggan', '=', 'proyek.id_pelanggan') 
+            ->leftjoin('mitra','mitra.id_mitra','=','proyek.id_mitra') 
+            ->leftjoin('unit_kerja','unit_kerja.id_unit_kerja','=','proyek.id_unit_kerja') 
+            ->get(); 
+
+        $setuju = DB::table('proyek')->where('status_pengajuan',1)->orWhere('status_pengajuan',2)
+            ->leftjoin('users','users.id','=','proyek.id_users')->where('users.id',Auth::user()->id)
+            ->leftjoin('aspek_bisnis', 'aspek_bisnis.id_proyek', '=', 'proyek.id_proyek') 
+            ->leftjoin('pelanggan', 'pelanggan.id_pelanggan', '=', 'proyek.id_pelanggan') 
+            ->leftjoin('mitra','mitra.id_mitra','=','proyek.id_mitra')
+            ->leftjoin('unit_kerja','unit_kerja.id_unit_kerja','=','proyek.id_unit_kerja')
+            ->get();
+
+        $mitra = DB::table('proyek')
+            ->leftjoin('mitra','mitra.id_mitra','=','proyek.id_mitra_2')
+            ->get();
+
+        return view('dashboard.single', ['proyek'=>$proyek,'setuju'=>$setuju,'mitra'=>$mitra]);
+    }
+
     public function insertBuktiP1(Request $request,$id_proyek)
     {
         // $this->validate($request, ['gambar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048' ]);
@@ -257,7 +282,6 @@ Dengan rincian sebagai berikut:
     {
         $idPelanggan = DB::table('proyek')->select('id_pelanggan')->where('id_proyek',$id_proyek)->first()->id_pelanggan;
         DB::table('pelanggan')->where('id_pelanggan',$idPelanggan)->delete();
-        DB::table('latar_belakang')->where('id_proyek',$id_proyek)->delete();
         DB::table('proyek')->where('id_proyek',$id_proyek)->delete();
         return redirect()->route('index');
     }

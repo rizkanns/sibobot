@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Justifikasi;
+namespace App\Http\Controllers\JustifikasiP1;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
@@ -38,7 +38,7 @@ class FormPelangganController extends Controller
 		$proyek = DB::table('proyek')->get();
 		$witel = DB::table('witel')->get();
 		// dd($witel);
-		return view('justifikasi.form-pelanggan', ['pelanggan'=>$pelanggan, 'auth'=>$auth, 'proyek'=>$proyek, 'witel'=>$witel]);
+		return view('justifikasi_p1.form-pelanggan', ['pelanggan'=>$pelanggan, 'auth'=>$auth, 'proyek'=>$proyek, 'witel'=>$witel]);
 	}
 
     public function insertPelanggan(Request $request)
@@ -68,7 +68,7 @@ class FormPelangganController extends Controller
 		$aspek->save();
 
 		// dd($pelanggan,$proyek,$aspek);
-		return redirect()->route('proyek_single', ['id_pelanggan'=>$pelanggan->id_pelanggan, 'id_proyek' => $proyek->id_proyek, 'id_aspek' => $aspek->id_aspek, ]);
+		return redirect()->route('p1_proyek_single', ['id_pelanggan'=>$pelanggan->id_pelanggan, 'id_proyek' => $proyek->id_proyek, 'id_aspek' => $aspek->id_aspek, ]);
 	
 	}
 
@@ -78,7 +78,7 @@ class FormPelangganController extends Controller
 		$data['pelanggan'] =Pelanggan::find($id_pelanggan)->where('id_pelanggan',$id_pelanggan)->get();
 		$data['aspek'] =AspekBisnis::find($id_aspek)->where('id_aspek',$id_aspek)->get();
 		$witel = DB::table('witel')->get();
-    	return view('justifikasi.form-pelanggan-update',$data,['witel'=>$witel]);
+    	return view('justifikasi_p1.form-pelanggan-update',$data,['witel'=>$witel]);
     }
 
 	public function updatePelanggan(Request $request,$id_pelanggan,$id_proyek,$id_aspek)
@@ -105,7 +105,7 @@ class FormPelangganController extends Controller
 		$aspek->save();
 
 		// dd($pelanggan, $proyek, $aspek);
-	   	return redirect()->route('proyek_single', ['id_pelanggan' => $pelanggan->id_pelanggan, 'id_proyek' => $proyek->id_proyek, 'id_aspek' => $aspek->id_aspek]);
+	   	return redirect()->route('p1_proyek_single', ['id_pelanggan' => $pelanggan->id_pelanggan, 'id_proyek' => $proyek->id_proyek, 'id_aspek' => $aspek->id_aspek]);
     }
 
 

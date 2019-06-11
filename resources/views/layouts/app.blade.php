@@ -102,13 +102,13 @@
 
                     @if (Request::is('*/form-*'))
                     <li>
-                        <a href="{{route('pelanggan')}}" class="waves-effect active">
+                        <a href="{{route('p0_pelanggan')}}" class="waves-effect active">
                             <span class="hide-menu"> PENGAJUAN JUSTIFIKASI </span>
                         </a>
                     </li>
                     @else
                     <li>
-                        <a href="{{route('pelanggan')}}" class="waves-effect">
+                        <a href="{{route('p0_pelanggan')}}" class="waves-effect">
                             <span class="hide-menu"> PENGAJUAN JUSTIFIKASI </span>
                         </a>
                     </li>

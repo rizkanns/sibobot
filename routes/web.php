@@ -43,6 +43,7 @@ Route::group(['middleware'=>['auth']], function()
 	Route::group(['prefix' => 'dashboard'], function()
 	{
 		// Route::get('bukti_p0/pdf/','Dashboard\DashboardController@viewPdf')->name('view_pdf');
+		Route::get('/dashboard/single/{id}', 'Dashboard\DashboardController@indexSingle')->name('index_single');
 		
 		Route::get('print/p0/{id}', 'Word\TemplateController@createWordDocxP0')->name('print_p0');
 		Route::get('print/p1/{id}', 'Word\TemplateController@createWordDocxP1')->name('print_p1');
@@ -56,17 +57,29 @@ Route::group(['middleware'=>['auth']], function()
 	});
 	
 
-	Route::get('/form-pelanggan','Justifikasi\FormPelangganController@indexPelanggan')->name('pelanggan');
-	Route::post('/form-pelanggan/insert','Justifikasi\FormPelangganController@insertPelanggan')->name('pelanggan_insert');
-	Route::get('/form-pelanggan/{id_pelanggan}/{id_proyek}/{id_aspek}','Justifikasi\FormPelangganController@singlePelanggan')->name('pelanggan_single');
-	Route::get('/form-pelanggan/update/{id_pelanggan}/{id_proyek}/{id_aspek}','Justifikasi\FormPelangganController@updatePelanggan')->name('pelanggan_update');
-	Route::get('/form-proyek/{id_pelanggan}/{id_proyek}/{id_aspek}','Justifikasi\FormProyekController@indexProyek')->name('proyek_single');
-	Route::post('/form-proyek/insert/{id_pelanggan}/{id_proyek}/{id_aspek}','Justifikasi\FormProyekController@insertProyek')->name('proyek_insert');
-	Route::get('/form-proyek/file_p0/{id_pelanggan}/{id_proyek}/{id_aspek}','Justifikasi\FormProyekController@updateFileP0')->name('file_p0_update');
-	Route::get('/form-proyek/file_p1/{id_pelanggan}/{id_proyek}/{id_aspek}','Justifikasi\FormProyekController@updateFileP1')->name('file_p1_update');
-	Route::get('/form-proyek/mitra/{id_pelanggan}/{id_proyek}/{id_aspek}','Justifikasi\FormProyekController@updateMitra')->name('mitra2_update');
-	Route::get('/form-aspek/{id_pelanggan}/{id_proyek}/{id_aspek}','Justifikasi\FormAspekController@indexAspek')->name('aspek_single');
-	Route::get('/form-aspek/insert/{id_pelanggan}/{id_proyek}/{id_aspek}','Justifikasi\FormAspekController@insertAspek')->name('aspek_insert');
+	Route::get('/P0-form-pelanggan','JustifikasiP0\FormPelangganController@indexPelanggan')->name('p0_pelanggan');
+	Route::post('/P0-form-pelanggan/insert','JustifikasiP0\FormPelangganController@insertPelanggan')->name('p0_pelanggan_insert');
+	Route::get('/P0-form-pelanggan/{id_pelanggan}/{id_proyek}/{id_aspek}','JustifikasiP0\FormPelangganController@singlePelanggan')->name('p0_pelanggan_single');
+	Route::get('/P0-form-pelanggan/update/{id_pelanggan}/{id_proyek}/{id_aspek}','JustifikasiP0\FormPelangganController@updatePelanggan')->name('p0_pelanggan_update');
+	Route::get('/P0-form-proyek/{id_pelanggan}/{id_proyek}/{id_aspek}','JustifikasiP0\FormProyekController@indexProyek')->name('p0_proyek_single');
+	Route::post('/P0-form-proyek/insert/{id_pelanggan}/{id_proyek}/{id_aspek}','JustifikasiP0\FormProyekController@insertProyek')->name('p0_proyek_insert');
+	Route::get('/P0-form-proyek/file_p0/{id_pelanggan}/{id_proyek}/{id_aspek}','JustifikasiP0\FormProyekController@updateFileP0')->name('p0_file_p0_update');
+	Route::get('/P0-form-proyek/file_p1/{id_pelanggan}/{id_proyek}/{id_aspek}','JustifikasiP0\FormProyekController@updateFileP1')->name('p0_file_p1_update');
+	Route::get('/P0-form-proyek/mitra/{id_pelanggan}/{id_proyek}/{id_aspek}','JustifikasiP0\FormProyekController@updateMitra')->name('p0_mitra2_update');
+	Route::get('/P0-form-aspek/{id_pelanggan}/{id_proyek}/{id_aspek}','JustifikasiP0\FormAspekController@indexAspek')->name('p0_aspek_single');
+	Route::get('/P0-form-aspek/insert/{id_pelanggan}/{id_proyek}/{id_aspek}','JustifikasiP0\FormAspekController@insertAspek')->name('p0_aspek_insert');
+
+	Route::get('/form-pelanggan','JustifikasiP1\FormPelangganController@indexPelanggan')->name('p1_pelanggan');
+	Route::post('/form-pelanggan/insert','JustifikasiP1\FormPelangganController@insertPelanggan')->name('p1_pelanggan_insert');
+	Route::get('/form-pelanggan/{id_pelanggan}/{id_proyek}/{id_aspek}','JustifikasiP1\FormPelangganController@singlePelanggan')->name('p1_pelanggan_single');
+	Route::get('/form-pelanggan/update/{id_pelanggan}/{id_proyek}/{id_aspek}','JustifikasiP1\FormPelangganController@updatePelanggan')->name('p1_pelanggan_update');
+	Route::get('/form-proyek/{id_pelanggan}/{id_proyek}/{id_aspek}','JustifikasiP1\FormProyekController@indexProyek')->name('p1_proyek_single');
+	Route::post('/form-proyek/insert/{id_pelanggan}/{id_proyek}/{id_aspek}','JustifikasiP1\FormProyekController@insertProyek')->name('p1_proyek_insert');
+	Route::get('/form-proyek/file_p0/{id_pelanggan}/{id_proyek}/{id_aspek}','JustifikasiP1\FormProyekController@updateFileP0')->name('p1_file_p0_update');
+	Route::get('/form-proyek/file_p1/{id_pelanggan}/{id_proyek}/{id_aspek}','JustifikasiP1\FormProyekController@updateFileP1')->name('p1_file_p1_update');
+	Route::get('/form-proyek/mitra/{id_pelanggan}/{id_proyek}/{id_aspek}','JustifikasiP1\FormProyekController@updateMitra')->name('p1_mitra2_update');
+	Route::get('/form-aspek/{id_pelanggan}/{id_proyek}/{id_aspek}','JustifikasiP1\FormAspekController@indexAspek')->name('p1_aspek_single');
+	Route::get('/form-aspek/insert/{id_pelanggan}/{id_proyek}/{id_aspek}','JustifikasiP1\FormAspekController@insertAspek')->name('p1_aspek_insert');
 
 	Route::get('/unit-kerja','KelolaData\UnitKerjaController@indexUnitKerja')->name('unit');
 	Route::post('/unit-kerja/insert','KelolaData\UnitKerjaController@insertUnitKerja')->name('unit_insert');
