@@ -40,6 +40,8 @@ Route::group(['middleware'=>['auth']], function()
 	// Route::get('/home', 'HomeController@index')->name('index');
 
 	Route::get('/dashboard', 'Dashboard\DashboardController@index')->name('index');
+	Route::get('/summary', 'Dashboard\DashboardController@summary')->name('summary');
+	Route::get('/excel', 'Dashboard\DashboardController@downloadExcel')->name('excel');
 	Route::group(['prefix' => 'dashboard'], function()
 	{
 		// Route::get('bukti_p0/pdf/','Dashboard\DashboardController@viewPdf')->name('view_pdf');

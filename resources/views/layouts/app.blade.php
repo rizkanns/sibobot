@@ -100,6 +100,20 @@
                     </li>
                     @endif
 
+                    @if (Request::is('*/dashboard*') OR Request::is('/'))
+                    <li>
+                        <a href="{{route('summary')}}" class="waves-effect active">
+                            <span class="hide-menu"> SUMMARY </span>
+                        </a>
+                    </li>
+                    @else
+                    <li>
+                        <a href="{{route('summary')}}" class="waves-effect">
+                            <span class="hide-menu"> SUMMARY </span>
+                        </a>
+                    </li>
+                    @endif
+
                     @if (Request::is('*/form-*'))
                     <li>
                         <a href="{{route('p0_pelanggan')}}" class="waves-effect active">

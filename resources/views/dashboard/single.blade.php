@@ -525,12 +525,21 @@
                                                     <br>
                                                 </tr>
 
+                                                @if($listproyek->bukti_scan_p0==NULL)
+                                                <tr id="footer-padding">
+                                                    <td style="font-weight: 450; color: black;">Izin Proyek P0</td>
+                                                    <td></td>
+                                                    <td  style="font-weight: 300; color: black;">Tidak &emsp;<i class="fa fa-times btn btn-danger btn-rounded"></i></td>
+                                                    <br>
+                                                </tr>
+                                                @else
                                                 <tr id="footer-padding">
                                                     <td style="font-weight: 450; color: black;">Izin Proyek P0</td>
                                                     <td></td>
                                                     <td  style="font-weight: 300; color: black;">Memenuhi &emsp;<i class="fa fa-check btn btn-success btn-rounded"></i></td>
                                                     <br>
                                                 </tr>
+                                                @endif
                                                 <tr id="footer-padding">
                                                     <td style="font-weight: 450; color: black;">Proyek Belum Pernah</td>
                                                     <td></td>

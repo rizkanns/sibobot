@@ -176,6 +176,7 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         Telegram\Bot\Laravel\TelegramServiceProvider::class,
+        Maatwebsite\Excel\ExcelServiceProvider::class,
 
     ],
 
@@ -227,6 +228,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
         'Telegram'  => Telegram\Bot\Laravel\Facades\Telegram::class,
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
 
     ],
 
