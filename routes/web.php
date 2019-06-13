@@ -39,13 +39,16 @@ Route::group(['middleware'=>['auth']], function()
 
 	// Route::get('/home', 'HomeController@index')->name('index');
 
-	Route::get('/dashboard', 'Dashboard\DashboardController@index')->name('index');
-	Route::get('/summary', 'Dashboard\DashboardController@summary')->name('summary');
-	Route::get('/excel', 'Dashboard\DashboardController@downloadExcel')->name('excel');
+	Route::get('/riwayat', 'Dashboard\DashboardController@index')->name('index');
 	Route::group(['prefix' => 'dashboard'], function()
 	{
 		// Route::get('bukti_p0/pdf/','Dashboard\DashboardController@viewPdf')->name('view_pdf');
-		Route::get('/dashboard/single/{id}', 'Dashboard\DashboardController@indexSingle')->name('index_single');
+		Route::get('/draft', 'Dashboard\DashboardController@draft')->name('draft');
+		Route::get('/maju', 'Dashboard\DashboardController@maju')->name('maju');
+		Route::get('/kalah', 'Dashboard\DashboardController@kalah')->name('kalah');
+		Route::get('/excel', 'Dashboard\DashboardController@downloadExcel')->name('excel');
+
+		Route::get('/single/{id}', 'Dashboard\DashboardController@indexSingle')->name('index_single');
 		
 		Route::get('print/p0/{id}', 'Word\TemplateController@createWordDocxP0')->name('print_p0');
 		Route::get('print/p1/{id}', 'Word\TemplateController@createWordDocxP1')->name('print_p1');

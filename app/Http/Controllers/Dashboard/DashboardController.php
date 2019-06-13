@@ -62,9 +62,10 @@ class DashboardController extends Controller
             ->leftjoin('mitra','mitra.id_mitra','=','proyek.id_mitra_2')
             ->get();
 
-        return view('dashboard.dashboard', ['proyek'=>$proyek,'setuju'=>$setuju,'mitra'=>$mitra]);
+        return view('dashboard.riwayat', ['proyek'=>$proyek,'setuju'=>$setuju,'mitra'=>$mitra]);
     }
-    public function summary() 
+
+    public function draft() 
     { 
         $proyek = DB::table('proyek') 
             ->leftjoin('users','users.id','=','proyek.id_users')->where('users.id',Auth::user()->id) 
@@ -86,7 +87,57 @@ class DashboardController extends Controller
             ->leftjoin('mitra','mitra.id_mitra','=','proyek.id_mitra_2')
             ->get();
 
-        return view('dashboard.summary', ['proyek'=>$proyek,'setuju'=>$setuju,'mitra'=>$mitra]);
+        return view('dashboard.draft', ['proyek'=>$proyek,'setuju'=>$setuju,'mitra'=>$mitra]);
+    }
+
+    public function maju() 
+    { 
+        $proyek = DB::table('proyek') 
+            ->leftjoin('users','users.id','=','proyek.id_users')->where('users.id',Auth::user()->id) 
+            ->leftjoin('aspek_bisnis', 'aspek_bisnis.id_proyek', '=', 'proyek.id_proyek') 
+            ->leftjoin('pelanggan', 'pelanggan.id_pelanggan', '=', 'proyek.id_pelanggan') 
+            ->leftjoin('mitra','mitra.id_mitra','=','proyek.id_mitra') 
+            ->leftjoin('unit_kerja','unit_kerja.id_unit_kerja','=','proyek.id_unit_kerja') 
+            ->get(); 
+
+        $setuju = DB::table('proyek')->where('status_pengajuan',1)->orWhere('status_pengajuan',2)
+            ->leftjoin('users','users.id','=','proyek.id_users')->where('users.id',Auth::user()->id)
+            ->leftjoin('aspek_bisnis', 'aspek_bisnis.id_proyek', '=', 'proyek.id_proyek') 
+            ->leftjoin('pelanggan', 'pelanggan.id_pelanggan', '=', 'proyek.id_pelanggan') 
+            ->leftjoin('mitra','mitra.id_mitra','=','proyek.id_mitra')
+            ->leftjoin('unit_kerja','unit_kerja.id_unit_kerja','=','proyek.id_unit_kerja')
+            ->get();
+
+        $mitra = DB::table('proyek')
+            ->leftjoin('mitra','mitra.id_mitra','=','proyek.id_mitra_2')
+            ->get();
+
+        return view('dashboard.maju', ['proyek'=>$proyek,'setuju'=>$setuju,'mitra'=>$mitra]);
+    }
+
+    public function kalah() 
+    { 
+        $proyek = DB::table('proyek') 
+            ->leftjoin('users','users.id','=','proyek.id_users')->where('users.id',Auth::user()->id) 
+            ->leftjoin('aspek_bisnis', 'aspek_bisnis.id_proyek', '=', 'proyek.id_proyek') 
+            ->leftjoin('pelanggan', 'pelanggan.id_pelanggan', '=', 'proyek.id_pelanggan') 
+            ->leftjoin('mitra','mitra.id_mitra','=','proyek.id_mitra') 
+            ->leftjoin('unit_kerja','unit_kerja.id_unit_kerja','=','proyek.id_unit_kerja') 
+            ->get(); 
+
+        $setuju = DB::table('proyek')->where('status_pengajuan',1)->orWhere('status_pengajuan',2)
+            ->leftjoin('users','users.id','=','proyek.id_users')->where('users.id',Auth::user()->id)
+            ->leftjoin('aspek_bisnis', 'aspek_bisnis.id_proyek', '=', 'proyek.id_proyek') 
+            ->leftjoin('pelanggan', 'pelanggan.id_pelanggan', '=', 'proyek.id_pelanggan') 
+            ->leftjoin('mitra','mitra.id_mitra','=','proyek.id_mitra')
+            ->leftjoin('unit_kerja','unit_kerja.id_unit_kerja','=','proyek.id_unit_kerja')
+            ->get();
+
+        $mitra = DB::table('proyek')
+            ->leftjoin('mitra','mitra.id_mitra','=','proyek.id_mitra_2')
+            ->get();
+
+        return view('dashboard.kalah', ['proyek'=>$proyek,'setuju'=>$setuju,'mitra'=>$mitra]);
     }
 
     public function downloadExcel()
@@ -142,7 +193,7 @@ class DashboardController extends Controller
             ->leftjoin('mitra','mitra.id_mitra','=','proyek.id_mitra_2')
             ->get();
 
-        return view('dashboard.single', ['proyek'=>$proyek,'setuju'=>$setuju,'mitra'=>$mitra]);
+        return view('dashboard.draft-single', ['proyek'=>$proyek,'setuju'=>$setuju,'mitra'=>$mitra]);
     }
 
     public function insertBuktiP1(Request $request,$id_proyek)

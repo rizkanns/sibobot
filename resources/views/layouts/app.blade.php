@@ -85,8 +85,7 @@
                     </div>
                 </div>
                 <ul class="nav" id="side-menu">
-                @if(Auth::user()->jabatan->id_jabatan == 1 OR Auth::user()->jabatan->id_jabatan == 2)
-                    @if (Request::is('*/dashboard*') OR Request::is('/'))
+                     @if (Request::is('/riwayat'))
                     <li>
                         <a href="{{route('index')}}" class="waves-effect active">
                             <span class="hide-menu"> DASHBOARD </span>
@@ -96,20 +95,6 @@
                     <li>
                         <a href="{{route('index')}}" class="waves-effect">
                             <span class="hide-menu"> DASHBOARD </span>
-                        </a>
-                    </li>
-                    @endif
-
-                    @if (Request::is('*/dashboard*') OR Request::is('/'))
-                    <li>
-                        <a href="{{route('summary')}}" class="waves-effect active">
-                            <span class="hide-menu"> SUMMARY </span>
-                        </a>
-                    </li>
-                    @else
-                    <li>
-                        <a href="{{route('summary')}}" class="waves-effect">
-                            <span class="hide-menu"> SUMMARY </span>
                         </a>
                     </li>
                     @endif
@@ -127,6 +112,52 @@
                         </a>
                     </li>
                     @endif
+
+                    @if(Auth::user()->jabatan->id_jabatan == 1 OR Auth::user()->jabatan->id_jabatan == 2)
+                    @if (Request::is('*/dashboard*'))
+                    <li>
+                        <a href="#" class="waves-effect active"> <i class="fa fa-tasks fa-fw" data-icon="v"></i> <span class="hide-menu"> DAFTAR PROYEK <span class="fa arrow"></span> </span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{route('draft')}}" class="waves-effect">
+                                        <span class="hide-menu"> DRAFT PROYEK </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{route('maju')}}" class="waves-effect">
+                                        <span class="hide-menu"> PROYEK MAJU </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{route('kalah')}}" class="waves-effect">
+                                        <span class="hide-menu"> PROYEK KALAH </span>
+                                    </a>
+                                </li>
+                            </ul>
+                    </li>
+                    @else
+                    <li>
+                        <a href="#" class="waves-effect"> <i class="fa fa-tasks fa-fw" data-icon="v"></i> <span class="hide-menu"> DAFTAR PROYEK <span class="fa arrow"></span> </span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{route('draft')}}" class="waves-effect">
+                                        <span class="hide-menu"> DRAFT PROYEK </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{route('maju')}}" class="waves-effect">
+                                        <span class="hide-menu"> PROYEK MAJU </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{route('kalah')}}" class="waves-effect">
+                                        <span class="hide-menu"> PROYEK KALAH </span>
+                                    </a>
+                                </li>
+                            </ul>
+                    </li>
+                    @endif
+                    
 
                     @if (Request::is('*/mitra*') OR Request::is('*/unit-kerja*') OR Request::is('*/witel*') OR Request::is('*/pejabat*'))
                     <li>
