@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
+use Maatwebsite\Excel\Facades\Excel;
 use App\AspekBisnis;
 use App\ChatRoom;
 use App\Jabatan;
@@ -19,6 +20,7 @@ use Auth;
 use Session;
 use Telegram;
 use Telegram\Bot\Api;
+use App\Exports\ProyekExport;
 
 class DashboardController extends Controller
 {
@@ -60,7 +62,138 @@ class DashboardController extends Controller
             ->leftjoin('mitra','mitra.id_mitra','=','proyek.id_mitra_2')
             ->get();
 
-        return view('dashboard.dashboard', ['proyek'=>$proyek,'setuju'=>$setuju,'mitra'=>$mitra]);
+        return view('dashboard.riwayat', ['proyek'=>$proyek,'setuju'=>$setuju,'mitra'=>$mitra]);
+    }
+
+    public function draft() 
+    { 
+        $proyek = DB::table('proyek') 
+            ->leftjoin('users','users.id','=','proyek.id_users')->where('users.id',Auth::user()->id) 
+            ->leftjoin('aspek_bisnis', 'aspek_bisnis.id_proyek', '=', 'proyek.id_proyek') 
+            ->leftjoin('pelanggan', 'pelanggan.id_pelanggan', '=', 'proyek.id_pelanggan') 
+            ->leftjoin('mitra','mitra.id_mitra','=','proyek.id_mitra') 
+            ->leftjoin('unit_kerja','unit_kerja.id_unit_kerja','=','proyek.id_unit_kerja') 
+            ->get(); 
+
+        $setuju = DB::table('proyek')->where('status_pengajuan',1)->orWhere('status_pengajuan',2)
+            ->leftjoin('users','users.id','=','proyek.id_users')->where('users.id',Auth::user()->id)
+            ->leftjoin('aspek_bisnis', 'aspek_bisnis.id_proyek', '=', 'proyek.id_proyek') 
+            ->leftjoin('pelanggan', 'pelanggan.id_pelanggan', '=', 'proyek.id_pelanggan') 
+            ->leftjoin('mitra','mitra.id_mitra','=','proyek.id_mitra')
+            ->leftjoin('unit_kerja','unit_kerja.id_unit_kerja','=','proyek.id_unit_kerja')
+            ->get();
+
+        $mitra = DB::table('proyek')
+            ->leftjoin('mitra','mitra.id_mitra','=','proyek.id_mitra_2')
+            ->get();
+
+        return view('dashboard.draft', ['proyek'=>$proyek,'setuju'=>$setuju,'mitra'=>$mitra]);
+    }
+
+    public function maju() 
+    { 
+        $proyek = DB::table('proyek') 
+            ->leftjoin('users','users.id','=','proyek.id_users')->where('users.id',Auth::user()->id) 
+            ->leftjoin('aspek_bisnis', 'aspek_bisnis.id_proyek', '=', 'proyek.id_proyek') 
+            ->leftjoin('pelanggan', 'pelanggan.id_pelanggan', '=', 'proyek.id_pelanggan') 
+            ->leftjoin('mitra','mitra.id_mitra','=','proyek.id_mitra') 
+            ->leftjoin('unit_kerja','unit_kerja.id_unit_kerja','=','proyek.id_unit_kerja') 
+            ->get(); 
+
+        $setuju = DB::table('proyek')->where('status_pengajuan',1)->orWhere('status_pengajuan',2)
+            ->leftjoin('users','users.id','=','proyek.id_users')->where('users.id',Auth::user()->id)
+            ->leftjoin('aspek_bisnis', 'aspek_bisnis.id_proyek', '=', 'proyek.id_proyek') 
+            ->leftjoin('pelanggan', 'pelanggan.id_pelanggan', '=', 'proyek.id_pelanggan') 
+            ->leftjoin('mitra','mitra.id_mitra','=','proyek.id_mitra')
+            ->leftjoin('unit_kerja','unit_kerja.id_unit_kerja','=','proyek.id_unit_kerja')
+            ->get();
+
+        $mitra = DB::table('proyek')
+            ->leftjoin('mitra','mitra.id_mitra','=','proyek.id_mitra_2')
+            ->get();
+
+        return view('dashboard.maju', ['proyek'=>$proyek,'setuju'=>$setuju,'mitra'=>$mitra]);
+    }
+
+    public function kalah() 
+    { 
+        $proyek = DB::table('proyek') 
+            ->leftjoin('users','users.id','=','proyek.id_users')->where('users.id',Auth::user()->id) 
+            ->leftjoin('aspek_bisnis', 'aspek_bisnis.id_proyek', '=', 'proyek.id_proyek') 
+            ->leftjoin('pelanggan', 'pelanggan.id_pelanggan', '=', 'proyek.id_pelanggan') 
+            ->leftjoin('mitra','mitra.id_mitra','=','proyek.id_mitra') 
+            ->leftjoin('unit_kerja','unit_kerja.id_unit_kerja','=','proyek.id_unit_kerja') 
+            ->get(); 
+
+        $setuju = DB::table('proyek')->where('status_pengajuan',1)->orWhere('status_pengajuan',2)
+            ->leftjoin('users','users.id','=','proyek.id_users')->where('users.id',Auth::user()->id)
+            ->leftjoin('aspek_bisnis', 'aspek_bisnis.id_proyek', '=', 'proyek.id_proyek') 
+            ->leftjoin('pelanggan', 'pelanggan.id_pelanggan', '=', 'proyek.id_pelanggan') 
+            ->leftjoin('mitra','mitra.id_mitra','=','proyek.id_mitra')
+            ->leftjoin('unit_kerja','unit_kerja.id_unit_kerja','=','proyek.id_unit_kerja')
+            ->get();
+
+        $mitra = DB::table('proyek')
+            ->leftjoin('mitra','mitra.id_mitra','=','proyek.id_mitra_2')
+            ->get();
+
+        return view('dashboard.kalah', ['proyek'=>$proyek,'setuju'=>$setuju,'mitra'=>$mitra]);
+    }
+
+    public function downloadExcel()
+
+    {
+        $data = DB::table('proyek') 
+            ->leftjoin('users','users.id','=','proyek.id_users') 
+            ->leftjoin('aspek_bisnis', 'aspek_bisnis.id_proyek', '=', 'proyek.id_proyek') 
+            ->leftjoin('pelanggan', 'pelanggan.id_pelanggan', '=', 'proyek.id_pelanggan') 
+            ->leftjoin('mitra','mitra.id_mitra','=','proyek.id_mitra') 
+            ->leftjoin('unit_kerja','unit_kerja.id_unit_kerja','=','proyek.id_unit_kerja') 
+            ->get()->toArray();
+
+            
+
+        return Excel::create('itsolutionstuff_example', function($excel) use ($data) {
+
+            $excel->sheet('mySheet', function($sheet) use ($data)
+
+            {
+
+                $sheet->fromArray($data);
+
+            });
+
+        })->download($type);
+
+
+        // return Excel::download(new ProyekExport, '2019.xlsx');
+
+    }
+
+
+    public function indexSingle($id) 
+    { 
+        $proyek = DB::table('proyek')->where('proyek.id_proyek',$id) 
+            ->leftjoin('users','users.id','=','proyek.id_users')->where('users.id',Auth::user()->id) 
+            ->leftjoin('aspek_bisnis', 'aspek_bisnis.id_proyek', '=', 'proyek.id_proyek') 
+            ->leftjoin('pelanggan', 'pelanggan.id_pelanggan', '=', 'proyek.id_pelanggan') 
+            ->leftjoin('mitra','mitra.id_mitra','=','proyek.id_mitra') 
+            ->leftjoin('unit_kerja','unit_kerja.id_unit_kerja','=','proyek.id_unit_kerja') 
+            ->get(); 
+
+        $setuju = DB::table('proyek')->where('status_pengajuan',1)->orWhere('status_pengajuan',2)
+            ->leftjoin('users','users.id','=','proyek.id_users')->where('users.id',Auth::user()->id)
+            ->leftjoin('aspek_bisnis', 'aspek_bisnis.id_proyek', '=', 'proyek.id_proyek') 
+            ->leftjoin('pelanggan', 'pelanggan.id_pelanggan', '=', 'proyek.id_pelanggan') 
+            ->leftjoin('mitra','mitra.id_mitra','=','proyek.id_mitra')
+            ->leftjoin('unit_kerja','unit_kerja.id_unit_kerja','=','proyek.id_unit_kerja')
+            ->get();
+
+        $mitra = DB::table('proyek')
+            ->leftjoin('mitra','mitra.id_mitra','=','proyek.id_mitra_2')
+            ->get();
+
+        return view('dashboard.draft-single', ['proyek'=>$proyek,'setuju'=>$setuju,'mitra'=>$mitra]);
     }
 
     public function insertBuktiP1(Request $request,$id_proyek)
@@ -257,7 +390,6 @@ Dengan rincian sebagai berikut:
     {
         $idPelanggan = DB::table('proyek')->select('id_pelanggan')->where('id_proyek',$id_proyek)->first()->id_pelanggan;
         DB::table('pelanggan')->where('id_pelanggan',$idPelanggan)->delete();
-        DB::table('latar_belakang')->where('id_proyek',$id_proyek)->delete();
         DB::table('proyek')->where('id_proyek',$id_proyek)->delete();
         return redirect()->route('index');
     }

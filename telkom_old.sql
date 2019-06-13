@@ -59,6 +59,51 @@ CREATE TABLE `chatroom` (
 
 insert  into `chatroom`(`id`,`chat_id`,`created_at`,`updated_at`) values (1,-381821301,'2019-05-27 08:36:19','2019-05-27 08:36:19');
 
+/*Table structure for table `detil_latar_belakang` */
+
+DROP TABLE IF EXISTS `detil_latar_belakang`;
+
+CREATE TABLE `detil_latar_belakang` (
+  `id_detil_latar_belakang` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `id_latar_belakang` int(11) DEFAULT NULL,
+  `id_proyek` int(11) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id_detil_latar_belakang`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Data for the table `detil_latar_belakang` */
+
+/*Table structure for table `detil_nilai` */
+
+DROP TABLE IF EXISTS `detil_nilai`;
+
+CREATE TABLE `detil_nilai` (
+  `id_detil_nilai` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `id_nilai` int(11) DEFAULT NULL,
+  `id_rumus` int(11) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id_detil_nilai`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Data for the table `detil_nilai` */
+
+/*Table structure for table `detil_parameter` */
+
+DROP TABLE IF EXISTS `detil_parameter`;
+
+CREATE TABLE `detil_parameter` (
+  `id_detil_parameter` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `id_parameter` int(11) DEFAULT NULL,
+  `id_rumus` int(11) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id_detil_parameter`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Data for the table `detil_parameter` */
+
 /*Table structure for table `jabatan` */
 
 DROP TABLE IF EXISTS `jabatan`;
@@ -74,6 +119,20 @@ CREATE TABLE `jabatan` (
 /*Data for the table `jabatan` */
 
 insert  into `jabatan`(`id_jabatan`,`nama_jabatan`,`created_at`,`updated_at`) values (1,'Account Manager','2018-07-18 11:04:55','2018-07-18 11:04:55'),(2,'Sales Engineer','2018-07-18 11:05:01','2018-07-18 11:05:01'),(3,'Bidding','2018-08-07 14:52:19','2018-08-07 14:52:19'),(4,'Manager','2018-08-07 14:52:31','2018-08-07 14:52:31'),(5,'Deputy Manager','2018-08-07 14:52:43','2018-08-07 14:52:43'),(6,'General Manager','2018-08-07 14:52:54','2018-08-07 14:52:54'),(7,'Approval','2018-08-16 15:15:24','2018-08-16 15:15:24');
+
+/*Table structure for table `latar_belakang` */
+
+DROP TABLE IF EXISTS `latar_belakang`;
+
+CREATE TABLE `latar_belakang` (
+  `id_latar_belakang` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `latar_belakang` text NOT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id_latar_belakang`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Data for the table `latar_belakang` */
 
 /*Table structure for table `migrations` */
 

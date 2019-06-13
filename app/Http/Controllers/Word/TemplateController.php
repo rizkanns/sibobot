@@ -25,17 +25,17 @@ class TemplateController extends Controller
         $settings = new Settings();
         $settings->setOutputEscapingEnabled(true);
 
-        // $proyek = DB::table('proyek')
-        //     ->leftJoin('unit_kerja', 'proyek.id_unit_kerja', '=', 'unit_kerja.id_unit_kerja')
-        //     ->leftJoin('pelanggan', 'proyek.id_pelanggan', '=', 'pelanggan.id_pelanggan')
-        //     ->leftJoin('mitra', 'proyek.id_mitra', '=', 'mitra.id_mitra')
-        //     ->leftJoin('aspek_bisnis', 'proyek.id_proyek', '=', 'aspek_bisnis.id_proyek')
-        //     ->where('proyek.id_proyek','=',$id)
-        //     ->first();
-        // $proyek_2 = DB::table('proyek')
-        //     ->leftJoin('mitra', 'proyek.id_mitra_2', '=', 'mitra.id_mitra')
-        //     ->where('proyek.id_proyek','=',$id)
-        //     ->first();
+        $proyek = DB::table('proyek')
+            ->leftJoin('unit_kerja', 'proyek.id_unit_kerja', '=', 'unit_kerja.id_unit_kerja')
+            ->leftJoin('pelanggan', 'proyek.id_pelanggan', '=', 'pelanggan.id_pelanggan')
+            ->leftJoin('mitra', 'proyek.id_mitra', '=', 'mitra.id_mitra')
+            ->leftJoin('aspek_bisnis', 'proyek.id_proyek', '=', 'aspek_bisnis.id_proyek')
+            ->where('proyek.id_proyek','=',$id)
+            ->first();
+        $proyek_2 = DB::table('proyek')
+            ->leftJoin('mitra', 'proyek.id_mitra_2', '=', 'mitra.id_mitra')
+            ->where('proyek.id_proyek','=',$id)
+            ->first();
             
         // $se = DB::table('witel') 
         //     ->leftJoin('pelanggan', 'witel.id_witel', '=', 'pelanggan.id_witel')

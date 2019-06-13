@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Justifikasi;
+namespace App\Http\Controllers\JustifikasiP1;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
@@ -38,7 +38,7 @@ class FormProyekController extends Controller
 		$data['unit'] = DB::table('unit_kerja')->select('id_unit_kerja','nama_unit_kerja')->orderBy('nama_unit_kerja')->get();
 		$data['mitra'] = DB::table('mitra')->select('id_mitra','nama_mitra')->orderBy('nama_mitra')->get();
 		// dd($data);
-    	return view('justifikasi.form-proyek',$data);
+    	return view('justifikasi_p1.form-proyek',$data);
     }
 
 	public function insertProyek(Request $request,$id_pelanggan,$id_proyek,$id_aspek)
@@ -101,7 +101,7 @@ class FormProyekController extends Controller
 					$aspek->save();
 
 					// dd($proyek);
-					return redirect()->route('aspek_single', ['id_pelanggan' => $pelanggan, 'id_proyek' => $proyek->id_proyek, 'id_aspek' => $aspek]);
+					return redirect()->route('p1_aspek_single', ['id_pelanggan' => $pelanggan, 'id_proyek' => $proyek->id_proyek, 'id_aspek' => $aspek]);
 					}
 
 					else
@@ -144,11 +144,11 @@ class FormProyekController extends Controller
 						$aspek->save();
 
 						// dd($proyek);
-						return redirect()->route('aspek_single', ['id_pelanggan' => $pelanggan, 'id_proyek' => $proyek->id_proyek, 'id_aspek' => $aspek]);
+						return redirect()->route('p1_aspek_single', ['id_pelanggan' => $pelanggan, 'id_proyek' => $proyek->id_proyek, 'id_aspek' => $aspek]);
 					}
 
 				// dd($proyek);
-				return redirect()->route('aspek_single', ['id_pelanggan' => $pelanggan, 'id_proyek' => $proyek->id_proyek, 'id_aspek' => $aspek]);
+				return redirect()->route('p1_aspek_single', ['id_pelanggan' => $pelanggan, 'id_proyek' => $proyek->id_proyek, 'id_aspek' => $aspek]);
 				}
 
 				else
@@ -193,7 +193,7 @@ class FormProyekController extends Controller
 						$aspek->save();
 
 						// dd($proyek);
-						return redirect()->route('aspek_single', ['id_pelanggan' => $pelanggan, 'id_proyek' => $proyek->id_proyek, 'id_aspek' => $aspek]);
+						return redirect()->route('p1_aspek_single', ['id_pelanggan' => $pelanggan, 'id_proyek' => $proyek->id_proyek, 'id_aspek' => $aspek]);
 					}
 
 					else
@@ -230,7 +230,7 @@ class FormProyekController extends Controller
 						$aspek->save();
 
 						// dd($proyek);
-						return redirect()->route('aspek_single', ['id_pelanggan' => $pelanggan, 'id_proyek' => $proyek->id_proyek, 'id_aspek' => $aspek]);
+						return redirect()->route('p1_aspek_single', ['id_pelanggan' => $pelanggan, 'id_proyek' => $proyek->id_proyek, 'id_aspek' => $aspek]);
 					}
 				}
 			}
@@ -270,7 +270,7 @@ class FormProyekController extends Controller
 				$aspek->save();
 
 				// dd($proyek);
-				return redirect()->route('aspek_single', ['id_pelanggan' => $pelanggan, 'id_proyek' => $proyek->id_proyek, 'id_aspek' => $aspek]);
+				return redirect()->route('p1_aspek_single', ['id_pelanggan' => $pelanggan, 'id_proyek' => $proyek->id_proyek, 'id_aspek' => $aspek]);
 			}
 		// }		 
 	}
@@ -289,7 +289,7 @@ class FormProyekController extends Controller
 		$data['unit'] = DB::table('unit_kerja')->select('id_unit_kerja','nama_unit_kerja')->orderBy('nama_unit_kerja')->get();
 		$data['mitra'] = DB::table('mitra')->select('id_mitra','nama_mitra')->orderBy('nama_mitra')->get();
 
-        return view('AM.form-proyek',$data);
+        return view('justifikasi_p1.form-proyek',$data);
     }
 
     public function updateFileP1(Request $request,$id_pelanggan,$id_proyek,$id_aspek)
@@ -306,7 +306,7 @@ class FormProyekController extends Controller
 		$data['unit'] = DB::table('unit_kerja')->select('id_unit_kerja','nama_unit_kerja')->orderBy('nama_unit_kerja')->get();
 		$data['mitra'] = DB::table('mitra')->select('id_mitra','nama_mitra')->orderBy('nama_mitra')->get();
 
-        return view('AM.form-proyek',$data);
+        return view('justifikasi_p1.form-proyek',$data);
     }
 
     public function updateMitra(Request $request,$id_pelanggan,$id_proyek,$id_aspek)
@@ -323,7 +323,7 @@ class FormProyekController extends Controller
 		$data['unit'] = DB::table('unit_kerja')->select('id_unit_kerja','nama_unit_kerja')->orderBy('nama_unit_kerja')->get();
 		$data['mitra'] = DB::table('mitra')->select('id_mitra','nama_mitra')->orderBy('nama_mitra')->get();
 
-        return view('AM.form-proyek',$data);
+        return view('justifikasi_p1.form-proyek',$data);
     }
 
 }

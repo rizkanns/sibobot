@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Justifikasi;
+namespace App\Http\Controllers\JustifikasiP0;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
@@ -36,7 +36,7 @@ class FormAspekController extends Controller
 		$data['proyek'] = Proyek::find($id_proyek)->select('id_proyek','id_mitra_2')->where('id_proyek',$id_proyek)->get();
 		$data['aspek'] = AspekBisnis::find($id_aspek)->where('id_aspek',$id_aspek)->get();
 		
-		return view('justifikasi.form-aspek',$data);
+		return view('justifikasi_p0.form-aspek',$data);
 	}
 	
     public function insertAspek(Request $request,$id_pelanggan,$id_proyek,$id_aspek)

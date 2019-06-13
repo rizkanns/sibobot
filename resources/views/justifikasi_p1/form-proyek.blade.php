@@ -34,7 +34,7 @@
                         <div class="col-sm-12">
                             <div class="white-box">
                                 <h1 class="text-center" style="color: #d51100; font-weight: 500">PROYEK / KEGIATAN</h1>
-                                <form enctype="multipart/form-data" class="form-horizontal form-material" action="{{ route('proyek_insert', ['id_pelanggan' => $listpelanggan->id_pelanggan, 'id_proyek' => $listproyek->id_proyek, 'id_aspek' => $listaspek->id_aspek]) }}" method="post">
+                                <form enctype="multipart/form-data" class="form-horizontal form-material" action="{{ route('p1_proyek_insert', ['id_pelanggan' => $listpelanggan->id_pelanggan, 'id_proyek' => $listproyek->id_proyek, 'id_aspek' => $listaspek->id_aspek]) }}" method="post">
                                     {{ csrf_field() }}
                                     <div class="row">
                                         <div class="col-sm-12 col-lg-6">
@@ -138,7 +138,7 @@
                                                             <option value="{{$listmitra->id_mitra}}" @if($listmitra->id_mitra == $listproyek->id_mitra_2 && $listproyek->id_mitra_2 != NULL) selected @endif>{{$listmitra->nama_mitra}}</option>
                                                             @endforeach
                                                         </select>                                                        
-                                                        <a href="{{ route('mitra2_update', ['id_pelanggan' => $listpelanggan->id_pelanggan, 'id_proyek' => $listproyek->id_proyek, 'id_aspek' => $listaspek->id_aspek]) }}"  style="float: left;" class="btn btn-success waves-effect waves-light m-t-10"><i class="fa fa-edit"></i> Ubah</a>
+                                                        <a href="{{ route('p1_mitra2_update', ['id_pelanggan' => $listpelanggan->id_pelanggan, 'id_proyek' => $listproyek->id_proyek, 'id_aspek' => $listaspek->id_aspek]) }}"  style="float: left;" class="btn btn-success waves-effect waves-light m-t-10"><i class="fa fa-edit"></i> Ubah</a>
                                                         <input type="text" name="keterangan_mitra_2" class="form-control" placeholder="Keterangan mitra 2" value="{{$listproyek->keterangan_mitra_2}}">
                                                         <br>
                                                     </div>
@@ -213,7 +213,7 @@
                                                     
                                                 </div>
                                                 <div class="col-sm-3">
-                                                    <a href="{{ route('file_p0_update', ['id_pelanggan' => $listpelanggan->id_pelanggan, 'id_proyek' => $listproyek->id_proyek, 'id_aspek' => $listaspek->id_aspek]) }}"  style="float: left;" class="btn btn-success waves-effect waves-light m-t-10"><i class="fa fa-edit"></i> Ubah</a>
+                                                    <a href="{{ route('p1_file_p0_update', ['id_pelanggan' => $listpelanggan->id_pelanggan, 'id_proyek' => $listproyek->id_proyek, 'id_aspek' => $listaspek->id_aspek]) }}"  style="float: left;" class="btn btn-success waves-effect waves-light m-t-10"><i class="fa fa-edit"></i> Ubah</a>
                                                 </div>
                                             </div>
                                             @endif
@@ -233,7 +233,7 @@
                                                     
                                                 </div>
                                                 <div class="col-sm-3">
-                                                    <a href="{{ route('file_p1_update', ['id_pelanggan' => $listpelanggan->id_pelanggan, 'id_proyek' => $listproyek->id_proyek, 'id_aspek' => $listaspek->id_aspek]) }}"  style="float: left;" class="btn btn-success waves-effect waves-light m-t-10"><i class="fa fa-edit"></i> Ubah</a>
+                                                    <a href="{{ route('p1_file_p1_update', ['id_pelanggan' => $listpelanggan->id_pelanggan, 'id_proyek' => $listproyek->id_proyek, 'id_aspek' => $listaspek->id_aspek]) }}"  style="float: left;" class="btn btn-success waves-effect waves-light m-t-10"><i class="fa fa-edit"></i> Ubah</a>
                                                 </div>
                                             </div>
                                             @endif
@@ -241,7 +241,7 @@
                                         </div>
                                     </div>
                                     <div class="row form-group m-b-0">
-                                        <a href="{{ route('pelanggan_single', ['id_pelanggan' => $listpelanggan->id_pelanggan, 'id_proyek' => $listproyek->id_proyek, 'id_aspek' => $listaspek->id_aspek]) }}"  style="float: left;" class="btn btn-danger waves-effect waves-light m-t-10">Sebelumnya</a>
+                                        <a href="{{ route('p1_pelanggan_single', ['id_pelanggan' => $listpelanggan->id_pelanggan, 'id_proyek' => $listproyek->id_proyek, 'id_aspek' => $listaspek->id_aspek]) }}"  style="float: left;" class="btn btn-danger waves-effect waves-light m-t-10">Sebelumnya</a>
                                         <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10"  name="myButton" value="save">Selanjutnya</button>
                                     </div>
                                 </form>

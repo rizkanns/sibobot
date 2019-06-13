@@ -32,35 +32,11 @@
                     <div class="col-sm-12">
                         <div class="white-box">
                             <h1 class="text-center" style="color: #d51100; font-weight: 500">ASPEK BISNIS</h1>
-                            <form class="form-horizontal form-material"action="{{ route('aspek_insert', ['id_pelanggan' => $listpelanggan->id_pelanggan, 'id_proyek' => $listproyek->id_proyek, 'id_aspek' => $listaspek->id_aspek]) }}" method = "get">
+                            <form class="form-horizontal form-material"action="{{ route('p0_aspek_insert', ['id_pelanggan' => $listpelanggan->id_pelanggan, 'id_proyek' => $listproyek->id_proyek, 'id_aspek' => $listaspek->id_aspek]) }}" method = "get">
                                 {{-- {{ csrf_field() }} --}}
                             @if($listproyek->mitra_2 == NULL)
                             <div class="row">
                             	<div class="col-sm-12 col-lg-12">
-                                    <div class="row">
-                                            <label for="inputEmail3" class="col-sm-3 control-label">Layanan Revenue</label>
-                                            <div class="col-sm-9">
-                                                <select class="selectpicker m-b-20" data-style="form-control" name="layanan_revenue">
-                                                    @if($listaspek->layanan_revenue == 'Bulanan')
-                                                    <option value="Bulanan" selected>Bulanan</option>
-                                                    @else
-                                                    <option value="Tahunan">Tahunan</option>
-                                                    @endif
-
-                                                    @if($listaspek->layanan_revenue == 'Tahunan')
-                                                    <option value="Tahunan" selected>Tahunan</option>
-                                                    @else
-                                                    <option value="OTC">OTC</option>
-                                                    @endif
-
-                                                    @if($listaspek->layanan_revenue == 'Pengadaan Beli')
-                                                    <option value="OTC" selected>OTC</option>
-                                                    @else
-                                                    <option value="Bulanan">Bulanan</option>
-                                                    @endif
-                                                </select>
-                                            </div>
-                                    </div>
                                     <div class="form-group">
                                         <label for="inputEmail3" class="col-sm-3 control-label">Nilai Kontrak</label>
                                         <div class="col-sm-9">
@@ -166,7 +142,7 @@
                             </div>
                             @endif
                                 <div class="form-group m-b-0">
-                                    <a href="{{ route('proyek_single', ['id_pelanggan' => $listpelanggan->id_pelanggan, 'id_proyek' => $listproyek->id_proyek, 'id_aspek' => $listaspek->id_aspek]) }}"  style="float: left;" class="btn btn-danger waves-effect waves-light m-t-10">Sebelumnya</a>
+                                    <a href="{{ route('p0_proyek_single', ['id_pelanggan' => $listpelanggan->id_pelanggan, 'id_proyek' => $listproyek->id_proyek, 'id_aspek' => $listaspek->id_aspek]) }}"  style="float: left;" class="btn btn-danger waves-effect waves-light m-t-10">Sebelumnya</a>
                                     <button alt="alert" type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10 img-responsive model_img" id="sa-save">Simpan</button>
                                 </div>
                             </form>
