@@ -39,11 +39,11 @@ Route::group(['middleware'=>['auth']], function()
 
 	// Route::get('/home', 'HomeController@index')->name('index');
 
-	Route::get('/riwayat', 'Dashboard\DashboardController@index')->name('index');
+	Route::get('/dashboard', 'Dashboard\DashboardController@index')->name('index');
 	Route::group(['prefix' => 'dashboard'], function()
 	{
 		// Route::get('bukti_p0/pdf/','Dashboard\DashboardController@viewPdf')->name('view_pdf');
-		Route::get('/draft', 'Dashboard\DashboardController@draft')->name('draft');
+		Route::get('/riwayat', 'Dashboard\DashboardController@riwayat')->name('riwayat');
 		Route::get('/maju', 'Dashboard\DashboardController@maju')->name('maju');
 		Route::get('/kalah', 'Dashboard\DashboardController@kalah')->name('kalah');
 		Route::get('/excel', 'Dashboard\DashboardController@downloadExcel')->name('excel');

@@ -85,7 +85,7 @@
                     </div>
                 </div>
                 <ul class="nav" id="side-menu">
-                     @if (Request::is('/riwayat'))
+                     @if (Request::is('*/dashboard*') OR Request::is('/'))
                     <li>
                         <a href="{{route('index')}}" class="waves-effect active">
                             <span class="hide-menu"> DASHBOARD </span>
@@ -119,8 +119,8 @@
                         <a href="#" class="waves-effect active"> <i class="fa fa-tasks fa-fw" data-icon="v"></i> <span class="hide-menu"> DAFTAR PROYEK <span class="fa arrow"></span> </span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="{{route('draft')}}" class="waves-effect">
-                                        <span class="hide-menu"> DRAFT PROYEK </span>
+                                    <a href="{{route('riwayat')}}" class="waves-effect">
+                                        <span class="hide-menu"> RIWAYAT PROYEK </span>
                                     </a>
                                 </li>
                                 <li>
@@ -140,8 +140,8 @@
                         <a href="#" class="waves-effect"> <i class="fa fa-tasks fa-fw" data-icon="v"></i> <span class="hide-menu"> DAFTAR PROYEK <span class="fa arrow"></span> </span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="{{route('draft')}}" class="waves-effect">
-                                        <span class="hide-menu"> DRAFT PROYEK </span>
+                                    <a href="{{route('riwayat')}}" class="waves-effect">
+                                        <span class="hide-menu"> RIWAYAT PROYEK </span>
                                     </a>
                                 </li>
                                 <li>
@@ -222,18 +222,8 @@
                                 <a href="{{route('margin')}}" class="waves-effect">
                                     <span class="hide-menu"> RUMUS MARGIN </span>
                                 </a>
-                            </li>
-                            <li>
-                                <a href="{{route('parameter')}}" class="waves-effect">
-                                    <span class="hide-menu"> KELOLA PARAMETER </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{route('hasil')}}" class="waves-effect">
-                                    <span class="hide-menu"> LIHAT HASIL </span>
-                                </a>
-                            </li>
-                        </ul>
+                            </li
+>                        </ul>
                     </li>
                     @else
                     <li>
@@ -242,16 +232,6 @@
                             <li>
                                 <a href="{{route('margin')}}" class="waves-effect">
                                     <span class="hide-menu"> RUMUS MARGIN </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{route('parameter')}}" class="waves-effect">
-                                    <span class="hide-menu"> KELOLA PARAMETER </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{route('hasil')}}" class="waves-effect">
-                                    <span class="hide-menu"> LIHAT HASIL </span>
                                 </a>
                             </li>
                         </ul>
