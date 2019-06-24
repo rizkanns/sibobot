@@ -101,7 +101,7 @@
                                 </div>
                             </div>
                             <div class="form-group m-b-0">
-                                <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Selanjutnya</button>
+                                <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Simpan</button>
                                 {{-- <a href="form-justifikasi-proyek.html"><i class="fa fa-arrow-circle-right m-t-30" style="color: #d51100; float: right; font-size: 250%"></i></a> --}}
                             </div>  
                         </form>
