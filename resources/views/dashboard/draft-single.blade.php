@@ -368,10 +368,7 @@
                                             </ul>
                                         </div>
 
-                                        <br>
-                                        <br>
-
-                                        <div class="btn-group dropup m-r-10" style="font-size: 13.5px;">
+                                        <!-- <div class="btn-group dropup m-r-10" style="font-size: 13.5px;">
                                             <button aria-expanded="false" data-toggle="dropdown" class="btn btn-default dropdown-toggle waves-effect waves-light" type="button" data-placement="top" title="Unggah Dokumen Pengajuan"><i class="fa fa-upload"></i> Unggah Scan PDF <span class="caret"> </span></button>
                                             <ul role="menu" class="dropdown-menu" style="min-width: 0">
                                                 @if(empty($listproyek->file_p0))
@@ -381,7 +378,7 @@
                                                 @endif
                                                 <li><a><span data-toggle="modal" data-target="#uploadP1-{{$listproyek->id_proyek}}"> Dokumen P1</span></a></li>
                                             </ul>
-                                        </div>
+                                        </div> -->
 
                                         <div class="modal fade" id="uploadP0-{{$listproyek->id_proyek}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
                                             <div class="modal-dialog modal-lg">

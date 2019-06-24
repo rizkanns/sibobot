@@ -62,10 +62,10 @@ class DashboardController extends Controller
             ->leftjoin('mitra','mitra.id_mitra','=','proyek.id_mitra_2')
             ->get();
 
-        return view('dashboard.riwayat', ['proyek'=>$proyek,'setuju'=>$setuju,'mitra'=>$mitra]);
+        return view('dashboard.draft', ['proyek'=>$proyek,'setuju'=>$setuju,'mitra'=>$mitra]);
     }
 
-    public function draft() 
+    public function riwayat() 
     { 
         $proyek = DB::table('proyek') 
             ->leftjoin('users','users.id','=','proyek.id_users')->where('users.id',Auth::user()->id) 
@@ -87,7 +87,7 @@ class DashboardController extends Controller
             ->leftjoin('mitra','mitra.id_mitra','=','proyek.id_mitra_2')
             ->get();
 
-        return view('dashboard.draft', ['proyek'=>$proyek,'setuju'=>$setuju,'mitra'=>$mitra]);
+        return view('dashboard.riwayat', ['proyek'=>$proyek,'setuju'=>$setuju,'mitra'=>$mitra]);
     }
 
     public function maju() 
