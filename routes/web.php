@@ -100,8 +100,8 @@ Route::group(['middleware'=>['auth']], function()
 	Route::get('/witel/insert','KelolaData\WitelController@insertWitel')->name('witel_insert');
 	Route::get('/witel/update/{id}','KelolaData\WitelController@updateWitel')->name('witel_update');
 	Route::get('/witel/delete/{id}','KelolaData\WitelController@deleteWitel')->name('witel_delete');
-	Route::get('/witel/single/{id}','KelolaData\WitelController@indexDetilWitel')->name('witel_single');
-	Route::get('/witel/detil/{id}','KelolaData\WitelController@indexDetilWitel')->name('witel_detil');
+	Route::get('/witel/detil/{id}','KelolaData\WitelController@indexDetilWitel')->name('witel_single');
+	Route::get('/witel/detil-delete/{id_witel}/{id_jabatan}','KelolaData\WitelController@deleteDetilWitel')->name('witel_detil_delete');
 
 	Route::get('/user','KelolaData\PejabatController@indexPejabat')->name('pejabat');
 	Route::get('/user/insert','KelolaData\PejabatController@insertPejabat')->name('user_insert');

@@ -30,6 +30,7 @@
                         @endforeach
                         <form class="form-horizontal form-material" action="{{ route('witel') }}" method = "get">
                             <div class="form-group">
+                                @foreach ($se->where('id_witel','=',$listwitel->id_witel) as $listse)
                                 <label for="inputEmail3" class="col-sm-3 control-label">Sales Engineer</label>
                                 <div class="col-sm-6">
                                     <!-- <select class="selectpicker m-b-20" data-style="form-control" name="id_witel">
@@ -37,13 +38,14 @@
                                             <option value="{{$listwitel->id_witel}}">{{$listse->name}}</option>
                                         @endforeach
                                     </select> -->
-                                    @foreach ($se->where('id_witel','=',$listwitel->id_witel) as $listse)
+                                    <!-- @foreach ($se->where('id_witel','=',$listwitel->id_witel) as $listse) -->
                                         <input disabled type="text" class="form-control" id="inputEmail3" placeholder="Nama Sales Engineer" name="id_witel" value="{{$listse->name}}">
-                                    @endforeach
+                                    <!-- @endforeach -->
                                 </div>
                                 <div class="col-sm-1">
-                                    <button type="submit" class="btn btn-danger btn-rounded" data-toggle="modal" data-target="#delete-{{$listwitel->id_witel}}" data-plaement="top" title="Hapus WITEL"><i class="ti-trash"></i> Reset</button>
+                                    <a class="btn btn-danger btn-rounded" href="{{ route('witel_detil_delete', ['id_witel' => $listwitel->id_witel,'id_jabatan' => $listse->id_jabatan]) }}"><i class="ti-trash"></i> Reset</a>
                                 </div>
+                                @endforeach
                             </div>
                             <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-3 control-label">Bidding</label>
@@ -101,8 +103,8 @@
                                 </div>
                             </div>
                             <div class="form-group m-b-0">
-                                <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Simpan</button>
-                                {{-- <a href="form-justifikasi-proyek.html"><i class="fa fa-arrow-circle-right m-t-30" style="color: #d51100; float: right; font-size: 250%"></i></a> --}}
+                               <!--  <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Simpan</button>
+                                {{-- <a href="form-justifikasi-proyek.html"><i class="fa fa-arrow-circle-right m-t-30" style="color: #d51100; float: right; font-size: 250%"></i></a> --}} -->
                             </div>  
                         </form>
                     </div>

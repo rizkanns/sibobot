@@ -30,17 +30,33 @@
                             <div class="row">
                                 <label for="inputEmail3" class="col-sm-2 control-label">Layanan Revenue</label>
                                 <div class="col-sm-9">
-                                    <select class="selectpicker m-b-20" data-style="form-control">
+                                    <select class="selectpicker m-b-20" data-style="form-control" name="id_revenue" >
                                     @foreach ($revenue as $listrevenue)
                                         <option value="{{$listrevenue->id_revenue}}" @if($listnilai->id_revenue == $listrevenue->id_revenue) selected @endif>{{$listrevenue->nama_revenue}}</option>
                                     @endforeach
                                 </select>
                                 </div>
                             </div>
-
-                            @if($listnilai->id_revenue == 1)
+                            <div class="row">
+                                <label for="inputEmail3" class="col-sm-2 control-label">Rumus</label>
+                                <div class="col-sm-9">
+                                    <select class="selectpicker m-b-20" data-style="form-control" name="id_rumus" id="test" onchange="showDiv('hidden_div', this)">
+                                    @foreach($rumus as $listrumus)
+                                    <option value="{{$listrumus->id_rumus}}">{{$listrumus->rumus_awal}}</option>
+                                    @endforeach
+                                </div>
+                            </div>
+                            
+                            <br><br>
                                 <div class="form-group">
-                                    <label for="inputEmail3" class="col-sm-2 control-label">Rumus</label>
+                                    <label for="inputEmail3" class="col-sm-2 control-label">Nilai</label>
+                                    <div class="col-sm-3">
+                                        <input disabled type="decimals" class="form-control" name="nilai_pc"> 
+                                    </div>
+                                </div>
+
+                                <div class="form-group" id="hidden_1" style="display: none;">
+                                    <label for="inputEmail3" class="col-sm-2 control-label">Rumus Akhir</label>
                                     
                                     <div class="col-sm-2">
                                         <h5>Masa Kontrak (Thn)</h5>
@@ -58,9 +74,9 @@
                                         <input type="decimals" class="form-control" placeholder="n (nilai bobot)" name="nilai_pc"> 
                                     </div>
                                 </div>
-                            @elseif($listnilai->id_revenue == 2)
-                                <div class="form-group">
-                                    <label for="inputEmail3" class="col-sm-2 control-label">Rumus</label>
+
+                                <div class="form-group" id="hidden_2" style="display: none;">
+                                    <label for="inputEmail3" class="col-sm-2 control-label">Rumus Akhir</label>
                                     
                                     <div class="col-sm-2">
                                         <h5>Masa Kontrak (Bln)</h5>
@@ -78,8 +94,8 @@
                                         <input type="decimals" class="form-control" placeholder="n (nilai bobot)" name="nilai_pc"> 
                                     </div>
                                 </div>
-                             @elseif($listnilai->id_revenue == 3)
-                                <div class="form-group">
+
+                                <div class="form-group" id="hidden_3" style="display: none;">
                                     <label for="inputEmail3" class="col-sm-2 control-label">Rumus Akhir</label>
                                     
                                     <div class="col-sm-2">
@@ -92,13 +108,9 @@
                                         <input type="decimals" class="form-control" placeholder="n (nilai bobot)" name="nilai_pc"> 
                                     </div>
                                 </div>
-                            @else
-                            @endif
-    
 
-                            <div class="form-group m-b-0">
-                                <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Simpan</button>
-                            </div>
+                                <div class="form-group m-b-0">
+                                    <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Simpan</button>
                             </form>
                         </div>
                     </div>

@@ -12,8 +12,8 @@ class Jabatan extends Model
     public $incrementing = true;
     public $timestamp = true;
 
-    public function user()
+    public function jabatan()
     {
-        return $this->hasMany('App\User', 'id_jabatan','id_jabatan');
+        return $this->hasMany('App\Jabatan', 'id_jabatan','id_jabatan');
     }
 }

@@ -50,6 +50,13 @@ class MarginController extends Controller
     	$margin->id_revenue = $request->input('id_revenue');
     	$margin->id_rumus = $request->input('id_rumus');
     	$margin->nilai_pc = $request->input('nilai_pc');
+
+        if ($margin->id_revenue == 1)
+            $margin->rumus_akhir = "12 x nilai_kontrak x ".$margin->nilai_pc;
+        elseif ($margin->id_revenue == 2)
+            $margin->rumus_akhir = "masa_kontrak x nilai_kontrak x ".$margin->nilai_pc;
+        else
+            $margin->rumus_akhir = "nilai_kontrak x ".$margin->nilai_pc;
     	$margin->save();
 
     	// dd($margin);
@@ -63,7 +70,14 @@ class MarginController extends Controller
     	$margin->id_revenue = $request->input('id_revenue');
     	$margin->id_rumus = $request->input('id_rumus');
     	$margin->nilai_pc = $request->input('nilai_pc');
-    	$margin->save();
+
+    	if ($margin->id_revenue == 1)
+            $margin->rumus_akhir = "12 x nilai_kontrak x ".$margin->nilai_pc;
+        elseif ($margin->id_revenue == 2)
+            $margin->rumus_akhir = "masa_kontrak x nilai_kontrak x ".$margin->nilai_pc;
+        else
+            $margin->rumus_akhir = "nilai_kontrak x ".$margin->nilai_pc;
+        $margin->save();
 
     	// dd($margin);
     	return redirect()->route('margin');

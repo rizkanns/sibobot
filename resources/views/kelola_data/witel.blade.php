@@ -75,6 +75,66 @@
                                                         <input type="text" class="form-control" id="inputEmail3" placeholder="Nama WITEL" name="nama_witel">
                                                     </div>
                                                 </div>
+                                                <!-- <div class="row">
+                                                    <label for="inputEmail3" class="col-sm-3 control-label">Sales Engineering</label>
+                                                    <div class="col-sm-5">
+                                                       <select class="selectpicker m-b-20" data-style="form-control" name="se">
+                                                        @foreach ($user->where('id_jabatan','=',2) as $listuser)
+                                                            <option value="{{$listuser->id}}">{{$listuser->name}}</option>
+                                                        @endforeach
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <label for="inputEmail3" class="col-sm-3 control-label">Bidding</label>
+                                                    <div class="col-sm-5">
+                                                       <select class="selectpicker m-b-20" data-style="form-control" name="bidding">
+                                                        @foreach ($user->where('id_jabatan','=',3) as $listuser)
+                                                            <option value="{{$listuser->id}}">{{$listuser->name}}</option>
+                                                        @endforeach
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <label for="inputEmail3" class="col-sm-3 control-label">Manager</label>
+                                                    <div class="col-sm-5">
+                                                       <select class="selectpicker m-b-20" data-style="form-control" name="manager">
+                                                        @foreach ($user->where('id_jabatan','=',4) as $listuser)
+                                                            <option value="{{$listuser->id}}">{{$listuser->name}}</option>
+                                                        @endforeach
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <label for="inputEmail3" class="col-sm-3 control-label">Deputy</label>
+                                                    <div class="col-sm-5">
+                                                       <select class="selectpicker m-b-20" data-style="form-control" name="deputy">
+                                                        @foreach ($user->where('id_jabatan','=',5) as $listuser)
+                                                            <option value="{{$listuser->id}}">{{$listuser->name}}</option>
+                                                        @endforeach
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <label for="inputEmail3" class="col-sm-3 control-label">General Manager</label>
+                                                    <div class="col-sm-5">
+                                                       <select class="selectpicker m-b-20" data-style="form-control" name="gm">
+                                                        @foreach ($user->where('id_jabatan','=',6) as $listuser)
+                                                            <option value="{{$listuser->id}}">{{$listuser->name}}</option>
+                                                        @endforeach
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <label for="inputEmail3" class="col-sm-3 control-label">Approval</label>
+                                                    <div class="col-sm-5">
+                                                       <select class="selectpicker m-b-20" data-style="form-control" name="approval">
+                                                        @foreach ($user->where('id_jabatan','=',7) as $listuser)
+                                                            <option value="{{$listuser->id}}">{{$listuser->name}}</option>
+                                                        @endforeach
+                                                        </select>
+                                                    </div>
+                                                </div> -->
                                                 <div class="form-group m-b-0">
                                                     <a href="#" class="fcbtn btn btn-default btn-1f m-r-10 m-t-10" data-dismiss="modal" style="padding-top: 5.5px; padding-bottom: 5.5px; float: right; margin-left: 10px">Keluar</a>
                                                     <button id="divide" type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Simpan</button>
@@ -87,6 +147,94 @@
 
                             
                     <!-- <div class="table-responsive"> -->
+                        <!-- <table class="table color-table warning-table example">
+                            <thead>
+                                <tr>
+                                    <th colspan=9>DAFTAR WITEL</th>
+                                </tr>
+                                <tr>
+                                    <th class="text-center" style="background-color: white; color: black;">No.</th>
+                                    <th class="text-center" style="background-color: white; color: black;">Witel</th>
+                                    <th class="text-center" style="background-color: white; color: black;">SE</th>
+                                    <th class="text-center" style="background-color: white; color: black;">Bidding</th>
+                                    <th class="text-center" style="background-color: white; color: black;">Manager</th>
+                                    <th class="text-center" style="background-color: white; color: black;">Deputy</th>
+                                    <th class="text-center" style="background-color: white; color: black;">GM</th>
+                                    <th class="text-center" style="background-color: white; color: black;">Approval</th>
+                                    <th class="text-center" style="background-color: white; color: black;">Aksi</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <?php $x=1; ?>
+                                @foreach($witel as $listwitel)                             
+                                    <tr class="fuckOffPadding">
+                                        <td style="vertical-align: middle;"><?php echo $x; $x=$x+1; ?></td>
+                                        <td align="center" style="width: 9%;">{{$listwitel->nama_witel}}</td>
+                                        <td style="text-align: justify;">
+                                            @foreach($se->where('id_witel','=',$listwitel->id_witel) as $listse)
+                                                {{$listse->name}}<br>
+                                                {{$listse->nik}}
+                                            @endforeach
+                                        </td>
+                                        <td style="text-align: justify;">
+                                            @foreach($bidding->where('id_witel','=',$listwitel->id_witel) as $listbidding)
+                                                {{$listbidding->name}}<br>
+                                                {{$listbidding->nik}}
+                                            @endforeach
+                                        </td>
+                                        <td style="text-align: justify;">
+                                            @foreach($manager->where('id_witel','=',$listwitel->id_witel) as $listmanager)
+                                                {{$listmanager->name}}<br>
+                                                {{$listmanager->nik}}
+                                            @endforeach
+                                        </td>
+                                        <td style="text-align: justify;">
+                                            @foreach($deputy->where('id_witel','=',$listwitel->id_witel) as $listdeputy)
+                                                {{$listdeputy->name}}<br>
+                                                {{$listdeputy->nik}}
+                                            @endforeach
+                                        </td>
+                                        <td style="text-align: justify;">
+                                            @foreach($gm->where('id_witel','=',$listwitel->id_witel) as $listgm)
+                                                {{$listgm->name}}<br>
+                                                {{$listgm->nik}}
+                                            @endforeach
+                                        </td>
+                                        <td style="text-align: justify;">
+                                            @foreach($approval->where('id_witel','=',$listwitel->id_witel) as $listapproval)
+                                                {{$listapproval->name}}<br>
+                                                {{$listapproval->nik}}
+                                            @endforeach
+                                        </td>
+
+                                        <td align="center">
+                                            <a class="btn btn-danger btn-rounded" href="{{ route('witel_single', ['id_witel' => $listwitel->id_witel]) }}"  style="float: left;"><i class="ti-pencil-alt"></i></a>
+
+                                            <button type="submit" class="btn btn-danger btn-rounded" data-toggle="modal" data-target="#delete-{{$listwitel->id_witel}}" data-plaement="top" title="Hapus WITEL"><i class="ti-trash"></i></button>
+                                            <div class="modal fade" id="delete-{{$listwitel->id_witel}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+                                                <div class="modal-dialog modal-lg">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h4 class="modal-title" id="myLargeModalLabel" style="font-weight: 450;">Hapus </h4> 
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <form class="form-horizontal form-material" action="{{ route('witel_delete', ['id' => $listwitel->id_witel]) }}" method = "get">
+                                                            <h5> Apakah Anda yakin untuk menghapus "{{$listwitel->nama_witel}}" "? </h5>
+                                                                <div class="form-group m-b-0">
+                                                                    <a href="#" class="fcbtn btn btn-default btn-1f m-r-10 m-t-10" data-dismiss="modal" style="padding-top: 5.5px; padding-bottom: 5.5px; float: right; margin-left: 10px">Keluar</a>
+                                                                    <button type="submit" style="float: right;" class="btn btn-danger waves-effect waves-light m-t-10">Hapus</button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                        </table> -->
                         <table class="table color-table warning-table example">
                             <thead>
                                 <tr>

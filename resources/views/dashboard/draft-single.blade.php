@@ -538,12 +538,6 @@
                                                 </tr>
                                                 @endif
                                                 <tr id="footer-padding">
-                                                    <td style="font-weight: 450; color: black;">Proyek Belum Pernah</td>
-                                                    <td></td>
-                                                    <td  style="font-weight: 300; color: black;">Memenuhi &emsp;<i class="fa fa-check btn btn-success btn-rounded"></i></td>
-                                                    <br>
-                                                </tr>
-                                                <tr id="footer-padding">
                                                     <td style="font-weight: 450; color: black;">Hasil Rekomendasi</td>
 
                                                     <td colspan="2"> Maka dari itu proyek direkomendasikan untuk distujui.</td>

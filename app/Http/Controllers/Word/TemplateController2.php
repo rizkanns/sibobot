@@ -121,13 +121,17 @@ class TemplateController extends Controller
             $templateProcessor->setValue('namaMitra', $proyek->nama_mitra);
         }
 
+        // ----------- //
+        // image p1 p0 //
+        // ------------//
+
         list($width, $height) = getimagesize(public_path('plugins/images/file_p0/'. $proyek->file_p0));
         if($width > 495){
             $percentage = 495/$width;
             $width = $width*$percentage;
             $height = $height*$percentage;
         }
-        $templateProcessor->setImg('file',array('src' => public_path('plugins/images/file_p0/'. $proyek->file_p0),'swh'=>'200', 'size'=>array(0=>$width, 1=>$height)));
+        $templateProcessor->setImage('file',array('src' => public_path('plugins/images/file_p0/'. $proyek->file_p0),'swh'=>'200', 'size'=>array(0=>$width, 1=>$height)));
 
         // K. INFORMASI TAMBAHAN
         // $templateProcessor->setValue('am', Auth::user()->name);
@@ -312,8 +316,8 @@ class TemplateController extends Controller
         }
         if(isset($proyek->id_mitra_2)){
             $templateProcessor->setValue('terdiriDari2', 'Terdiri dari: ');
-            $templateProcessor->setValue('colocation', "i.  Colocation");
-            $templateProcessor->setValue('revenueCPEMitra', "ii.    Revenue CPE");
+            $templateProcessor->setValue('colocation', "i.	Colocation");
+            $templateProcessor->setValue('revenueCPEMitra', "ii.	Revenue CPE");
             $templateProcessor->setValue('colocationValue', ': Rp   '.number_format($proyek->colocation).',- (Sebelum PPN)');
             $templateProcessor->setValue('revenueCPEMitraValue', ': Rp   '.number_format($proyek->revenue_cpe_mitra).',- (Sebelum PPN)');
         }
@@ -348,13 +352,17 @@ class TemplateController extends Controller
         $templateProcessor->setValue('pemasukanDokumen', Carbon::createFromFormat('Y-m-d', $proyek->pemasukan_dokumen)->formatLocalized('%B %Y'));
         setlocale(LC_TIME, '');
 
+        // ----------- //
+        // image p1 p0 //
+        // ------------//
+        
         list($width, $height) = getimagesize(public_path('plugins/images/file_p1/'. $proyek->file_p1));
         if($width > 755.2){
             $percentage = 755.2/$width;
             $width = $width*$percentage;
             $height = $height*$percentage;
         }
-        $templateProcessor->setImg('selector',array('src' => public_path('plugins/images/file_p1/'. $proyek->file_p1),'swh'=>'200', 'size'=>array(0=>$width, 1=>$height)));
+        $templateProcessor->setImage('selector',array('src' => public_path('plugins/images/file_p1/'. $proyek->file_p1),'swh'=>'200', 'size'=>array(0=>$width, 1=>$height)));
 
         // K. INFORMASI TAMBAHAN
         // $templateProcessor->setValue('am', Auth::user()->name);
