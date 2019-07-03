@@ -193,7 +193,9 @@ class DashboardController extends Controller
             ->leftjoin('mitra','mitra.id_mitra','=','proyek.id_mitra_2')
             ->get();
 
-        return view('dashboard.draft-single', ['proyek'=>$proyek,'setuju'=>$setuju,'mitra'=>$mitra]);
+        $rumus = DB::table('nilai')->get();
+
+        return view('dashboard.draft-single', ['proyek'=>$proyek,'setuju'=>$setuju,'mitra'=>$mitra,'rumus'=>$rumus]);
     }
 
     public function insertBuktiP1(Request $request,$id_proyek)
