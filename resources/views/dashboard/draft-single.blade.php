@@ -516,11 +516,16 @@
                                                     <td></td>
                                                 </tr>
                                                 <tr id="footer-padding">
+                                                    <td style="font-weight: 450; color: black;">Nilai Kontrak</td>
+                                                    <td>Rp {{number_format($listproyek->nilai_kontrak)}}</td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr id="footer-padding">
                                                     <td style="font-weight: 450; color: black;">Minimum Total Margin</td>
                                                     @if($listproyek->layanan_revenue == 'Tahunan')
                                                         @foreach($rumus->where('id_nilai',1) as $listrumus)    
-                                                            <td>Rp {{number_format($listproyek->rp_margin-(12*$listproyek->nilai_kontrak*$listrumus->nilai_pc))}}</td>
-                                                            @if($listproyek->rp_margin > (12*$listproyek->nilai_kontrak*$listrumus->nilai_pc))
+                                                            <td>Rp {{number_format($listproyek->nilai_kontrak*$listrumus->nilai_pc)}}</td>
+                                                            @if($listproyek->rp_margin > ($listproyek->nilai_kontrak*$listrumus->nilai_pc))
                                                                 <td  style="font-weight: 300; color: black;">Memenuhi &emsp;<i class="fa fa-check btn btn-success btn-rounded"></i></td>
                                                             @else
                                                                 <td  style="font-weight: 300; color: black;">Tidak Memenuhi &emsp;<i class="fa fa-times btn btn-danger btn-rounded"></i></td>
@@ -574,10 +579,10 @@
                                                     <td> Maka dari itu proyek direkomendasikan untuk distujui.</td>
                                                     <td  style="font-weight: 300; color: black;">Rekomendasi:<br>Setujui &emsp;<i class="fa fa-check btn btn-success btn-rounded"></i><br><br>
                                                     
-                                                    @if($listproyek->layanan_revenue == 'Tahunan')
+                                                    <!-- @if($listproyek->layanan_revenue == 'Tahunan')
                                                         @foreach($rumus->where('id_nilai',1) as $listrumus)
                                                             @if($listproyek->rp_margin < (12*$listproyek->nilai_kontrak*$listrumus->nilai_pc))
-                                                                Nilai kontrak min: {{number_format(12*$listproyek->nilai_kontrak*$listrumus->nilai_pc)}}
+                                                                Nilai kontrak min: {{number_format($listproyek->nilai_kontrak*$listrumus->nilai_pc)}}
                                                             @else
                                                                 <br>
                                                             @endif
@@ -598,7 +603,7 @@
                                                                 <br>
                                                             @endif
                                                         @endforeach
-                                                    @endif
+                                                    @endif -->
                                                     </td>
                                                     <br>
                                                 </tr>

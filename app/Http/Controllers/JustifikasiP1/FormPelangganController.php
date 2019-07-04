@@ -36,7 +36,7 @@ class FormPelangganController extends Controller
         
 		$pelanggan = DB::table('pelanggan')->get();
 		$proyek = DB::table('proyek')->get();
-		$witel = DB::table('witel')->get();
+		$witel = DB::table('wilayah')->get();
 		// dd($witel);
 		return view('justifikasi_p1.form-pelanggan', ['pelanggan'=>$pelanggan, 'auth'=>$auth, 'proyek'=>$proyek, 'witel'=>$witel]);
 	}
@@ -45,7 +45,7 @@ class FormPelangganController extends Controller
     {
 		$pelanggan = New Pelanggan;
 		$pelanggan->id_pelanggan = $request->input('id_pelanggan');
-		$pelanggan->id_witel = $request->input('id_witel');
+		$pelanggan->id_wilayah = $request->input('id_wilayah');
 		$pelanggan->nama_pelanggan = $request->input('nama_pelanggan');
 		$pelanggan->nomor_pelanggan = $request->input('nomor_pelanggan');
 		$pelanggan->alamat_pelanggan = $request->input('alamat_pelanggan');
@@ -77,7 +77,7 @@ class FormPelangganController extends Controller
     	$data['proyek'] = Proyek::find($id_proyek)->where('id_proyek',$id_proyek)->get();
 		$data['pelanggan'] =Pelanggan::find($id_pelanggan)->where('id_pelanggan',$id_pelanggan)->get();
 		$data['aspek'] =AspekBisnis::find($id_aspek)->where('id_aspek',$id_aspek)->get();
-		$witel = DB::table('witel')->get();
+		$witel = DB::table('wilayah')->get();
     	return view('justifikasi_p1.form-pelanggan-update',$data,['witel'=>$witel]);
     }
 
@@ -85,7 +85,7 @@ class FormPelangganController extends Controller
     {
     	$pelanggan = Pelanggan::find($id_pelanggan);
 		$pelanggan->id_pelanggan = $request->input('id_pelanggan',$id_pelanggan);
-		$pelanggan->id_witel = $request->input('id_witel');
+		$pelanggan->id_wilayah = $request->input('id_wilayah');
 		$pelanggan->nama_pelanggan = $request->input('nama_pelanggan');
 		$pelanggan->nomor_pelanggan = $request->input('nomor_pelanggan');
 		$pelanggan->alamat_pelanggan = $request->input('alamat_pelanggan');

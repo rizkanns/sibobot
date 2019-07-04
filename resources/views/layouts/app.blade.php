@@ -159,7 +159,7 @@
                     @endif
                     
 
-                    @if (Request::is('*/mitra*') OR Request::is('*/unit-kerja*') OR Request::is('*/witel*') OR Request::is('*/pejabat*'))
+                    @if (Request::is('*/mitra*') OR Request::is('*/unit-kerja*') OR Request::is('*/wilayah*') OR Request::is('*/pejabat*'))
                     <li>
                         <a href="#" class="waves-effect active"> <i class="fa fa-tasks fa-fw" data-icon="v"></i> <span class="hide-menu"> KELOLA DATA <span class="fa arrow"></span> </span></a>
                             <ul class="nav nav-second-level">
@@ -179,7 +179,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{{route('witel')}}" class="waves-effect">
+                                    <a href="{{route('wilayah')}}" class="waves-effect">
                                         <span class="hide-menu"> WITEL </span>
                                     </a>
                                 </li>
@@ -205,7 +205,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{{route('witel')}}" class="waves-effect">
+                                    <a href="{{route('wilayah')}}" class="waves-effect">
                                         <span class="hide-menu"> WITEL </span>
                                     </a>
                                 </li>

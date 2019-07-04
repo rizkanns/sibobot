@@ -61,7 +61,6 @@
                                     <th class="text-center" style="background-color: white; color: black;">Sum of Kontrak</th>
                                     <th class="text-center" style="background-color: white; color: black;">Sum of CPE Mitra</th>
                                     <th class="text-center" style="background-color: white; color: black;">Revenue Telkom vs Mitra</th>
-                                    <th class="text-center" style="background-color: white; color: black;">Download</th>
                                 </tr>
                             </thead>
                             <tbody class="text-center">
@@ -73,8 +72,7 @@
                                     <td style="vertical-align: middle;">Rp. 27.824.375.100</td>
                                     <td style="vertical-align: middle;">Rp. 21.812.047.202</td>
                                     <td style="vertical-align: middle;">20 %</td>
-                                    <td style="vertical-align: middle;">
-                                        <a href="{{ route('excel') }}">donwload</a>
+                                        oke
                                     </td>
                                 </tr>
 

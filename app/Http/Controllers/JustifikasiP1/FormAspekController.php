@@ -62,7 +62,7 @@ class FormAspekController extends Controller
 		$aspek->revenue_connectivity = $request->input('revenue_connectivity');
 		$aspek->revenue_cpe_proyek = $request->input('revenue_cpe_proyek');
 		$aspek->revenue_cpe_mitra = $request->input('revenue_cpe_mitra');
-		$aspek->margin_tg = number_format($aspek->rp_margin/$aspek->revenue_cpe_proyek*100,2);
+		$aspek->margin_tg = number_format($aspek->rp_margin/$aspek->beban_mitra*100,2);
 		$aspek->save();
 
 
