@@ -458,7 +458,7 @@
                                         @endif
                                     
                                     </td>
-                                    <td style="vertical-align: middle;" class="text-center">
+                                    <!-- <td style="vertical-align: middle;" class="text-center">
                                         @if(Auth::user()->jabatan->id_jabatan == 2)
                                         <span data-toggle="modal" data-target="#delete-{{$listproyek->id_proyek}}">
                                             <button type="button" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Hapus Data Pengajuan Justifikasi"><i class="fa fa-trash"></i> Hapus Proyek</button>
@@ -483,7 +483,7 @@
                                         </div> 
                                         @else
                                         @endif
-                                    </td>
+                                    </td> -->
                                 </tr>
                                 @if(Auth::user()->jabatan->id_jabatan == 1 OR Auth::user()->jabatan->id_jabatan == 2)
                                 <tr class="fuckOffPadding">
@@ -631,7 +631,7 @@
                                                                         <input type="radio" name="status_pengajuan" value="1" id="option1" autocomplete="off" checked> SETUJUI
                                                                     </label>
                                                                     <label class="btn btn-danger active notApproved">
-                                                                        <input type="radio" name="status_pengajuan" value="" id="option2" autocomplete="off"> BELUM DISETUJUI
+                                                                        <input type="radio" name="status_pengajuan" value="2" id="option2" autocomplete="off"> TIDAK DISETUJUI
                                                                     </label>
                                                                 </div>
                                                                 @endif

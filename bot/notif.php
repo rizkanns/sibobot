@@ -123,18 +123,20 @@ function create_response($text, $message)
         case '/help':
         case '/help'.$usernamebot :
             $hasil = "Berikut adalah daftar command yang dapat digunakan:
-            /time - Untuk mengetahui waktu lokal
-            /ongoing - Untuk melihat daftar proyek yang sedang berjalan
-            /thisweek - Untuk melihat daftar proyek yang akan selesai dalam kurun waktu 1 minggu (ready for service)";
+        /time - Untuk mengetahui waktu lokal
+        /draft - Untuk melihat daftar proyek yang akan diajukan
+        /ongoing - Untuk melihat daftar proyek yang sedang berjalan
+        /terminate - Untuk melihat daftar proyek yang gagal
+        /deadline - Untuk melihat daftar proyek yang akan selesai dalam kurun waktu 1 minggu (ready for service)";
             break;
 
-        case '/thisweek':
-        case '/thisweek'.$usernamebot :
+        case '/deadline':
+        case '/deadline'.$usernamebot :
 
-            $thisweek = "SELECT id_proyek, judul, ready_for_service, ready_for_service-CURDATE() as total
+            $deadline = "SELECT id_proyek, judul, ready_for_service, ready_for_service-CURDATE() as total
                         FROM proyek
                         WHERE ready_for_service-CURDATE()<=7 AND ready_for_service-CURDATE()>0;";
-            $result = $conn->query($thisweek);
+            $result = $conn->query($deadline);
 
             if ($result->num_rows > 0) {
                 // output data of each row
@@ -154,8 +156,50 @@ function create_response($text, $message)
 
             $ongoing = "SELECT id_proyek, judul, ready_for_service, ready_for_service-CURDATE() as total
                         FROM proyek
-                        WHERE status_pengajuan=0;";
+                        WHERE status_pengajuan=1;";
             $result = $conn->query($ongoing);
+
+            if ($result->num_rows > 0) {
+                // output data of each row
+                while($row = $result->fetch_assoc()) {
+                    $hasil = 
+                    "ALERT!
+            Proyek '". $row["judul"]. "'  akan selesai dalam ". $row["total"]. " hari
+            Ready For Service: ".$row["ready_for_service"]." ";
+                }
+            } else {
+                $hasil = "0 results";
+            }
+            break;
+
+        case '/draft':
+        case '/draft'.$usernamebot :
+
+            $draft = "SELECT id_proyek, judul, ready_for_service, ready_for_service-CURDATE() as total
+                        FROM proyek
+                        WHERE status_pengajuan=0;";
+            $result = $conn->query($draft);
+
+            if ($result->num_rows > 0) {
+                // output data of each row
+                while($row = $result->fetch_assoc()) {
+                    $hasil = 
+                    "ALERT!
+            Proyek '". $row["judul"]. "'  akan selesai dalam ". $row["total"]. " hari
+            Ready For Service: ".$row["ready_for_service"]." ";
+                }
+            } else {
+                $hasil = "0 results";
+            }
+            break;
+
+        case '/terminate':
+        case '/terminate'.$usernamebot :
+
+            $terminate = "SELECT id_proyek, judul, ready_for_service, ready_for_service-CURDATE() as total
+                        FROM proyek
+                        WHERE status_pengajuan='Batal';";
+            $result = $conn->query($terminate);
 
             if ($result->num_rows > 0) {
                 // output data of each row

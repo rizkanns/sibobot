@@ -130,7 +130,7 @@
                                 </li>
                                 <li>
                                     <a href="{{route('kalah')}}" class="waves-effect">
-                                        <span class="hide-menu"> PROYEK KALAH </span>
+                                        <span class="hide-menu"> PROYEK GAGAL </span>
                                     </a>
                                 </li>
                             </ul>
@@ -151,7 +151,7 @@
                                 </li>
                                 <li>
                                     <a href="{{route('kalah')}}" class="waves-effect">
-                                        <span class="hide-menu"> PROYEK KALAH </span>
+                                        <span class="hide-menu"> PROYEK GAGAL </span>
                                     </a>
                                 </li>
                             </ul>

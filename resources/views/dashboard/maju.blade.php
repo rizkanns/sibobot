@@ -54,7 +54,7 @@
                                     {{-- <th class="text-center" style="background-color: white; color: black;">Profit</th> --}}
                                     <th class="text-center" style="background-color: white; color: black;">Ready For Service</th>
                                     <th class="text-center" style="background-color: white; color: black;">Status</th>
-                                    <th class="text-center" style="background-color: white; color: black;">Aksi</th>
+                                    <th class="text-center" style="background-color: white; color: black; width: 35%;">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody class="text-center">
@@ -67,6 +67,7 @@
                                     {{-- <td style="vertical-align: middle;">{{$listproyek->margin_tg}} %</td> --}}
                                     <td style="vertical-align: middle;">{{date('d F Y', strtotime($listproyek->ready_for_service))}}</td>
                                     <td>
+
                                         <div class="white-box-2">
                                             @if($listproyek->status_pengajuan == 1)
                                             <p class="img-responsive model_img text-success" data-toggle="modal" data-target="#lanjut-{{$listproyek->id_proyek}}"> Lanjut </p>
@@ -107,10 +108,95 @@
                                         </div>
                                     </td>
                                     <td style="vertical-align: middle;">
+                                        <div class="btn-group dropup m-r-10" style="font-size: 13.5px;">
+                                            <button aria-expanded="false" data-toggle="dropdown" class="btn btn-default dropdown-toggle waves-effect waves-light" type="button" data-placement="top" title="Unggah Dokumen Pengajuan"><i class="fa fa-upload"></i> Unggah Scan PDF <span class="caret"> </span></button>
+                                            <ul role="menu" class="dropdown-menu" style="min-width: 0">
+                                                @if(empty($listproyek->file_p0))
+                                                <li><a href="#" class="disableditem" aria-disabled="true"> Dokumen P0</a></li>
+                                                @else
+                                                <li><a><span data-toggle="modal" data-target="#uploadP0-{{$listproyek->id_proyek}}"> Dokumen P0</span></a></li>
+                                                @endif
+                                                <li><a><span data-toggle="modal" data-target="#uploadP1-{{$listproyek->id_proyek}}"> Dokumen P1</span></a></li>
+                                            </ul>
+                                        </div>
 
-                                        <span data-toggle="modal" data-target="#view-{{$listproyek->id_proyek}}">
+                                        <div class="modal fade" id="uploadP0-{{$listproyek->id_proyek}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+                                            <div class="modal-dialog modal-lg">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                        <h4 class="modal-title" id="myLargeModalLabel" style="font-weight: 450;">{{$listproyek->judul}}</h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="panel panel-default">
+                                                            <div class="panel-body">
+                                                                @if($listproyek->bukti_scan_p0 == NULL)
+                                                                    <form enctype="multipart/form-data" action="{{ route('bukti_p0_insert', ['id_proyek' => $listproyek->id_proyek]) }}" method="post">
+                                                                        {{ csrf_field() }}
+                                                                        <label class="control-label">Unggah Scan Dokumen P0</label>
+                                                                        <div class="col-sm-12">
+                                                                            <input type="file" accept="application/pdf" id="input-file-disable-remove" class="dropify" name="bukti_scan_p0" data-show-remove="false" /> </div>
+                                                                        </div>
+                                                                        <hr> 
+                                                                        <button type="submit" style="float: right;margin-top: -1.5%;" class="btn btn-danger waves-effect waves-light">Simpan</button>
+                                                                    </form>
+                                                                @else
+                                                                    <form action="{{ route('bukti_p0_update', ['id_proyek' => $listproyek->id_proyek]) }}" method="post">
+                                                                        {{ csrf_field() }}
+                                                                        <button type="submit" style="float: center;" class="btn btn-danger waves-effect waves-light m-t-10"><i class="fa fa-trash"></i> Hapus</button>
+                                                                    </form>
+                                                                    <br>
+                                                                    <div class="row" style="height: 1000px; width: 100%;">
+                                                                        <embed src="plugins/pdf/bukti_scan_p0/{{$listproyek->bukti_scan_p0}}" type="application/pdf" width="100%" height="100%"></embed>
+                                                                    </div>
+                                                                    
+                                                                @endif
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal fade" id="uploadP1-{{$listproyek->id_proyek}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+                                            <div class="modal-dialog modal-lg">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                        <h4 class="modal-title" id="myLargeModalLabel" style="font-weight: 450;">{{$listproyek->judul}}</h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="panel panel-default">
+                                                            <div class="panel-body">
+                                                                @if($listproyek->bukti_scan_p1 == NULL)
+                                                                    <form enctype="multipart/form-data" action="{{ route('bukti_p1_insert', ['id_proyek' => $listproyek->id_proyek]) }}" method="post">
+                                                                        {{ csrf_field() }}
+                                                                        <label class="control-label">Unggah Scan Dokumen P1</label>
+                                                                        <div class="col-sm-12">
+                                                                            <input type="file" accept="application/pdf" id="input-file-disable-remove" class="dropify" name="bukti_scan_p1" data-show-remove="false" /> </div>
+                                                                        </div>
+                                                                        <hr>
+                                                                        <button type="submit" style="float: right;margin-top: -1.5%;" class="btn btn-danger waves-effect waves-light">Simpan</button>
+                                                                    </form>
+                                                                @else
+                                                                    <form action="{{ route('bukti_p1_update', ['id_proyek' => $listproyek->id_proyek]) }}" method="post">
+                                                                        {{ csrf_field() }}
+                                                                        <button type="submit" style="float: center;" class="btn btn-danger waves-effect waves-light m-t-10"><i class="fa fa-trash"></i> Hapus</button>
+                                                                    </form>
+                                                                    <br>
+                                                                    <div class="row" style="height: 1000px; width: 100%;">
+                                                                        <embed src="plugins/pdf/bukti_scan_p1/{{$listproyek->bukti_scan_p1}}" type="application/pdf" width="100%" height="100%"></embed>
+                                                                    </div>
+
+                                                                @endif
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- <span data-toggle="modal" data-target="#view-{{$listproyek->id_proyek}}">
                                             <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Lihat Detail Pengajuan"><i class="fa fa-folder-open"></i></button>
-                                        </span>
+                                        </span> -->
                                         <div class="modal fade" id="view-{{$listproyek->id_proyek}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
                                             <div class="modal-dialog modal-lg">
                                                 <div class="modal-content">
@@ -438,7 +524,7 @@
                                         </div>
 
                                         @if(Auth::user()->jabatan->id_jabatan == 1 OR Auth::user()->jabatan->id_jabatan == 2)
-                                        <a href="{{ route('p0_pelanggan_single', ['id_pelanggan' => $listproyek->id_pelanggan, 'id_proyek' => $listproyek->id_proyek, 'id_aspek' => $listproyek->id_aspek]) }}" class="btn btn-default"><i class="fa fa-edit" data-toggle="tooltip" data-placement="top" title="Sunting Data Pengajuan"></i></a>
+                                        <a href="{{ route('p1_pelanggan_single', ['id_pelanggan' => $listproyek->id_pelanggan, 'id_proyek' => $listproyek->id_proyek, 'id_aspek' => $listproyek->id_aspek]) }}" class="btn btn-default"><i class="fa fa-edit" data-toggle="tooltip" data-placement="top" title="Sunting Data Pengajuan"></i></a>
                                         @else
                                         @endif
 
@@ -456,9 +542,9 @@
                                         </div>
 
                                         @if(Auth::user()->jabatan->id_jabatan == 2)
-                                        <span data-toggle="modal" data-target="#delete-{{$listproyek->id_proyek}}">
+                                        <!-- <span data-toggle="modal" data-target="#delete-{{$listproyek->id_proyek}}">
                                             <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Hapus Data Pengajuan Justifikasi"><i class="fa fa-trash"></i></button>
-                                        </span>
+                                        </span> -->
                                         <div class="modal fade" id="delete-{{$listproyek->id_proyek}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
                                             <div class="modal-dialog modal-lg">
                                                 <div class="modal-content">

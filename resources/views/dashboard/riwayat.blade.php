@@ -85,8 +85,6 @@
                                     <th class="text-center" style="background-color: white; color: black;">Rp. 27.824.375.100</th>
                                     <th class="text-center" style="background-color: white; color: black;">Rp. 21.812.047.202</th>
                                     <th class="text-center" style="background-color: white; color: black;">20 %</th>
-                                    <th class="text-center" style="background-color: white; color: black;"></th>
-                                </tr>
                             </tfoot>
                         </table>
                     </div>

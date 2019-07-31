@@ -66,6 +66,55 @@ class FormAspekController extends Controller
 		$aspek->save();
 
 
+		$data = DB::table('proyek')
+            ->leftJoin('mitra', 'proyek.id_mitra', '=', 'mitra.id_mitra')
+            ->leftJoin('aspek_bisnis', 'proyek.id_proyek', '=', 'aspek_bisnis.id_proyek')
+            ->leftJoin('pelanggan', 'proyek.id_pelanggan', '=', 'pelanggan.id_pelanggan')
+            ->where('proyek.id_proyek',$id_proyek)
+            ->first();
+            
+        // dd($proyek, $pelanggan, $aspek);
+        $json = file_get_contents('https://api.telegram.org/bot849520264:AAFgi8lzkNfynife9Efipw4j_8lGgAM1Iq8/getUpdates');
+        $obj = json_decode($json, true);
+        $array = array();
+
+        for ($i=0; $i<count($obj['result']); $i++)
+        {
+            print ($obj['result'][$i]['message']['chat']['id']);
+            print '<br>';
+            $chatid=Chatroom::where('chat_id','=', input::get('chat_id', $obj['result'][$i]['message']['chat']['id']))->first();
+            if($chatid === null){
+                $chatroom = new Chatroom;
+                $count = Chatroom::count();
+                $chatroom->id = Chatroom::count()+1;
+                $chatroom->chat_id = input::get('chat_id', $obj['result'][$i]['message']['chat']['id']);
+                $chatroom->save();
+            }
+        }
+
+        $text = 
+        "ALERT!
+Ada perubahan data proyek yang telah disetujui '".$data->judul."'
+Dengan rincian sebagai berikut:
+    - Account Manager : ".Auth::user()->name."
+    - Pelanggan : ".$data->nama_pelanggan."
+    - Ready for service : ".date('d F Y', strtotime($data->ready_for_service))."
+    - Nilai kontrak : ".number_format($data->nilai_kontrak)."
+
+        ";
+
+        for ($i=1; $i<=Chatroom::count(); $i++)
+        {
+            $result = Chatroom::select('chat_id')->where('id', $i)->first();
+            $response = Telegram::sendMessage([
+                'chat_id' => $result->chat_id, 
+                'text' => $text,
+                'parse_mode' => 'HTML'
+            ]);
+        }
+        $messageId = $response->getMessageId();
+
+
 		return redirect()->route('index');
 
 	}
