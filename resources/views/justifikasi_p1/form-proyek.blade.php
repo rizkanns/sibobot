@@ -45,13 +45,13 @@
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label for="inputEmail3" class="col-sm-3 control-label">Latar Belakang I</label>
+                                                <label for="inputEmail3" class="col-sm-3 control-label">Latar Belakang</label>
                                                 <div class="col-sm-9">
                                                     <textarea name="latar_belakang_1" class="form-control" rows="5">{{$listproyek->latar_belakang_1}}</textarea>
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label for="inputEmail3" class="col-sm-3 control-label">Latar Belakang II</label>
+                                                <label for="inputEmail3" class="col-sm-3 control-label">Dasar Latar Belakang</label>
                                                 <div class="col-sm-9">
                                                     <textarea name="latar_belakang_2" class="form-control" rows="5">{{$listproyek->latar_belakang_2}}</textarea>
                                                 </div>
@@ -173,15 +173,15 @@
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label class="col-sm-3 control-label">Saat Penggunaan</label>
-                                                <div class="input-group col-sm-9" style="padding-left: 15px; padding-right: 15px">
-                                                    <input type="date" class="form-control" name="saat_penggunaan" value="{{$listproyek->saat_penggunaan}}">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
                                                 <label class="col-sm-3 control-label">Tanggal Pemasukan Dokumen</label>
                                                 <div class="input-group col-sm-9" style="padding-left: 15px; padding-right: 15px">
                                                     <input type="date" class="form-control" name="pemasukan_dokumen" value="{{$listproyek->pemasukan_dokumen}}">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-3 control-label">Saat Penggunaan</label>
+                                                <div class="input-group col-sm-9" style="padding-left: 15px; padding-right: 15px">
+                                                    <input type="date" class="form-control" name="saat_penggunaan" value="{{$listproyek->saat_penggunaan}}">
                                                 </div>
                                             </div>
                                             <div class="form-group">

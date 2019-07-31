@@ -458,7 +458,7 @@
                                         @endif
                                     
                                     </td>
-                                    <td style="vertical-align: middle;" class="text-center">
+                                    <!-- <td style="vertical-align: middle;" class="text-center">
                                         @if(Auth::user()->jabatan->id_jabatan == 2)
                                         <span data-toggle="modal" data-target="#delete-{{$listproyek->id_proyek}}">
                                             <button type="button" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Hapus Data Pengajuan Justifikasi"><i class="fa fa-trash"></i> Hapus Proyek</button>
@@ -483,7 +483,7 @@
                                         </div> 
                                         @else
                                         @endif
-                                    </td>
+                                    </td> -->
                                 </tr>
                                 @if(Auth::user()->jabatan->id_jabatan == 1 OR Auth::user()->jabatan->id_jabatan == 2)
                                 <tr class="fuckOffPadding">
@@ -496,9 +496,9 @@
                                                     <td></td>
                                                 </tr>
                                                 <tr id="footer-padding">
-                                                    <td style="font-weight: 450; color: black; width: 40%;">Layanan Revenue</td>
+                                                    <td style="font-weight: 450; color: black; width: 30%;">Layanan Revenue</td>
                                                     <td>{{$listproyek->layanan_revenue}}</td>
-                                                    <td></td>
+                                                    <td style="width: 35%;"></td>
                                                 </tr>
                                                 <tr id="footer-padding">
                                                     <td style="font-weight: 450; color: black;">Revenue Connectivity</td>
@@ -511,14 +511,45 @@
                                                     <td></td>
                                                 </tr>
                                                 <tr id="footer-padding">
-                                                    <td style="font-weight: 450; color: black;">Total Nilai Margin</td>
+                                                    <td style="font-weight: 450; color: black;">Total Margin</td>
                                                     <td>Rp {{number_format($listproyek->rp_margin)}}</td>
                                                     <td></td>
                                                 </tr>
                                                 <tr id="footer-padding">
-                                                    <td style="font-weight: 450; color: black;">Minimum Total Nilai Margin</td>
-                                                    <td>Rp {{number_format($listproyek->rp_margin-1500000)}}</td>
-                                                    <td  style="font-weight: 300; color: black;">Memenuhi &emsp;<i class="fa fa-check btn btn-success btn-rounded"></i></td>
+                                                    <td style="font-weight: 450; color: black;">Nilai Kontrak</td>
+                                                    <td>Rp {{number_format($listproyek->nilai_kontrak)}}</td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr id="footer-padding">
+                                                    <td style="font-weight: 450; color: black;">Minimum Total Margin</td>
+                                                    @if($listproyek->layanan_revenue == 'Tahunan')
+                                                        @foreach($rumus->where('id_nilai',1) as $listrumus)    
+                                                            <td>Rp {{number_format($listproyek->nilai_kontrak*$listrumus->nilai_pc)}}</td>
+                                                            @if($listproyek->rp_margin > ($listproyek->nilai_kontrak*$listrumus->nilai_pc))
+                                                                <td  style="font-weight: 300; color: black;">Memenuhi &emsp;<i class="fa fa-check btn btn-success btn-rounded"></i></td>
+                                                            @else
+                                                                <td  style="font-weight: 300; color: black;">Tidak Memenuhi &emsp;<i class="fa fa-times btn btn-danger btn-rounded"></i></td>
+                                                            @endif
+                                                        @endforeach
+                                                    @elseif($listproyek->layanan_revenue == 'Bulanan')
+                                                        @foreach($rumus->where('id_nilai',2) as $listrumus)    
+                                                            <td>Rp {{number_format($listproyek->rp_margin-($listproyek->nilai_kontrak*$listproyek->masa_kontrak*$listrumus->nilai_pc))}}</td>
+                                                            @if($listproyek->rp_margin > ($listproyek->nilai_kontrak*$listproyek->masa_kontrak*$listrumus->nilai_pc))
+                                                                <td  style="font-weight: 300; color: black;">Memenuhi &emsp;<i class="fa fa-check btn btn-success btn-rounded"></i></td>
+                                                            @else
+                                                                <td  style="font-weight: 300; color: black;">Tidak Memenuhi &emsp;<i class="fa fa-times btn btn-danger btn-rounded"></i></td>
+                                                            @endif
+                                                        @endforeach
+                                                    @elseif($listproyek->layanan_revenue == 'OTC')
+                                                        @foreach($rumus->where('id_nilai',3) as $listrumus)    
+                                                            <td>Rp {{number_format($listproyek->rp_margin-($listproyek->nilai_kontrak*$listrumus->nilai_pc))}}</td>
+                                                            @if($listproyek->rp_margin > ($listproyek->nilai_kontrak*$listrumus->nilai_pc))
+                                                                <td  style="font-weight: 300; color: black;">Memenuhi &emsp;<i class="fa fa-check btn btn-success btn-rounded"></i></td>
+                                                            @else
+                                                                <td  style="font-weight: 300; color: black;">Tidak Memenuhi &emsp;<i class="fa fa-times btn btn-danger btn-rounded"></i></td>
+                                                            @endif
+                                                        @endforeach
+                                                    @endif
                                                     <br>
                                                 </tr>
 
@@ -529,6 +560,13 @@
                                                     <td  style="font-weight: 300; color: black;">Tidak &emsp;<i class="fa fa-times btn btn-danger btn-rounded"></i></td>
                                                     <br>
                                                 </tr>
+                                                <tr id="footer-padding">
+                                                    <td style="font-weight: 450; color: black;">Hasil Rekomendasi</td>
+                                                    <td colspan="2"> Maka dari itu proyek direkomendasikan untuk distujui.</td>
+                                                    <td  style="font-weight: 300; color: black;">Rekomendasi:<br>Tidak Disetujui &emsp;<i class="fa fa-times btn btn-danger btn-rounded"></i><br>
+                                                    </td>
+                                                    <br>
+                                                </tr>
                                                 @else
                                                 <tr id="footer-padding">
                                                     <td style="font-weight: 450; color: black;">Izin Proyek P0</td>
@@ -536,20 +574,40 @@
                                                     <td  style="font-weight: 300; color: black;">Memenuhi &emsp;<i class="fa fa-check btn btn-success btn-rounded"></i></td>
                                                     <br>
                                                 </tr>
-                                                @endif
-                                                <tr id="footer-padding">
-                                                    <td style="font-weight: 450; color: black;">Proyek Belum Pernah</td>
-                                                    <td></td>
-                                                    <td  style="font-weight: 300; color: black;">Memenuhi &emsp;<i class="fa fa-check btn btn-success btn-rounded"></i></td>
-                                                    <br>
-                                                </tr>
                                                 <tr id="footer-padding">
                                                     <td style="font-weight: 450; color: black;">Hasil Rekomendasi</td>
-
-                                                    <td colspan="2"> Maka dari itu proyek direkomendasikan untuk distujui.</td>
-                                                    <td></td>
+                                                    <td> Maka dari itu proyek direkomendasikan untuk distujui.</td>
+                                                    <td  style="font-weight: 300; color: black;">Rekomendasi:<br>Setujui &emsp;<i class="fa fa-check btn btn-success btn-rounded"></i><br><br>
+                                                    
+                                                    <!-- @if($listproyek->layanan_revenue == 'Tahunan')
+                                                        @foreach($rumus->where('id_nilai',1) as $listrumus)
+                                                            @if($listproyek->rp_margin < (12*$listproyek->nilai_kontrak*$listrumus->nilai_pc))
+                                                                Nilai kontrak min: {{number_format($listproyek->nilai_kontrak*$listrumus->nilai_pc)}}
+                                                            @else
+                                                                <br>
+                                                            @endif
+                                                        @endforeach
+                                                    @elseif($listproyek->layanan_revenue == 'Bulanan')
+                                                        @foreach($rumus->where('id_nilai',2) as $listrumus)
+                                                            @if($listproyek->rp_margin < ($listproyek->nilai_kontrak*$listproyek->masa_kontrak*$listrumus->nilai_pc))
+                                                                Nilai kontrak min: {{number_format($listproyek->nilai_kontrak*$listproyek->masa_kontrak*$listrumus->nilai_pc)}}
+                                                            @else
+                                                                <br>
+                                                            @endif
+                                                        @endforeach
+                                                    @elseif($listproyek->layanan_revenue == 'OTC')
+                                                        @foreach($rumus->where('id_nilai',3) as $listrumus)    
+                                                            @if($listproyek->rp_margin < ($listproyek->nilai_kontrak*$listrumus->nilai_pc))
+                                                                Nilai kontrak min: {{number_format($listproyek->nilai_kontrak*$listrumus->nilai_pc)}}
+                                                            @else
+                                                                <br>
+                                                            @endif
+                                                        @endforeach
+                                                    @endif -->
+                                                    </td>
                                                     <br>
                                                 </tr>
+                                                @endif
                                             </tbody>
                                             </table>   
                                     </td>
@@ -573,7 +631,7 @@
                                                                         <input type="radio" name="status_pengajuan" value="1" id="option1" autocomplete="off" checked> SETUJUI
                                                                     </label>
                                                                     <label class="btn btn-danger active notApproved">
-                                                                        <input type="radio" name="status_pengajuan" value="" id="option2" autocomplete="off"> BELUM DISETUJUI
+                                                                        <input type="radio" name="status_pengajuan" value="2" id="option2" autocomplete="off"> TIDAK DISETUJUI
                                                                     </label>
                                                                 </div>
                                                                 @endif

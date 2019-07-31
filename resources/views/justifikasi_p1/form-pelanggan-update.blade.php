@@ -86,9 +86,9 @@
                             <div class="row">
                                 <label for="inputEmail3" class="col-sm-3 control-label">Witel</label>
                                 <div class="col-sm-5">
-                                    <select class="selectpicker m-b-20" data-style="form-control" name="id_witel">
+                                    <select class="selectpicker m-b-20" data-style="form-control" name="id_wilayah">
                                         @foreach ($witel as $listwitel)
-                                            <option value="{{$listwitel->id_witel}}" @if($listproyek->id_witel == $listwitel->id_witel) selected @endif>{{$listwitel->nama_witel}}</option>
+                                            <option value="{{$listwitel->id_wilayah}}" @if($listproyek->id_wilayah == $listwitel->id_wilayah) selected @endif>{{$listwitel->nama_wilayah}}</option>
                                         @endforeach
                                     </select>
                                 </div>

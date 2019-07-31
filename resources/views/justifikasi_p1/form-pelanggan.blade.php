@@ -76,9 +76,9 @@
                             <div class="row">
                                 <label for="inputEmail3" class="col-sm-3 control-label">Witel</label>
                                 <div class="col-sm-5">
-                                    <select class="selectpicker m-b-20" data-style="form-control" name="id_witel">
+                                    <select class="selectpicker m-b-20" data-style="form-control" name="id_wilayah">
                                         @foreach ($witel as $listwitel)
-                                            <option value="{{$listwitel->id_witel}}">{{$listwitel->nama_witel}}</option>
+                                            <option value="{{$listwitel->id_wilayah}}">{{$listwitel->nama_wilayah}}</option>
                                         @endforeach
                                     </select>
                                 </div>

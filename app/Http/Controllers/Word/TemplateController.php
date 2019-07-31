@@ -37,36 +37,37 @@ class TemplateController extends Controller
             ->where('proyek.id_proyek','=',$id)
             ->first();
             
-        // $se = DB::table('witel') 
-        //     ->leftJoin('pelanggan', 'witel.id_witel', '=', 'pelanggan.id_witel')
-        //     ->leftjoin('users','users.id','=','witel.se')
-        //     ->whereRaw('witel.id_witel = pelanggan.id_witel')
-        //     ->first();
-        // $bidding = DB::table('witel') 
-        //     ->leftJoin('pelanggan', 'witel.id_witel', '=', 'pelanggan.id_witel')
-        //     ->leftjoin('users','users.id','=','witel.bidding')
-        //     ->whereRaw('witel.id_witel = pelanggan.id_witel')
-        //     ->first();
-        // $manager = DB::table('witel') 
-        //     ->leftJoin('pelanggan', 'witel.id_witel', '=', 'pelanggan.id_witel')
-        //     ->leftjoin('users','users.id','=','witel.manager')
-        //     ->whereRaw('witel.id_witel = pelanggan.id_witel')
-        //     ->first();
-        // $deputy = DB::table('witel') 
-        //     ->leftJoin('pelanggan', 'witel.id_witel', '=', 'pelanggan.id_witel')
-        //     ->leftjoin('users','users.id','=','witel.deputy')
-        //     ->whereRaw('witel.id_witel = pelanggan.id_witel')
-        //     ->first();
-        // $gm = DB::table('witel') 
-        //     ->leftjoin('users','witel.gm','=','users.id')
-        //     ->leftJoin('pelanggan', 'pelanggan.id_witel', '=', 'witel.id_witel')
-        //     ->whereRaw('witel.id_witel = pelanggan.id_witel')
-        //     ->first();
-        // $approval = DB::table('witel') 
-        //     ->leftJoin('pelanggan', 'witel.id_witel', '=', 'pelanggan.id_witel')
-        //     ->leftjoin('users','users.id','=','witel.approval')
-        //     ->whereRaw('witel.id_witel = pelanggan.id_witel')
-        //     ->first();
+        $se = DB::table('wilayah') 
+            ->leftJoin('pelanggan', 'wilayah.id_wilayah', '=', 'pelanggan.id_wilayah')
+            ->leftjoin('users','users.id','=','wilayah.se')
+            ->whereRaw('wilayah.id_wilayah = pelanggan.id_wilayah')
+            ->first();
+        $bidding = DB::table('wilayah') 
+            ->leftJoin('pelanggan', 'wilayah.id_wilayah', '=', 'pelanggan.id_wilayah')
+            ->leftjoin('users','users.id','=','wilayah.bidding')
+            ->whereRaw('wilayah.id_wilayah = pelanggan.id_wilayah')
+            ->first();
+        $manager = DB::table('wilayah') 
+            ->leftJoin('pelanggan', 'wilayah.id_wilayah', '=', 'pelanggan.id_wilayah')
+            ->leftjoin('users','users.id','=','wilayah.manager')
+            ->whereRaw('wilayah.id_wilayah = pelanggan.id_wilayah')
+            ->first();
+        $deputy = DB::table('wilayah') 
+            ->leftJoin('pelanggan', 'wilayah.id_wilayah', '=', 'pelanggan.id_wilayah')
+            ->leftjoin('users','users.id','=','wilayah.deputy')
+            ->whereRaw('wilayah.id_wilayah = pelanggan.id_wilayah')
+            ->first();
+        $gm = DB::table('wilayah') 
+            ->leftjoin('users','wilayah.gm','=','users.id')
+            ->leftJoin('pelanggan', 'pelanggan.id_wilayah', '=', 'wilayah.id_wilayah')
+            ->whereRaw('wilayah.id_wilayah = pelanggan.id_wilayah')
+            ->first();
+        $approval = DB::table('wilayah') 
+            ->leftJoin('pelanggan', 'wilayah.id_wilayah', '=', 'pelanggan.id_wilayah')
+            ->leftjoin('users','users.id','=','wilayah.approval')
+            ->whereRaw('wilayah.id_wilayah = pelanggan.id_wilayah')
+            ->first();
+
             // $latarbelakang = DB::table('LatarBelakang')->where('id_proyek','=',$id)->first();
             // $pelanggan = DB::table('')->where('','=',$id)->first();
             // $unit_kerja = DB::table('proyek')
@@ -96,8 +97,8 @@ class TemplateController extends Controller
             //     $i++;
             //     $templateProcessor->setValue('lb'.$i, $lb->latar_belakang);
             // }
-        // $templateProcessor->setValue('lb1', $proyek->latar_belakang_1);
-        // $templateProcessor->setValue('lb2', $proyek->latar_belakang_2);
+        $templateProcessor->setValue('lb1', $proyek->latar_belakang_1);
+        $templateProcessor->setValue('lb2', $proyek->latar_belakang_2);
         $templateProcessor->setValue('revenueConnectivity', number_format($proyek->revenue_connectivity));
         $templateProcessor->setValue('revenueCPEProyek', number_format($proyek->revenue_cpe_proyek));
         $templateProcessor->setValue('marginTg', $proyek->margin_tg);
@@ -120,40 +121,36 @@ class TemplateController extends Controller
             $templateProcessor->setValue('namaMitra', $proyek->nama_mitra);
         }
 
-        // ----------- //
-        // image p1 p0 //
-        // ------------//
-
-        // list($width, $height) = getimagesize(public_path('plugins/images/file_p0/'. $proyek->file_p0));
-        // if($width > 495){
-        //     $percentage = 495/$width;
-        //     $width = $width*$percentage;
-        //     $height = $height*$percentage;
-        // }
-        // $templateProcessor->setImg('file',array('src' => public_path('plugins/images/file_p0/'. $proyek->file_p0),'swh'=>'200', 'size'=>array(0=>$width, 1=>$height)));
+        list($width, $height) = getimagesize(public_path('plugins/images/file_p0/'. $proyek->file_p0));
+        if($width > 495){
+            $percentage = 495/$width;
+            $width = $width*$percentage;
+            $height = $height*$percentage;
+        }
+        $templateProcessor->setImg('file',array('src' => public_path('plugins/images/file_p0/'. $proyek->file_p0),'swh'=>'200', 'size'=>array(0=>$width, 1=>$height)));
 
         // K. INFORMASI TAMBAHAN
-        // $templateProcessor->setValue('am', Auth::user()->name);
-        // $templateProcessor->setValue('nikAm', Auth::user()->nik);
-        // $templateProcessor->setValue('jabatanAm', 'ACCOUNT MANAGER');
-        // $templateProcessor->setValue('se', $se->name);
-        // $templateProcessor->setValue('nikSe', $se->nik);
-        // $templateProcessor->setValue('jabatanSe', 'ASMAN GES SALES ENGINEER');
-        // $templateProcessor->setValue('bidding', $bidding->name);
-        // $templateProcessor->setValue('nikBidding', $bidding->nik);
-        // $templateProcessor->setValue('jabatanBidding', 'ASMAN GES OBL & BIDDING MANAGEMENT');
-        // $templateProcessor->setValue('manager', $manager->name);
-        // $templateProcessor->setValue('nikManager', $manager->nik);
-        // $templateProcessor->setValue('jabatanManager', 'MGR GOVERNMENT & ENTERPRISE SERVICE');
-        // $templateProcessor->setValue('deputy', $deputy->name);
-        // $templateProcessor->setValue('nikDeputy', $deputy->nik);
-        // $templateProcessor->setValue('jabatanDeputy', 'DEPUTY GM WITEL '.strtoupper($deputy->nama_witel));
-        // $templateProcessor->setValue('gm', $gm->name);
-        // $templateProcessor->setValue('nikGm', $gm->nik);
-        // $templateProcessor->setValue('jabatanGm', 'GM WITEL '.strtoupper($gm->nama_witel));
-        // $templateProcessor->setValue('approval', $approval->name);
-        // $templateProcessor->setValue('nikApproval', $approval->nik);
-        // $templateProcessor->setValue('jabatanApproval', 'OSM REG ENTERPRISE, GOVERNMENT & BIZ SERV TR V');
+        $templateProcessor->setValue('am', Auth::user()->name);
+        $templateProcessor->setValue('nikAm', Auth::user()->nik);
+        $templateProcessor->setValue('jabatanAm', 'ACCOUNT MANAGER');
+        $templateProcessor->setValue('se', $se->name);
+        $templateProcessor->setValue('nikSe', $se->nik);
+        $templateProcessor->setValue('jabatanSe', 'ASMAN GES SALES ENGINEER');
+        $templateProcessor->setValue('bidding', $bidding->name);
+        $templateProcessor->setValue('nikBidding', $bidding->nik);
+        $templateProcessor->setValue('jabatanBidding', 'ASMAN GES OBL & BIDDING MANAGEMENT');
+        $templateProcessor->setValue('manager', $manager->name);
+        $templateProcessor->setValue('nikManager', $manager->nik);
+        $templateProcessor->setValue('jabatanManager', 'MGR GOVERNMENT & ENTERPRISE SERVICE');
+        $templateProcessor->setValue('deputy', $deputy->name);
+        $templateProcessor->setValue('nikDeputy', $deputy->nik);
+        $templateProcessor->setValue('jabatanDeputy', 'DEPUTY GM WITEL '.strtoupper($deputy->nama_wilayah));
+        $templateProcessor->setValue('gm', $gm->name);
+        $templateProcessor->setValue('nikGm', $gm->nik);
+        $templateProcessor->setValue('jabatanGm', 'GM WITEL '.strtoupper($gm->nama_wilayah));
+        $templateProcessor->setValue('approval', $approval->name);
+        $templateProcessor->setValue('nikApproval', $approval->nik);
+        $templateProcessor->setValue('jabatanApproval', 'OSM REG ENTERPRISE, GOVERNMENT & BIZ SERV TR V');
 
         // $objectWriter = \PhpOffice\PhpWord\IOFactory::createWriter($wordTest, 'Word2007');
         try{
@@ -188,36 +185,37 @@ class TemplateController extends Controller
             //     ->where('pelanggan.id_pelanggan', '=', '')
         //     ->first();
 
-        // $se = DB::table('witel') 
-        //     ->leftJoin('pelanggan', 'witel.id_witel', '=', 'pelanggan.id_witel')
-        //     ->leftjoin('users','users.id','=','witel.se')
-        //     ->whereRaw('witel.id_witel = pelanggan.id_witel')
-        //     ->first();
-        // $bidding = DB::table('witel') 
-        //     ->leftJoin('pelanggan', 'witel.id_witel', '=', 'pelanggan.id_witel')
-        //     ->leftjoin('users','users.id','=','witel.bidding')
-        //     ->whereRaw('witel.id_witel = pelanggan.id_witel')
-        //     ->first();
-        // $manager = DB::table('witel') 
-        //     ->leftJoin('pelanggan', 'witel.id_witel', '=', 'pelanggan.id_witel')
-        //     ->leftjoin('users','users.id','=','witel.manager')
-        //     ->whereRaw('witel.id_witel = pelanggan.id_witel')
-        //     ->first();
-        // $deputy = DB::table('witel') 
-        //     ->leftJoin('pelanggan', 'witel.id_witel', '=', 'pelanggan.id_witel')
-        //     ->leftjoin('users','users.id','=','witel.deputy')
-        //     ->whereRaw('witel.id_witel = pelanggan.id_witel')
-        //     ->first();
-        // $gm = DB::table('witel') 
-        //     ->leftjoin('users','witel.gm','=','users.id')
-        //     ->leftJoin('pelanggan', 'pelanggan.id_witel', '=', 'witel.id_witel')
-        //     ->whereRaw('witel.id_witel = pelanggan.id_witel')
-        //     ->first();
-        // $approval = DB::table('witel') 
-        //     ->leftJoin('pelanggan', 'witel.id_witel', '=', 'pelanggan.id_witel')
-        //     ->leftjoin('users','users.id','=','witel.approval')
-        //     ->whereRaw('witel.id_witel = pelanggan.id_witel')
-        //     ->first();
+        $se = DB::table('wilayah') 
+            ->leftJoin('pelanggan', 'wilayah.id_wilayah', '=', 'pelanggan.id_wilayah')
+            ->leftjoin('users','users.id','=','wilayah.se')
+            ->whereRaw('wilayah.id_wilayah = pelanggan.id_wilayah')
+            ->first();
+        $bidding = DB::table('wilayah') 
+            ->leftJoin('pelanggan', 'wilayah.id_wilayah', '=', 'pelanggan.id_wilayah')
+            ->leftjoin('users','users.id','=','wilayah.bidding')
+            ->whereRaw('wilayah.id_wilayah = pelanggan.id_wilayah')
+            ->first();
+        $manager = DB::table('wilayah') 
+            ->leftJoin('pelanggan', 'wilayah.id_wilayah', '=', 'pelanggan.id_wilayah')
+            ->leftjoin('users','users.id','=','wilayah.manager')
+            ->whereRaw('wilayah.id_wilayah = pelanggan.id_wilayah')
+            ->first();
+        $deputy = DB::table('wilayah') 
+            ->leftJoin('pelanggan', 'wilayah.id_wilayah', '=', 'pelanggan.id_wilayah')
+            ->leftjoin('users','users.id','=','wilayah.deputy')
+            ->whereRaw('wilayah.id_wilayah = pelanggan.id_wilayah')
+            ->first();
+        $gm = DB::table('wilayah') 
+            ->leftjoin('users','wilayah.gm','=','users.id')
+            ->leftJoin('pelanggan', 'pelanggan.id_wilayah', '=', 'wilayah.id_wilayah')
+            ->whereRaw('wilayah.id_wilayah = pelanggan.id_wilayah')
+            ->first();
+        $approval = DB::table('wilayah') 
+            ->leftJoin('pelanggan', 'wilayah.id_wilayah', '=', 'pelanggan.id_wilayah')
+            ->leftjoin('users','users.id','=','wilayah.approval')
+            ->whereRaw('wilayah.id_wilayah = pelanggan.id_wilayah')
+            ->first();
+            
         // $latarbelakang = DB::table('LatarBelakang')->where('id_proyek','=',$id)->first();
         // $pelanggan = DB::table('')->where('','=',$id)->first();
         // $unit_kerja = DB::table('proyek')
@@ -246,8 +244,8 @@ class TemplateController extends Controller
         //     $i++;
         //     $templateProcessor->setValue('lb'.$i, $lb->latar_belakang);
         // }
-        // $templateProcessor->setValue('lb1', $proyek->latar_belakang_1);
-        // $templateProcessor->setValue('lb2', $proyek->latar_belakang_2);
+        $templateProcessor->setValue('lb1', $proyek->latar_belakang_1);
+        $templateProcessor->setValue('lb2', $proyek->latar_belakang_2);
 
         $templateProcessor->setValue('pelanggan', $proyek->nama_pelanggan);
 
@@ -314,8 +312,8 @@ class TemplateController extends Controller
         }
         if(isset($proyek->id_mitra_2)){
             $templateProcessor->setValue('terdiriDari2', 'Terdiri dari: ');
-            $templateProcessor->setValue('colocation', "i.	Colocation");
-            $templateProcessor->setValue('revenueCPEMitra', "ii.	Revenue CPE");
+            $templateProcessor->setValue('colocation', "i.  Colocation");
+            $templateProcessor->setValue('revenueCPEMitra', "ii.    Revenue CPE");
             $templateProcessor->setValue('colocationValue', ': Rp   '.number_format($proyek->colocation).',- (Sebelum PPN)');
             $templateProcessor->setValue('revenueCPEMitraValue', ': Rp   '.number_format($proyek->revenue_cpe_mitra).',- (Sebelum PPN)');
         }
@@ -350,37 +348,33 @@ class TemplateController extends Controller
         $templateProcessor->setValue('pemasukanDokumen', Carbon::createFromFormat('Y-m-d', $proyek->pemasukan_dokumen)->formatLocalized('%B %Y'));
         setlocale(LC_TIME, '');
 
-        // ----------- //
-        // image p1 p0 //
-        // ------------//
-        
-        // list($width, $height) = getimagesize(public_path('plugins/images/file_p1/'. $proyek->file_p1));
-        // if($width > 755.2){
-        //     $percentage = 755.2/$width;
-        //     $width = $width*$percentage;
-        //     $height = $height*$percentage;
-        // }
-        // $templateProcessor->setImg('selector',array('src' => public_path('plugins/images/file_p1/'. $proyek->file_p1),'swh'=>'200', 'size'=>array(0=>$width, 1=>$height)));
+        list($width, $height) = getimagesize(public_path('plugins/images/file_p1/'. $proyek->file_p1));
+        if($width > 755.2){
+            $percentage = 755.2/$width;
+            $width = $width*$percentage;
+            $height = $height*$percentage;
+        }
+        $templateProcessor->setImg('selector',array('src' => public_path('plugins/images/file_p1/'. $proyek->file_p1),'swh'=>'200', 'size'=>array(0=>$width, 1=>$height)));
 
         // K. INFORMASI TAMBAHAN
-        // $templateProcessor->setValue('am', Auth::user()->name);
-        // $templateProcessor->setValue('nikAm', Auth::user()->nik);
-        // $templateProcessor->setValue('jabatanAm', 'ACCOUNT MANAGER');
-        // $templateProcessor->setValue('se', $se->name);
-        // $templateProcessor->setValue('nikSe', $se->nik);
-        // $templateProcessor->setValue('jabatanSe', 'ASMAN GES SALES ENGINEER');
-        // $templateProcessor->setValue('bidding', $bidding->name);
-        // $templateProcessor->setValue('nikBidding', $bidding->nik);
-        // $templateProcessor->setValue('jabatanBidding', 'ASMAN GES OBL & BIDDING MANAGEMENT');
-        // $templateProcessor->setValue('manager', $manager->name);
-        // $templateProcessor->setValue('nikManager', $manager->nik);
-        // $templateProcessor->setValue('jabatanManager', 'MGR GOVERNMENT & ENTERPRISE SERVICE');
-        // $templateProcessor->setValue('deputy', $deputy->name);
-        // $templateProcessor->setValue('nikDeputy', $deputy->nik);
-        // $templateProcessor->setValue('jabatanDeputy', 'DEPUTY GM WITEL '.strtoupper($deputy->nama_witel));
-        // $templateProcessor->setValue('gm', $gm->name);
-        // $templateProcessor->setValue('nikGm', $gm->nik);
-        // $templateProcessor->setValue('jabatanGm', 'GM WITEL '.strtoupper($gm->nama_witel));
+        $templateProcessor->setValue('am', Auth::user()->name);
+        $templateProcessor->setValue('nikAm', Auth::user()->nik);
+        $templateProcessor->setValue('jabatanAm', 'ACCOUNT MANAGER');
+        $templateProcessor->setValue('se', $se->name);
+        $templateProcessor->setValue('nikSe', $se->nik);
+        $templateProcessor->setValue('jabatanSe', 'ASMAN GES SALES ENGINEER');
+        $templateProcessor->setValue('bidding', $bidding->name);
+        $templateProcessor->setValue('nikBidding', $bidding->nik);
+        $templateProcessor->setValue('jabatanBidding', 'ASMAN GES OBL & BIDDING MANAGEMENT');
+        $templateProcessor->setValue('manager', $manager->name);
+        $templateProcessor->setValue('nikManager', $manager->nik);
+        $templateProcessor->setValue('jabatanManager', 'MGR GOVERNMENT & ENTERPRISE SERVICE');
+        $templateProcessor->setValue('deputy', $deputy->name);
+        $templateProcessor->setValue('nikDeputy', $deputy->nik);
+        $templateProcessor->setValue('jabatanDeputy', 'DEPUTY GM WITEL '.strtoupper($deputy->nama_wilayah));
+        $templateProcessor->setValue('gm', $gm->name);
+        $templateProcessor->setValue('nikGm', $gm->nik);
+        $templateProcessor->setValue('jabatanGm', 'GM WITEL '.strtoupper($gm->nama_wilayah));
 
         // $objectWriter = \PhpOffice\PhpWord\IOFactory::createWriter($wordTest, 'Word2007');
         try{

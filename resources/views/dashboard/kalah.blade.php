@@ -42,10 +42,10 @@
             <div class="col-sm-12">
                 <div class="white-box">
                     <div class="table-responsive">
-                        <table class="table color-table success-table example">
+                        <table class="table color-table danger-table example">
                             <thead>
                                 <tr>
-                                    <th colspan=7>SUDAH DISETUJUI</th>
+                                    <th colspan=7>PROYEK GAGAL</th>
                                 </tr>
                                 <tr>
                                     <th class="text-center" style="background-color: white; color: black;">No.</th>
